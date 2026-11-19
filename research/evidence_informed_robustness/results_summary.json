@@ -1,0 +1,699 @@
+{
+  "snapshot": {
+    "release": "v0.1.0",
+    "release_commit": "637f392109138790aeea24c0734635d7bd1d2ce4",
+    "osm_state_utc": "2026-11-19T18:17:06Z",
+    "manifest_sha256": "975bb4b4e9861eb4971dd0584ee46bfd1cc2f7a5e06ef057f540b76a141a1dde",
+    "legacy_results_git_blob_sha256": "46205617473e7c26303d278b1c364709ccbfddeff445ae89c74464278121c45c"
+  },
+  "networkx": "3.7",
+  "pair_unit": "Unordered physical station pair; repeated across scenarios, not passengers",
+  "objectives": {
+    "R": [
+      "ride_edges",
+      "commercial_line_state_changes"
+    ],
+    "T": [
+      "commercial_line_state_changes",
+      "ride_edges"
+    ],
+    "additional_metrics": "Minimum of each separately over the R/T-optimal route set"
+  },
+  "models": {
+    "B1": {
+      "physical_stations": 242,
+      "states": 291,
+      "ride_edges": 280,
+      "same_station_commercial_transfer_edges": 61,
+      "mandatory_train_change_edges": 0,
+      "pedestrian_state_edges": 0,
+      "pedestrian_station_links": 0
+    },
+    "E": {
+      "physical_stations": 242,
+      "states": 294,
+      "ride_edges": 280,
+      "same_station_commercial_transfer_edges": 61,
+      "mandatory_train_change_edges": 3,
+      "pedestrian_state_edges": 3,
+      "pedestrian_station_links": 2
+    },
+    "E_with_Sol_Gran_Via": {
+      "physical_stations": 242,
+      "states": 294,
+      "ride_edges": 280,
+      "same_station_commercial_transfer_edges": 61,
+      "mandatory_train_change_edges": 3,
+      "pedestrian_state_edges": 9,
+      "pedestrian_station_links": 3
+    }
+  },
+  "interchange_disruptions": {
+    "B1": {
+      "scenarios": 38,
+      "station_pairs_per_scenario": 29161,
+      "scenario_pairs_total": 1108118,
+      "reachable_scenario_pairs": 1106708,
+      "disconnected_scenario_pairs": 1410,
+      "scenarios_with_disconnected_pairs": 1,
+      "max_disconnected_pairs_in_one_scenario": 1410,
+      "min_largest_state_component_stations": 236,
+      "state_component_count_histogram": {
+        "1": 37,
+        "2": 1
+      },
+      "scenarios_with_increased_minimum_rides": 35,
+      "scenarios_with_increased_minimum_commercial_line_state_changes": 18,
+      "fully_reachable_scenarios_with_optimal_path_effect": 37,
+      "fully_reachable_scenarios_with_worse_lexicographic_cost": 36,
+      "routes": {
+        "R": {
+          "worse_lexicographic_cost": 50208,
+          "equal_cost_fewer_station_sequences": 8014,
+          "equal_cost_fewer_service_itineraries": 9879,
+          "more_required_train_changes_among_optima": 21053,
+          "ride_edges": {
+            "increased_pairs": 42319,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1064389,
+            "mean_increase_among_increased": 2.8016,
+            "max_increase": 30
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 21053,
+            "decreased_pairs": 20466,
+            "unchanged_pairs": 1065189,
+            "mean_increase_among_increased": 1.2784,
+            "max_increase": 4
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 21053,
+            "decreased_pairs": 20466,
+            "unchanged_pairs": 1065189,
+            "mean_increase_among_increased": 1.2784,
+            "max_increase": 4
+          },
+          "physical_train_changes": {
+            "increased_pairs": 21053,
+            "decreased_pairs": 20466,
+            "unchanged_pairs": 1065189,
+            "mean_increase_among_increased": 1.2784,
+            "max_increase": 4
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1106708,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          }
+        },
+        "T": {
+          "worse_lexicographic_cost": 29122,
+          "equal_cost_fewer_station_sequences": 4160,
+          "equal_cost_fewer_service_itineraries": 5242,
+          "more_required_train_changes_among_optima": 12260,
+          "ride_edges": {
+            "increased_pairs": 20939,
+            "decreased_pairs": 7138,
+            "unchanged_pairs": 1078631,
+            "mean_increase_among_increased": 6.3207,
+            "max_increase": 31
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 12260,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1094448,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 12260,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1094448,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "physical_train_changes": {
+            "increased_pairs": 12260,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1094448,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1106708,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          }
+        }
+      }
+    },
+    "E": {
+      "scenarios": 38,
+      "station_pairs_per_scenario": 29161,
+      "scenario_pairs_total": 1108118,
+      "reachable_scenario_pairs": 1106708,
+      "disconnected_scenario_pairs": 1410,
+      "scenarios_with_disconnected_pairs": 1,
+      "max_disconnected_pairs_in_one_scenario": 1410,
+      "min_largest_state_component_stations": 236,
+      "state_component_count_histogram": {
+        "1": 37,
+        "2": 1
+      },
+      "scenarios_with_increased_minimum_rides": 33,
+      "scenarios_with_increased_minimum_commercial_line_state_changes": 17,
+      "fully_reachable_scenarios_with_optimal_path_effect": 37,
+      "fully_reachable_scenarios_with_worse_lexicographic_cost": 36,
+      "routes": {
+        "R": {
+          "worse_lexicographic_cost": 47810,
+          "equal_cost_fewer_station_sequences": 8818,
+          "equal_cost_fewer_service_itineraries": 10655,
+          "more_required_train_changes_among_optima": 20453,
+          "ride_edges": {
+            "increased_pairs": 39479,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1067229,
+            "mean_increase_among_increased": 2.8201,
+            "max_increase": 30
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 20652,
+            "decreased_pairs": 18591,
+            "unchanged_pairs": 1067465,
+            "mean_increase_among_increased": 1.2492,
+            "max_increase": 4
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 20453,
+            "decreased_pairs": 18609,
+            "unchanged_pairs": 1067646,
+            "mean_increase_among_increased": 1.2516,
+            "max_increase": 4
+          },
+          "physical_train_changes": {
+            "increased_pairs": 20453,
+            "decreased_pairs": 18609,
+            "unchanged_pairs": 1067646,
+            "mean_increase_among_increased": 1.2516,
+            "max_increase": 4
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 3481,
+            "decreased_pairs": 828,
+            "unchanged_pairs": 1102399,
+            "mean_increase_among_increased": 1.0554,
+            "max_increase": 2
+          }
+        },
+        "T": {
+          "worse_lexicographic_cost": 28027,
+          "equal_cost_fewer_station_sequences": 3689,
+          "equal_cost_fewer_service_itineraries": 4575,
+          "more_required_train_changes_among_optima": 10990,
+          "ride_edges": {
+            "increased_pairs": 20599,
+            "decreased_pairs": 6348,
+            "unchanged_pairs": 1079761,
+            "mean_increase_among_increased": 6.3039,
+            "max_increase": 31
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 11097,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1095611,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 10990,
+            "decreased_pairs": 32,
+            "unchanged_pairs": 1095686,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "physical_train_changes": {
+            "increased_pairs": 10990,
+            "decreased_pairs": 32,
+            "unchanged_pairs": 1095686,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 1971,
+            "decreased_pairs": 372,
+            "unchanged_pairs": 1104365,
+            "mean_increase_among_increased": 1.032,
+            "max_increase": 2
+          }
+        }
+      }
+    },
+    "E_with_Sol_Gran_Via": {
+      "scenarios": 38,
+      "station_pairs_per_scenario": 29161,
+      "scenario_pairs_total": 1108118,
+      "reachable_scenario_pairs": 1106708,
+      "disconnected_scenario_pairs": 1410,
+      "scenarios_with_disconnected_pairs": 1,
+      "max_disconnected_pairs_in_one_scenario": 1410,
+      "min_largest_state_component_stations": 236,
+      "state_component_count_histogram": {
+        "1": 37,
+        "2": 1
+      },
+      "scenarios_with_increased_minimum_rides": 31,
+      "scenarios_with_increased_minimum_commercial_line_state_changes": 15,
+      "fully_reachable_scenarios_with_optimal_path_effect": 37,
+      "fully_reachable_scenarios_with_worse_lexicographic_cost": 35,
+      "routes": {
+        "R": {
+          "worse_lexicographic_cost": 42819,
+          "equal_cost_fewer_station_sequences": 13367,
+          "equal_cost_fewer_service_itineraries": 15195,
+          "more_required_train_changes_among_optima": 17919,
+          "ride_edges": {
+            "increased_pairs": 36583,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1070125,
+            "mean_increase_among_increased": 2.8778,
+            "max_increase": 30
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 18334,
+            "decreased_pairs": 16299,
+            "unchanged_pairs": 1072075,
+            "mean_increase_among_increased": 1.2746,
+            "max_increase": 4
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 17796,
+            "decreased_pairs": 16322,
+            "unchanged_pairs": 1072590,
+            "mean_increase_among_increased": 1.2827,
+            "max_increase": 4
+          },
+          "physical_train_changes": {
+            "increased_pairs": 17919,
+            "decreased_pairs": 15967,
+            "unchanged_pairs": 1072822,
+            "mean_increase_among_increased": 1.2892,
+            "max_increase": 4
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 8666,
+            "decreased_pairs": 1965,
+            "unchanged_pairs": 1096077,
+            "mean_increase_among_increased": 1.159,
+            "max_increase": 2
+          }
+        },
+        "T": {
+          "worse_lexicographic_cost": 26001,
+          "equal_cost_fewer_station_sequences": 4421,
+          "equal_cost_fewer_service_itineraries": 5307,
+          "more_required_train_changes_among_optima": 11276,
+          "ride_edges": {
+            "increased_pairs": 19355,
+            "decreased_pairs": 5659,
+            "unchanged_pairs": 1081694,
+            "mean_increase_among_increased": 6.269,
+            "max_increase": 31
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 10233,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 1096475,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 10160,
+            "decreased_pairs": 43,
+            "unchanged_pairs": 1096505,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "physical_train_changes": {
+            "increased_pairs": 11276,
+            "decreased_pairs": 772,
+            "unchanged_pairs": 1094660,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 5786,
+            "decreased_pairs": 1666,
+            "unchanged_pairs": 1099256,
+            "mean_increase_among_increased": 1.1538,
+            "max_increase": 2
+          }
+        }
+      }
+    }
+  },
+  "matched_comparisons": {
+    "B1_vs_E": {
+      "intact": {
+        "R": {
+          "better_lexicographic_cost": 1770,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 1263,
+            "unchanged_pairs": 27898,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 668,
+            "decreased_pairs": 794,
+            "unchanged_pairs": 27699,
+            "mean_increase_among_increased": 1.5988,
+            "max_increase": 3
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 572,
+            "decreased_pairs": 954,
+            "unchanged_pairs": 27635,
+            "mean_increase_among_increased": 1.542,
+            "max_increase": 3
+          },
+          "physical_train_changes": {
+            "increased_pairs": 572,
+            "decreased_pairs": 954,
+            "unchanged_pairs": 27635,
+            "mean_increase_among_increased": 1.542,
+            "max_increase": 3
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 1770,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 27391,
+            "mean_increase_among_increased": 1.0113,
+            "max_increase": 2
+          }
+        },
+        "T": {
+          "better_lexicographic_cost": 1049,
+          "ride_edges": {
+            "increased_pairs": 191,
+            "decreased_pairs": 851,
+            "unchanged_pairs": 28119,
+            "mean_increase_among_increased": 5.3403,
+            "max_increase": 9
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 0,
+            "decreased_pairs": 242,
+            "unchanged_pairs": 28919,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 0,
+            "decreased_pairs": 355,
+            "unchanged_pairs": 28806,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "physical_train_changes": {
+            "increased_pairs": 0,
+            "decreased_pairs": 355,
+            "unchanged_pairs": 28806,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 1049,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28112,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          }
+        }
+      },
+      "after_matched_disruptions": {
+        "reachability": {
+          "reachable_both": 1106708,
+          "reachable_left_only": 0,
+          "reachable_right_only": 0,
+          "reachable_neither": 1410
+        },
+        "route_effects_on_common_survivors": {
+          "R": {
+            "worse_lexicographic_cost": {
+              "left_only": 3611,
+              "right_only": 1213,
+              "both": 46597,
+              "neither": 1055287
+            },
+            "equal_cost_fewer_station_sequences": {
+              "left_only": 437,
+              "right_only": 1241,
+              "both": 7577,
+              "neither": 1097453
+            },
+            "equal_cost_fewer_service_itineraries": {
+              "left_only": 473,
+              "right_only": 1249,
+              "both": 9406,
+              "neither": 1095580
+            },
+            "more_required_train_changes_among_optima": {
+              "left_only": 1835,
+              "right_only": 1235,
+              "both": 19218,
+              "neither": 1084420
+            }
+          },
+          "T": {
+            "worse_lexicographic_cost": {
+              "left_only": 1407,
+              "right_only": 312,
+              "both": 27715,
+              "neither": 1077274
+            },
+            "equal_cost_fewer_station_sequences": {
+              "left_only": 665,
+              "right_only": 194,
+              "both": 3495,
+              "neither": 1102354
+            },
+            "equal_cost_fewer_service_itineraries": {
+              "left_only": 861,
+              "right_only": 194,
+              "both": 4381,
+              "neither": 1101272
+            },
+            "more_required_train_changes_among_optima": {
+              "left_only": 1294,
+              "right_only": 24,
+              "both": 10966,
+              "neither": 1094424
+            }
+          }
+        }
+      }
+    },
+    "E_vs_E_with_Sol_Gran_Via": {
+      "intact": {
+        "R": {
+          "better_lexicographic_cost": 3914,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 3742,
+            "unchanged_pairs": 25419,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 1023,
+            "decreased_pairs": 360,
+            "unchanged_pairs": 27778,
+            "mean_increase_among_increased": 1.6227,
+            "max_increase": 5
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 997,
+            "decreased_pairs": 423,
+            "unchanged_pairs": 27741,
+            "mean_increase_among_increased": 1.6028,
+            "max_increase": 5
+          },
+          "physical_train_changes": {
+            "increased_pairs": 1327,
+            "decreased_pairs": 372,
+            "unchanged_pairs": 27462,
+            "mean_increase_among_increased": 1.4529,
+            "max_increase": 5
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 3734,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 25427,
+            "mean_increase_among_increased": 1.0975,
+            "max_increase": 2
+          }
+        },
+        "T": {
+          "better_lexicographic_cost": 3026,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 3026,
+            "unchanged_pairs": 26135,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "commercial_line_state_changes": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 29161,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "ridden_commercial_line_changes": {
+            "increased_pairs": 0,
+            "decreased_pairs": 52,
+            "unchanged_pairs": 29109,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "physical_train_changes": {
+            "increased_pairs": 1755,
+            "decreased_pairs": 52,
+            "unchanged_pairs": 27354,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          },
+          "pedestrian_connections": {
+            "increased_pairs": 3026,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 26135,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          }
+        }
+      },
+      "after_matched_disruptions": {
+        "reachability": {
+          "reachable_both": 1106708,
+          "reachable_left_only": 0,
+          "reachable_right_only": 0,
+          "reachable_neither": 1410
+        },
+        "route_effects_on_common_survivors": {
+          "R": {
+            "worse_lexicographic_cost": {
+              "left_only": 6148,
+              "right_only": 1157,
+              "both": 41662,
+              "neither": 1057741
+            },
+            "equal_cost_fewer_station_sequences": {
+              "left_only": 1077,
+              "right_only": 5626,
+              "both": 7741,
+              "neither": 1092264
+            },
+            "equal_cost_fewer_service_itineraries": {
+              "left_only": 1087,
+              "right_only": 5627,
+              "both": 9568,
+              "neither": 1090426
+            },
+            "more_required_train_changes_among_optima": {
+              "left_only": 3942,
+              "right_only": 1408,
+              "both": 16511,
+              "neither": 1084847
+            }
+          },
+          "T": {
+            "worse_lexicographic_cost": {
+              "left_only": 2229,
+              "right_only": 203,
+              "both": 25798,
+              "neither": 1078478
+            },
+            "equal_cost_fewer_station_sequences": {
+              "left_only": 539,
+              "right_only": 1271,
+              "both": 3150,
+              "neither": 1101748
+            },
+            "equal_cost_fewer_service_itineraries": {
+              "left_only": 539,
+              "right_only": 1271,
+              "both": 4036,
+              "neither": 1100862
+            },
+            "more_required_train_changes_among_optima": {
+              "left_only": 1245,
+              "right_only": 1531,
+              "both": 9745,
+              "neither": 1094187
+            }
+          }
+        }
+      }
+    }
+  },
+  "complete_station_removal_connectivity": {
+    "B1": {
+      "scenarios": 242,
+      "remaining_station_pairs_per_scenario": 28920,
+      "scenarios_with_disconnected_pairs": 84,
+      "scenarios_with_all_remaining_pairs_reachable": 158,
+      "component_count_histogram": {
+        "1": 158,
+        "2": 83,
+        "3": 1
+      },
+      "smallest_largest_component_stations": 222,
+      "disconnected_pairs_min_among_fragmenting": 240,
+      "disconnected_pairs_median_among_fragmenting": 1180.0,
+      "disconnected_pairs_max": 4296,
+      "disconnected_fraction_max": 0.148548
+    },
+    "E": {
+      "scenarios": 242,
+      "remaining_station_pairs_per_scenario": 28920,
+      "scenarios_with_disconnected_pairs": 84,
+      "scenarios_with_all_remaining_pairs_reachable": 158,
+      "component_count_histogram": {
+        "1": 158,
+        "2": 83,
+        "3": 1
+      },
+      "smallest_largest_component_stations": 222,
+      "disconnected_pairs_min_among_fragmenting": 240,
+      "disconnected_pairs_median_among_fragmenting": 1180.0,
+      "disconnected_pairs_max": 4296,
+      "disconnected_fraction_max": 0.148548
+    },
+    "E_with_Sol_Gran_Via": {
+      "scenarios": 242,
+      "remaining_station_pairs_per_scenario": 28920,
+      "scenarios_with_disconnected_pairs": 84,
+      "scenarios_with_all_remaining_pairs_reachable": 158,
+      "component_count_histogram": {
+        "1": 158,
+        "2": 83,
+        "3": 1
+      },
+      "smallest_largest_component_stations": 222,
+      "disconnected_pairs_min_among_fragmenting": 240,
+      "disconnected_pairs_median_among_fragmenting": 1180.0,
+      "disconnected_pairs_max": 4296,
+      "disconnected_fraction_max": 0.148548
+    }
+  },
+  "v04_control": {
+    "published_interchange_aggregates_equal": true,
+    "published_station_removal_aggregates_equal": true
+  }
+}

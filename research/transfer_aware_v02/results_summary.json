@@ -1,0 +1,1246 @@
+{
+  "meta": {
+    "baseline_release": "v0.1.0",
+    "data_hashes_match_manifest": true,
+    "osm_data_timestamp": "2026-11-19T18:17:06Z",
+    "crtm_records_date": "2026-05-29",
+    "crtm_audit_available_locally": true,
+    "networkx": "3.7",
+    "unit_of_analysis": "physical (aggregated) station; station pairs are unordered",
+    "hop_unit": "edge count (never minutes or metres)",
+    "objectives": {
+      "R": "fewest ride edges, ties fewest transfer edges",
+      "T": "fewest transfer edges, ties fewest ride edges"
+    },
+    "licensing": "Only aggregates are exported; per-station results mix OSM (ODbL) topology with CRTM-derived evidence and stay in the git-ignored local/ directory."
+  },
+  "model_a": {
+    "nodes": 242,
+    "edges": 277,
+    "components": 1,
+    "station_pairs_total": 29161,
+    "reachable_station_pairs": 29161,
+    "degree": {
+      "n": 242,
+      "mean": 2.2893,
+      "median": 2,
+      "max": 7,
+      "histogram": {
+        "1": 10,
+        "2": 196,
+        "3": 5,
+        "4": 22,
+        "5": 6,
+        "6": 2,
+        "7": 1
+      }
+    },
+    "articulation_stations": 84,
+    "hop_distance": {
+      "n": 29161,
+      "mean": 14.0401,
+      "median": 13,
+      "max": 42,
+      "histogram": {
+        "1": 277,
+        "2": 424,
+        "3": 622,
+        "4": 827,
+        "5": 1007,
+        "6": 1190,
+        "7": 1356,
+        "8": 1456,
+        "9": 1509,
+        "10": 1539,
+        "11": 1541,
+        "12": 1526,
+        "13": 1507,
+        "14": 1457,
+        "15": 1417,
+        "16": 1379,
+        "17": 1293,
+        "18": 1217,
+        "19": 1133,
+        "20": 1041,
+        "21": 935,
+        "22": 810,
+        "23": 691,
+        "24": 584,
+        "25": 488,
+        "26": 404,
+        "27": 330,
+        "28": 270,
+        "29": 221,
+        "30": 174,
+        "31": 140,
+        "32": 110,
+        "33": 84,
+        "34": 63,
+        "35": 47,
+        "36": 33,
+        "37": 22,
+        "38": 15,
+        "39": 11,
+        "40": 7,
+        "41": 3,
+        "42": 1
+      }
+    }
+  },
+  "scenarios": {
+    "B0_rides_only_control": {
+      "state_nodes": 291,
+      "ride_edges": 280,
+      "transfer_edges": 0,
+      "transfer_edges_by_evidence": {},
+      "state_graph_components": 13,
+      "connectivity": {
+        "largest_component_in_stations": 33,
+        "largest_component_fraction_of_stations": 0.1364,
+        "reachable_station_pairs": 3759,
+        "station_pairs_total": 29161,
+        "reachable_fraction": 0.1289
+      },
+      "path_consistency_violations": {
+        "R": 0,
+        "T": 0
+      },
+      "paths": {
+        "pairs_with_a_path": 3759,
+        "R_rides_vs_A_hops": {
+          "pairs_compared": 3759,
+          "pairs_with_different_count": 1010,
+          "rides_fewer_than_A": 0,
+          "rides_more_than_A": 1010,
+          "pairs_reachable_in_A_not_B": 25402,
+          "pairs_reachable_in_B_not_A": 0
+        },
+        "R_objective": {
+          "rides": {
+            "n": 3759,
+            "mean": 9.4057,
+            "median": 8,
+            "max": 32,
+            "histogram": {
+              "1": 277,
+              "2": 269,
+              "3": 259,
+              "4": 248,
+              "5": 238,
+              "6": 228,
+              "7": 217,
+              "8": 209,
+              "9": 199,
+              "10": 192,
+              "11": 185,
+              "12": 176,
+              "13": 169,
+              "14": 133,
+              "15": 98,
+              "16": 90,
+              "17": 82,
+              "18": 73,
+              "19": 66,
+              "20": 58,
+              "21": 53,
+              "22": 47,
+              "23": 41,
+              "24": 36,
+              "25": 31,
+              "26": 26,
+              "27": 21,
+              "28": 16,
+              "29": 11,
+              "30": 7,
+              "31": 3,
+              "32": 1
+            }
+          },
+          "transfers": {
+            "n": 3759,
+            "mean": 0.0,
+            "median": 0,
+            "max": 0,
+            "histogram": {
+              "0": 3759
+            }
+          }
+        },
+        "T_objective": {
+          "transfers": {
+            "n": 3759,
+            "mean": 0.0,
+            "median": 0,
+            "max": 0,
+            "histogram": {
+              "0": 3759
+            }
+          },
+          "rides": {
+            "n": 3759,
+            "mean": 9.4057,
+            "median": 8,
+            "max": 32,
+            "histogram": {
+              "1": 277,
+              "2": 269,
+              "3": 259,
+              "4": 248,
+              "5": 238,
+              "6": 228,
+              "7": 217,
+              "8": 209,
+              "9": 199,
+              "10": 192,
+              "11": 185,
+              "12": 176,
+              "13": 169,
+              "14": 133,
+              "15": 98,
+              "16": 90,
+              "17": 82,
+              "18": 73,
+              "19": 66,
+              "20": 58,
+              "21": 53,
+              "22": 47,
+              "23": 41,
+              "24": 36,
+              "25": 31,
+              "26": 26,
+              "27": 21,
+              "28": 16,
+              "29": 11,
+              "30": 7,
+              "31": 3,
+              "32": 1
+            }
+          }
+        },
+        "tradeoff_R_vs_T": {
+          "pairs_where_R_path_needs_more_transfers_than_T_path": 0,
+          "pairs_where_T_path_needs_more_rides_than_R_path": 0,
+          "mean_extra_rides_when_minimising_transfers": 0.0,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 3759,
+          "mean_extra_rides_among_tradeoff_pairs": 0.0,
+          "mean_extra_rides_denominator_tradeoff_pairs": 0,
+          "max_extra_rides_when_minimising_transfers": 0,
+          "pairs_reachable_with_zero_transfers": 3759
+        },
+        "route_sets_R_vs_A": {
+          "pairs_with_several_equally_short_routes_in_A": 1129,
+          "pairs_whose_route_set_differs_from_A": 1420,
+          "pairs_where_B_route_set_is_a_strict_subset_of_A": 410
+        }
+      },
+      "centrality": {
+        "betweenness_vs_A": {
+          "R": {
+            "spearman": 0.4842,
+            "top10_overlap_with_A": 5,
+            "stations_with_changed_value": 232,
+            "max_abs_difference": 0.299142
+          },
+          "T": {
+            "spearman": 0.4842,
+            "top10_overlap_with_A": 5,
+            "stations_with_changed_value": 232,
+            "max_abs_difference": 0.299142
+          }
+        },
+        "articulation_stations": {
+          "count": 187,
+          "count_in_model_a": 84,
+          "same_set_as_model_a": false,
+          "only_in_b": 104,
+          "only_in_a": 1
+        },
+        "degree": {
+          "ride_degree_equals_A_for_all_stations": true,
+          "extra_station_links_via_cross_station_transfers": 0,
+          "state_level_cross_station_transfer_edges": 0,
+          "physical_station_pairs_linked_by_cross_station_transfers": 0
+        }
+      },
+      "reproducible_from_public_snapshot": true,
+      "requires_local_crtm_audit": false
+    },
+    "B1_same_station_transfers": {
+      "state_nodes": 291,
+      "ride_edges": 280,
+      "transfer_edges": 61,
+      "transfer_edges_by_evidence": {
+        "osm_name_fusion+crtm_interchange_confirmed": 61
+      },
+      "state_graph_components": 1,
+      "connectivity": {
+        "largest_component_in_stations": 242,
+        "largest_component_fraction_of_stations": 1.0,
+        "reachable_station_pairs": 29161,
+        "station_pairs_total": 29161,
+        "reachable_fraction": 1.0
+      },
+      "path_consistency_violations": {
+        "R": 0,
+        "T": 0
+      },
+      "paths": {
+        "pairs_with_a_path": 29161,
+        "R_rides_vs_A_hops": {
+          "pairs_compared": 29161,
+          "pairs_with_different_count": 0,
+          "rides_fewer_than_A": 0,
+          "rides_more_than_A": 0,
+          "pairs_reachable_in_A_not_B": 0,
+          "pairs_reachable_in_B_not_A": 0
+        },
+        "R_objective": {
+          "rides": {
+            "n": 29161,
+            "mean": 14.0401,
+            "median": 13,
+            "max": 42,
+            "histogram": {
+              "1": 277,
+              "2": 424,
+              "3": 622,
+              "4": 827,
+              "5": 1007,
+              "6": 1190,
+              "7": 1356,
+              "8": 1456,
+              "9": 1509,
+              "10": 1539,
+              "11": 1541,
+              "12": 1526,
+              "13": 1507,
+              "14": 1457,
+              "15": 1417,
+              "16": 1379,
+              "17": 1293,
+              "18": 1217,
+              "19": 1133,
+              "20": 1041,
+              "21": 935,
+              "22": 810,
+              "23": 691,
+              "24": 584,
+              "25": 488,
+              "26": 404,
+              "27": 330,
+              "28": 270,
+              "29": 221,
+              "30": 174,
+              "31": 140,
+              "32": 110,
+              "33": 84,
+              "34": 63,
+              "35": 47,
+              "36": 33,
+              "37": 22,
+              "38": 15,
+              "39": 11,
+              "40": 7,
+              "41": 3,
+              "42": 1
+            }
+          },
+          "transfers": {
+            "n": 29161,
+            "mean": 1.9346,
+            "median": 2,
+            "max": 6,
+            "histogram": {
+              "0": 2749,
+              "1": 7663,
+              "2": 10279,
+              "3": 6193,
+              "4": 1813,
+              "5": 422,
+              "6": 42
+            }
+          }
+        },
+        "T_objective": {
+          "transfers": {
+            "n": 29161,
+            "mean": 1.1324,
+            "median": 1,
+            "max": 3,
+            "histogram": {
+              "0": 3759,
+              "1": 17937,
+              "2": 7309,
+              "3": 156
+            }
+          },
+          "rides": {
+            "n": 29161,
+            "mean": 16.4152,
+            "median": 16,
+            "max": 53,
+            "histogram": {
+              "1": 277,
+              "2": 423,
+              "3": 553,
+              "4": 677,
+              "5": 777,
+              "6": 896,
+              "7": 982,
+              "8": 1057,
+              "9": 1130,
+              "10": 1191,
+              "11": 1245,
+              "12": 1286,
+              "13": 1340,
+              "14": 1336,
+              "15": 1309,
+              "16": 1286,
+              "17": 1257,
+              "18": 1231,
+              "19": 1183,
+              "20": 1113,
+              "21": 1032,
+              "22": 945,
+              "23": 860,
+              "24": 776,
+              "25": 690,
+              "26": 604,
+              "27": 529,
+              "28": 466,
+              "29": 414,
+              "30": 363,
+              "31": 319,
+              "32": 275,
+              "33": 233,
+              "34": 199,
+              "35": 161,
+              "36": 131,
+              "37": 106,
+              "38": 88,
+              "39": 74,
+              "40": 66,
+              "41": 56,
+              "42": 46,
+              "43": 37,
+              "44": 29,
+              "45": 24,
+              "46": 21,
+              "47": 18,
+              "48": 15,
+              "49": 13,
+              "50": 10,
+              "51": 7,
+              "52": 4,
+              "53": 1
+            }
+          }
+        },
+        "tradeoff_R_vs_T": {
+          "pairs_where_R_path_needs_more_transfers_than_T_path": 15449,
+          "pairs_where_T_path_needs_more_rides_than_R_path": 15449,
+          "mean_extra_rides_when_minimising_transfers": 2.3751,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 29161,
+          "mean_extra_rides_among_tradeoff_pairs": 4.4832,
+          "mean_extra_rides_denominator_tradeoff_pairs": 15449,
+          "max_extra_rides_when_minimising_transfers": 25,
+          "pairs_reachable_with_zero_transfers": 3759
+        },
+        "route_sets_R_vs_A": {
+          "pairs_with_several_equally_short_routes_in_A": 11580,
+          "pairs_whose_route_set_differs_from_A": 10213,
+          "pairs_where_B_route_set_is_a_strict_subset_of_A": 10213
+        }
+      },
+      "centrality": {
+        "betweenness_vs_A": {
+          "R": {
+            "spearman": 0.9939,
+            "top10_overlap_with_A": 10,
+            "stations_with_changed_value": 157,
+            "max_abs_difference": 0.050956
+          },
+          "T": {
+            "spearman": 0.8124,
+            "top10_overlap_with_A": 7,
+            "stations_with_changed_value": 157,
+            "max_abs_difference": 0.116481
+          }
+        },
+        "articulation_stations": {
+          "count": 84,
+          "count_in_model_a": 84,
+          "same_set_as_model_a": true,
+          "only_in_b": 0,
+          "only_in_a": 0
+        },
+        "degree": {
+          "ride_degree_equals_A_for_all_stations": true,
+          "extra_station_links_via_cross_station_transfers": 0,
+          "state_level_cross_station_transfer_edges": 0,
+          "physical_station_pairs_linked_by_cross_station_transfers": 0
+        }
+      },
+      "reproducible_from_public_snapshot": true,
+      "requires_local_crtm_audit": false
+    },
+    "B2_plus_confirmed_cross_name_transfers": {
+      "state_nodes": 291,
+      "ride_edges": 280,
+      "transfer_edges": 64,
+      "transfer_edges_by_evidence": {
+        "crtm_interchange_group": 3,
+        "osm_name_fusion+crtm_interchange_confirmed": 61
+      },
+      "state_graph_components": 1,
+      "connectivity": {
+        "largest_component_in_stations": 242,
+        "largest_component_fraction_of_stations": 1.0,
+        "reachable_station_pairs": 29161,
+        "station_pairs_total": 29161,
+        "reachable_fraction": 1.0
+      },
+      "path_consistency_violations": {
+        "R": 0,
+        "T": 0
+      },
+      "paths": {
+        "pairs_with_a_path": 29161,
+        "R_rides_vs_A_hops": {
+          "pairs_compared": 29161,
+          "pairs_with_different_count": 1184,
+          "rides_fewer_than_A": 1184,
+          "rides_more_than_A": 0,
+          "pairs_reachable_in_A_not_B": 0,
+          "pairs_reachable_in_B_not_A": 0
+        },
+        "R_objective": {
+          "rides": {
+            "n": 29161,
+            "mean": 13.9691,
+            "median": 13,
+            "max": 42,
+            "histogram": {
+              "0": 2,
+              "1": 285,
+              "2": 440,
+              "3": 638,
+              "4": 843,
+              "5": 1036,
+              "6": 1217,
+              "7": 1375,
+              "8": 1471,
+              "9": 1519,
+              "10": 1524,
+              "11": 1532,
+              "12": 1518,
+              "13": 1502,
+              "14": 1458,
+              "15": 1412,
+              "16": 1366,
+              "17": 1276,
+              "18": 1200,
+              "19": 1126,
+              "20": 1034,
+              "21": 923,
+              "22": 799,
+              "23": 679,
+              "24": 581,
+              "25": 485,
+              "26": 399,
+              "27": 326,
+              "28": 266,
+              "29": 219,
+              "30": 174,
+              "31": 140,
+              "32": 110,
+              "33": 84,
+              "34": 63,
+              "35": 47,
+              "36": 33,
+              "37": 22,
+              "38": 15,
+              "39": 11,
+              "40": 7,
+              "41": 3,
+              "42": 1
+            }
+          },
+          "transfers": {
+            "n": 29161,
+            "mean": 1.96,
+            "median": 2,
+            "max": 6,
+            "histogram": {
+              "0": 2684,
+              "1": 7480,
+              "2": 10346,
+              "3": 6205,
+              "4": 1902,
+              "5": 502,
+              "6": 42
+            }
+          }
+        },
+        "T_objective": {
+          "transfers": {
+            "n": 29161,
+            "mean": 1.1324,
+            "median": 1,
+            "max": 3,
+            "histogram": {
+              "0": 3759,
+              "1": 17937,
+              "2": 7309,
+              "3": 156
+            }
+          },
+          "rides": {
+            "n": 29161,
+            "mean": 16.3515,
+            "median": 15,
+            "max": 53,
+            "histogram": {
+              "0": 2,
+              "1": 284,
+              "2": 436,
+              "3": 565,
+              "4": 686,
+              "5": 789,
+              "6": 900,
+              "7": 985,
+              "8": 1055,
+              "9": 1135,
+              "10": 1198,
+              "11": 1250,
+              "12": 1295,
+              "13": 1345,
+              "14": 1343,
+              "15": 1320,
+              "16": 1294,
+              "17": 1264,
+              "18": 1231,
+              "19": 1174,
+              "20": 1099,
+              "21": 1017,
+              "22": 938,
+              "23": 845,
+              "24": 756,
+              "25": 673,
+              "26": 588,
+              "27": 527,
+              "28": 463,
+              "29": 411,
+              "30": 362,
+              "31": 318,
+              "32": 274,
+              "33": 233,
+              "34": 199,
+              "35": 161,
+              "36": 131,
+              "37": 106,
+              "38": 88,
+              "39": 74,
+              "40": 66,
+              "41": 56,
+              "42": 46,
+              "43": 37,
+              "44": 29,
+              "45": 24,
+              "46": 21,
+              "47": 18,
+              "48": 15,
+              "49": 13,
+              "50": 10,
+              "51": 7,
+              "52": 4,
+              "53": 1
+            }
+          }
+        },
+        "tradeoff_R_vs_T": {
+          "pairs_where_R_path_needs_more_transfers_than_T_path": 15594,
+          "pairs_where_T_path_needs_more_rides_than_R_path": 15594,
+          "mean_extra_rides_when_minimising_transfers": 2.3824,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 29161,
+          "mean_extra_rides_among_tradeoff_pairs": 4.4552,
+          "mean_extra_rides_denominator_tradeoff_pairs": 15594,
+          "max_extra_rides_when_minimising_transfers": 25,
+          "pairs_reachable_with_zero_transfers": 3759
+        },
+        "route_sets_R_vs_A": {
+          "pairs_with_several_equally_short_routes_in_A": 11580,
+          "pairs_whose_route_set_differs_from_A": 11213,
+          "pairs_where_B_route_set_is_a_strict_subset_of_A": 9275
+        }
+      },
+      "centrality": {
+        "betweenness_vs_A": {
+          "R": {
+            "spearman": 0.9845,
+            "top10_overlap_with_A": 10,
+            "stations_with_changed_value": 157,
+            "max_abs_difference": 0.050386
+          },
+          "T": {
+            "spearman": 0.8109,
+            "top10_overlap_with_A": 7,
+            "stations_with_changed_value": 157,
+            "max_abs_difference": 0.116141
+          }
+        },
+        "articulation_stations": {
+          "count": 84,
+          "count_in_model_a": 84,
+          "same_set_as_model_a": true,
+          "only_in_b": 0,
+          "only_in_a": 0
+        },
+        "degree": {
+          "ride_degree_equals_A_for_all_stations": true,
+          "extra_station_links_via_cross_station_transfers": 4,
+          "state_level_cross_station_transfer_edges": 3,
+          "physical_station_pairs_linked_by_cross_station_transfers": 2
+        }
+      },
+      "reproducible_from_public_snapshot": false,
+      "requires_local_crtm_audit": true
+    },
+    "B3_plus_ambiguous_noviciado_sensitivity": {
+      "state_nodes": 291,
+      "ride_edges": 280,
+      "transfer_edges": 66,
+      "transfer_edges_by_evidence": {
+        "crtm_interchange_group": 3,
+        "osm_name_fusion+crtm_interchange_confirmed": 61,
+        "crtm_lineas_field_ambiguous": 2
+      },
+      "state_graph_components": 1,
+      "connectivity": {
+        "largest_component_in_stations": 242,
+        "largest_component_fraction_of_stations": 1.0,
+        "reachable_station_pairs": 29161,
+        "station_pairs_total": 29161,
+        "reachable_fraction": 1.0
+      },
+      "path_consistency_violations": {
+        "R": 0,
+        "T": 0
+      },
+      "paths": {
+        "pairs_with_a_path": 29161,
+        "R_rides_vs_A_hops": {
+          "pairs_compared": 29161,
+          "pairs_with_different_count": 1346,
+          "rides_fewer_than_A": 1346,
+          "rides_more_than_A": 0,
+          "pairs_reachable_in_A_not_B": 0,
+          "pairs_reachable_in_B_not_A": 0
+        },
+        "R_objective": {
+          "rides": {
+            "n": 29161,
+            "mean": 13.9618,
+            "median": 13,
+            "max": 42,
+            "histogram": {
+              "0": 3,
+              "1": 289,
+              "2": 443,
+              "3": 639,
+              "4": 845,
+              "5": 1042,
+              "6": 1219,
+              "7": 1373,
+              "8": 1472,
+              "9": 1516,
+              "10": 1522,
+              "11": 1532,
+              "12": 1515,
+              "13": 1501,
+              "14": 1457,
+              "15": 1411,
+              "16": 1366,
+              "17": 1274,
+              "18": 1200,
+              "19": 1126,
+              "20": 1034,
+              "21": 922,
+              "22": 795,
+              "23": 679,
+              "24": 581,
+              "25": 485,
+              "26": 399,
+              "27": 326,
+              "28": 266,
+              "29": 219,
+              "30": 174,
+              "31": 140,
+              "32": 110,
+              "33": 84,
+              "34": 63,
+              "35": 47,
+              "36": 33,
+              "37": 22,
+              "38": 15,
+              "39": 11,
+              "40": 7,
+              "41": 3,
+              "42": 1
+            }
+          },
+          "transfers": {
+            "n": 29161,
+            "mean": 1.9373,
+            "median": 2,
+            "max": 6,
+            "histogram": {
+              "0": 2684,
+              "1": 7565,
+              "2": 10519,
+              "3": 6174,
+              "4": 1767,
+              "5": 410,
+              "6": 42
+            }
+          }
+        },
+        "T_objective": {
+          "transfers": {
+            "n": 29161,
+            "mean": 1.1241,
+            "median": 1,
+            "max": 3,
+            "histogram": {
+              "0": 3759,
+              "1": 18179,
+              "2": 7067,
+              "3": 156
+            }
+          },
+          "rides": {
+            "n": 29161,
+            "mean": 16.3272,
+            "median": 15,
+            "max": 53,
+            "histogram": {
+              "0": 3,
+              "1": 288,
+              "2": 439,
+              "3": 569,
+              "4": 689,
+              "5": 787,
+              "6": 895,
+              "7": 985,
+              "8": 1056,
+              "9": 1132,
+              "10": 1194,
+              "11": 1248,
+              "12": 1295,
+              "13": 1346,
+              "14": 1350,
+              "15": 1325,
+              "16": 1300,
+              "17": 1270,
+              "18": 1234,
+              "19": 1177,
+              "20": 1100,
+              "21": 1021,
+              "22": 938,
+              "23": 846,
+              "24": 757,
+              "25": 673,
+              "26": 586,
+              "27": 522,
+              "28": 459,
+              "29": 409,
+              "30": 363,
+              "31": 320,
+              "32": 275,
+              "33": 231,
+              "34": 194,
+              "35": 154,
+              "36": 125,
+              "37": 101,
+              "38": 85,
+              "39": 73,
+              "40": 66,
+              "41": 56,
+              "42": 46,
+              "43": 37,
+              "44": 29,
+              "45": 24,
+              "46": 21,
+              "47": 18,
+              "48": 15,
+              "49": 13,
+              "50": 10,
+              "51": 7,
+              "52": 4,
+              "53": 1
+            }
+          }
+        },
+        "tradeoff_R_vs_T": {
+          "pairs_where_R_path_needs_more_transfers_than_T_path": 15523,
+          "pairs_where_T_path_needs_more_rides_than_R_path": 15523,
+          "mean_extra_rides_when_minimising_transfers": 2.3654,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 29161,
+          "mean_extra_rides_among_tradeoff_pairs": 4.4435,
+          "mean_extra_rides_denominator_tradeoff_pairs": 15523,
+          "max_extra_rides_when_minimising_transfers": 25,
+          "pairs_reachable_with_zero_transfers": 3759
+        },
+        "route_sets_R_vs_A": {
+          "pairs_with_several_equally_short_routes_in_A": 11580,
+          "pairs_whose_route_set_differs_from_A": 11613,
+          "pairs_where_B_route_set_is_a_strict_subset_of_A": 9146
+        }
+      },
+      "centrality": {
+        "betweenness_vs_A": {
+          "R": {
+            "spearman": 0.9816,
+            "top10_overlap_with_A": 9,
+            "stations_with_changed_value": 157,
+            "max_abs_difference": 0.049556
+          },
+          "T": {
+            "spearman": 0.8044,
+            "top10_overlap_with_A": 7,
+            "stations_with_changed_value": 157,
+            "max_abs_difference": 0.112141
+          }
+        },
+        "articulation_stations": {
+          "count": 84,
+          "count_in_model_a": 84,
+          "same_set_as_model_a": true,
+          "only_in_b": 0,
+          "only_in_a": 0
+        },
+        "degree": {
+          "ride_degree_equals_A_for_all_stations": true,
+          "extra_station_links_via_cross_station_transfers": 6,
+          "state_level_cross_station_transfer_edges": 5,
+          "physical_station_pairs_linked_by_cross_station_transfers": 3
+        }
+      },
+      "reproducible_from_public_snapshot": false,
+      "requires_local_crtm_audit": true
+    }
+  },
+  "validation": [
+    {
+      "check": "B0_rides_only_control: every edge is ride or transfer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: no self-loops",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: ride edges join the same line at both ends and that line serves both stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: ride edges == exactly one per (connection, line)",
+      "passed": true,
+      "detail": "280 ride edges"
+    },
+    {
+      "check": "B0_rides_only_control: no inter-line ride edge",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: transfer edges join different lines",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: every transfer edge has evidence, confidence and source",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: transfer edges == expected transfer list",
+      "passed": true,
+      "detail": "0 transfer edges"
+    },
+    {
+      "check": "B0_rides_only_control: station identity: B stations == A stations == snapshot stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: station identity: B line states == station line sets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: each line's ride subgraph is connected and is a tree or a simple cycle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: circular lines detected in data == expected circular lines",
+      "passed": true,
+      "detail": "['L12', 'L6']"
+    },
+    {
+      "check": "B0_rides_only_control: ride-degree (distinct neighbouring stations) equals Model A degree",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_rides_only_control: ride/transfer counts on reconstructed paths match decoded costs",
+      "passed": true,
+      "detail": "{\"R\": 0, \"T\": 0}"
+    },
+    {
+      "check": "B1_same_station_transfers: every edge is ride or transfer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: no self-loops",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: ride edges join the same line at both ends and that line serves both stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: ride edges == exactly one per (connection, line)",
+      "passed": true,
+      "detail": "280 ride edges"
+    },
+    {
+      "check": "B1_same_station_transfers: no inter-line ride edge",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: transfer edges join different lines",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: every transfer edge has evidence, confidence and source",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: transfer edges == expected transfer list",
+      "passed": true,
+      "detail": "61 transfer edges"
+    },
+    {
+      "check": "B1_same_station_transfers: station identity: B stations == A stations == snapshot stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: station identity: B line states == station line sets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: each line's ride subgraph is connected and is a tree or a simple cycle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: circular lines detected in data == expected circular lines",
+      "passed": true,
+      "detail": "['L12', 'L6']"
+    },
+    {
+      "check": "B1_same_station_transfers: ride-degree (distinct neighbouring stations) equals Model A degree",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B1_same_station_transfers: ride counts under R equal Model A hops for every pair, same reachability",
+      "passed": true,
+      "detail": "{\"pairs_compared\": 29161, \"pairs_with_different_count\": 0, \"rides_fewer_than_A\": 0, \"rides_more_than_A\": 0, \"pairs_reachable_in_A_not_B\": 0, \"pairs_reachable_in_B_not_A\": 0}"
+    },
+    {
+      "check": "B1_same_station_transfers: ride/transfer counts on reconstructed paths match decoded costs",
+      "passed": true,
+      "detail": "{\"R\": 0, \"T\": 0}"
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: every edge is ride or transfer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: no self-loops",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: ride edges join the same line at both ends and that line serves both stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: ride edges == exactly one per (connection, line)",
+      "passed": true,
+      "detail": "280 ride edges"
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: no inter-line ride edge",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: transfer edges join different lines",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: every transfer edge has evidence, confidence and source",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: transfer edges == expected transfer list",
+      "passed": true,
+      "detail": "64 transfer edges"
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: station identity: B stations == A stations == snapshot stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: station identity: B line states == station line sets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: each line's ride subgraph is connected and is a tree or a simple cycle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: circular lines detected in data == expected circular lines",
+      "passed": true,
+      "detail": "['L12', 'L6']"
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: ride-degree (distinct neighbouring stations) equals Model A degree",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B2_plus_confirmed_cross_name_transfers: ride/transfer counts on reconstructed paths match decoded costs",
+      "passed": true,
+      "detail": "{\"R\": 0, \"T\": 0}"
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: every edge is ride or transfer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: no self-loops",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: ride edges join the same line at both ends and that line serves both stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: ride edges == exactly one per (connection, line)",
+      "passed": true,
+      "detail": "280 ride edges"
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: no inter-line ride edge",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: transfer edges join different lines",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: every transfer edge has evidence, confidence and source",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: transfer edges == expected transfer list",
+      "passed": true,
+      "detail": "66 transfer edges"
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: station identity: B stations == A stations == snapshot stations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: station identity: B line states == station line sets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: each line's ride subgraph is connected and is a tree or a simple cycle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: circular lines detected in data == expected circular lines",
+      "passed": true,
+      "detail": "['L12', 'L6']"
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: ride-degree (distinct neighbouring stations) equals Model A degree",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "B3_plus_ambiguous_noviciado_sensitivity: ride/transfer counts on reconstructed paths match decoded costs",
+      "passed": true,
+      "detail": "{\"R\": 0, \"T\": 0}"
+    },
+    {
+      "check": "B0 reachable pairs (same line only) == B1 pairs reachable with zero transfers",
+      "passed": true,
+      "detail": "3759"
+    },
+    {
+      "check": "A: 242 nodes, 277 edges, 1 component (v0.1.0 baseline)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "A: own betweenness equals networkx.betweenness_centrality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "A: own articulation stations equal networkx.articulation_points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "data/ files match the v0.1.0 manifest SHA-256",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation_all_passed": true
+}

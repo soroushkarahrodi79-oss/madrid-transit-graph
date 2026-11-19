@@ -1,0 +1,432 @@
+{
+  "title": "Metro de Madrid station graph (prototype)",
+  "generated_at": "2026-11-19T18:20:10+00:00",
+  "sources": {
+    "openstreetmap": {
+      "what": "route=subway relations with network=Metro de Madrid (PTv2), via Overpass API",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "osm_data_timestamp": "2026-11-19T18:17:06Z",
+      "retrieved_at": "2026-11-19T18:19:22.730575+00:00",
+      "relation_ids": [
+        62146,
+        7831480,
+        61833,
+        7838962,
+        57356,
+        7838837,
+        2588492,
+        7827779,
+        61834,
+        7838613,
+        56791,
+        7842093,
+        62901,
+        7840622,
+        62917,
+        7837168,
+        85222,
+        6623406,
+        58267,
+        3113079,
+        14614365,
+        14614366,
+        56044,
+        7842126,
+        2325279,
+        7841410,
+        61836,
+        7840746
+      ],
+      "license": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "license_url": "https://www.openstreetmap.org/copyright"
+    },
+    "basemap": "OpenStreetMap standard tiles (tile.openstreetmap.org), © OpenStreetMap contributors; loaded by index.html at view time, not part of the exported data"
+  },
+  "software": {
+    "city2graph": "1.1.0",
+    "networkx": "3.7",
+    "geopandas": "1.2.0",
+    "python": "3.14.5"
+  },
+  "city2graph_operations": [
+    "load_osm_transport (OSM PTv2 relations -> ordered stops; timing/calendar discarded)",
+    "travel_summary_graph (stop-level undirected graph)",
+    "validate_gdf / gdf_to_nx / validate_nx (schema checks, NetworkX graph)"
+  ],
+  "method": {
+    "nodes": "Physical stations. OSM stop areas are mapped per line, so stop nodes with the same normalised name (line suffix, accents, case removed) whose members lie within 300 m of each other are merged. This interchange rule is DERIVED, not an OSM fact (OSM has only 2 stop_area_group relations here).",
+    "edges": "Consecutive stops in OSM relation order (both directions merged, undirected). Geometry is a straight schematic segment, not the track alignment.",
+    "not_included": "No timetables, frequencies, travel times, or service-validity claims. Metro Ligero and Cercanías are out of scope."
+  },
+  "indicators": {
+    "n_stations": 242,
+    "n_connections": 277,
+    "n_components": 1,
+    "component_sizes": [
+      242
+    ],
+    "n_interchange_stations": 38,
+    "max_degree": 7,
+    "top_degree": [
+      {
+        "id": "avenida-de-america",
+        "name": "Avenida de América",
+        "degree": 7,
+        "lines": [
+          "L4",
+          "L6",
+          "L7",
+          "L9"
+        ]
+      },
+      {
+        "id": "alonso-martinez",
+        "name": "Alonso Martínez",
+        "degree": 6,
+        "lines": [
+          "L4",
+          "L5",
+          "L10"
+        ]
+      },
+      {
+        "id": "sol",
+        "name": "Sol",
+        "degree": 6,
+        "lines": [
+          "L1",
+          "L2",
+          "L3"
+        ]
+      },
+      {
+        "id": "cuatro-caminos",
+        "name": "Cuatro Caminos",
+        "degree": 5,
+        "lines": [
+          "L1",
+          "L2",
+          "L6"
+        ]
+      },
+      {
+        "id": "diego-de-leon",
+        "name": "Diego de León",
+        "degree": 5,
+        "lines": [
+          "L4",
+          "L5",
+          "L6"
+        ]
+      },
+      {
+        "id": "nuevos-ministerios",
+        "name": "Nuevos Ministerios",
+        "degree": 5,
+        "lines": [
+          "L6",
+          "L8",
+          "L10"
+        ]
+      },
+      {
+        "id": "plaza-de-castilla",
+        "name": "Plaza de Castilla",
+        "degree": 5,
+        "lines": [
+          "L1",
+          "L9",
+          "L10"
+        ]
+      },
+      {
+        "id": "principe-pio",
+        "name": "Príncipe Pío",
+        "degree": 5,
+        "lines": [
+          "L6",
+          "L10",
+          "R"
+        ]
+      },
+      {
+        "id": "opera",
+        "name": "Ópera",
+        "degree": 5,
+        "lines": [
+          "L2",
+          "L5",
+          "R"
+        ]
+      },
+      {
+        "id": "arguelles",
+        "name": "Argüelles",
+        "degree": 4,
+        "lines": [
+          "L3",
+          "L4",
+          "L6"
+        ]
+      }
+    ],
+    "top_degree_note": "top 10 by degree, ties broken alphabetically; 21 more station(s) tie with the 10th",
+    "degree_definition": "number of distinct adjacent stations; NOT ridership, importance or accessibility"
+  },
+  "lines": {
+    "L1": {
+      "colour_osm": "#67C0DD",
+      "colour_display": "#67C0DD",
+      "osm_relations": [
+        {
+          "id": 62146,
+          "name": "Línea 1: Pinar de Chamartín-Valdecarros"
+        },
+        {
+          "id": 7831480,
+          "name": "Línea 1: Valdecarros-Pinar de Chamartín"
+        }
+      ],
+      "n_stations": 33,
+      "n_connections": 32
+    },
+    "L2": {
+      "colour_osm": "#fb0f0c",
+      "colour_display": "#fb0f0c",
+      "osm_relations": [
+        {
+          "id": 61833,
+          "name": "Línea 2: Cuatro Caminos → Las Rosas"
+        },
+        {
+          "id": 7838962,
+          "name": "Línea 2: Las Rosas → Cuatro Caminos"
+        }
+      ],
+      "n_stations": 20,
+      "n_connections": 19
+    },
+    "L3": {
+      "colour_osm": "#FFDF00",
+      "colour_display": "#FFDF00",
+      "osm_relations": [
+        {
+          "id": 57356,
+          "name": "Línea 3: Moncloa-El Casar"
+        },
+        {
+          "id": 7838837,
+          "name": "Línea 3: El Casar-Moncloa"
+        }
+      ],
+      "n_stations": 19,
+      "n_connections": 18
+    },
+    "L4": {
+      "colour_osm": "#824100",
+      "colour_display": "#824100",
+      "osm_relations": [
+        {
+          "id": 2588492,
+          "name": "Línea 4: Pinar de Chamartín-Argüelles"
+        },
+        {
+          "id": 7827779,
+          "name": "Línea 4: Argüelles-Pinar de Chamartín"
+        }
+      ],
+      "n_stations": 23,
+      "n_connections": 22
+    },
+    "L5": {
+      "colour_osm": "#96bf0d",
+      "colour_display": "#96bf0d",
+      "osm_relations": [
+        {
+          "id": 61834,
+          "name": "Línea 5: Casa de Campo-Alameda de Osuna"
+        },
+        {
+          "id": 7838613,
+          "name": "Línea 5: Alameda de Osuna-Casa de Campo"
+        }
+      ],
+      "n_stations": 32,
+      "n_connections": 31
+    },
+    "L6": {
+      "colour_osm": "#939393",
+      "colour_display": "#939393",
+      "osm_relations": [
+        {
+          "id": 56791,
+          "name": "Línea 6: Andén 2"
+        },
+        {
+          "id": 7842093,
+          "name": "Línea 6: Andén 1"
+        }
+      ],
+      "n_stations": 28,
+      "n_connections": 28
+    },
+    "L7": {
+      "colour_osm": "#ed7b24",
+      "colour_display": "#ed7b24",
+      "osm_relations": [
+        {
+          "id": 62901,
+          "name": "Línea 7: Pitis-Hospital del Henares"
+        },
+        {
+          "id": 7840622,
+          "name": "Línea 7: Hospital del Henares-Pitis"
+        }
+      ],
+      "n_stations": 31,
+      "n_connections": 30
+    },
+    "L8": {
+      "colour_osm": "#eba6c9",
+      "colour_display": "#eba6c9",
+      "osm_relations": [
+        {
+          "id": 62917,
+          "name": "Línea 8: Nuevos Ministerios-Aeropuerto T4"
+        },
+        {
+          "id": 7837168,
+          "name": "Línea 8: Aeropuerto T4-Nuevos Ministerios"
+        }
+      ],
+      "n_stations": 8,
+      "n_connections": 7
+    },
+    "L9": {
+      "colour_osm": "#9C3293",
+      "colour_display": "#9C3293",
+      "osm_relations": [
+        {
+          "id": 85222,
+          "name": "Línea 9: Paco de Lucía-Arganda del Rey"
+        },
+        {
+          "id": 6623406,
+          "name": "Línea 9: Arganda del Rey-Paco de Lucía"
+        }
+      ],
+      "n_stations": 29,
+      "n_connections": 28
+    },
+    "L10": {
+      "colour_osm": "#015396",
+      "colour_display": "#015396",
+      "osm_relations": [
+        {
+          "id": 58267,
+          "name": "Línea 10: Hospital Infanta Sofía-Tres Olivos"
+        },
+        {
+          "id": 3113079,
+          "name": "Línea 10: Tres Olivos-Hospital Infanta Sofía"
+        },
+        {
+          "id": 14614365,
+          "name": "Línea 10: Tres Olivos-Puerta del Sur"
+        },
+        {
+          "id": 14614366,
+          "name": "Línea 10: Puerta del Sur-Tres Olivos"
+        }
+      ],
+      "n_stations": 31,
+      "n_connections": 30
+    },
+    "L11": {
+      "colour_osm": "#006400",
+      "colour_display": "#006400",
+      "osm_relations": [
+        {
+          "id": 56044,
+          "name": "Línea 11: Plaza Elíptica-La Fortuna"
+        },
+        {
+          "id": 7842126,
+          "name": "Línea 11: La Fortuna-Plaza Elíptica"
+        }
+      ],
+      "n_stations": 7,
+      "n_connections": 6
+    },
+    "L12": {
+      "colour_osm": "#a49a00",
+      "colour_display": "#a49a00",
+      "osm_relations": [
+        {
+          "id": 2325279,
+          "name": "Línea 12. Metrosur (Dirección Loranca - Andén 2)"
+        },
+        {
+          "id": 7841410,
+          "name": "Línea 12. Metrosur (Dirección Manuela Malasaña - Andén 1)"
+        }
+      ],
+      "n_stations": 28,
+      "n_connections": 28
+    },
+    "R": {
+      "colour_osm": "white",
+      "colour_display": "#8c8c8c",
+      "osm_relations": [
+        {
+          "id": 61836,
+          "name": "Línea Ramal: Ópera-Príncipe Pío"
+        },
+        {
+          "id": 7840746,
+          "name": "Línea Ramal: Príncipe Pío-Ópera"
+        }
+      ],
+      "n_stations": 2,
+      "n_connections": 1
+    }
+  },
+  "quality": {
+    "stop_level_components_before_consolidation": 13,
+    "stop_level_nodes_before_consolidation": 297,
+    "same_name_groups_not_merged": [],
+    "self_loops_dropped": 0,
+    "raw_osm_audit": {
+      "relations_checked": 28,
+      "stop_slots_checked": 588,
+      "slots_label_match": 586,
+      "slots_label_differs_position_matches": [
+        {
+          "relation": 56791,
+          "position": 8,
+          "feed_name": "Metropolitano",
+          "osm_stop_node_name": "Vicente Aleixandre",
+          "offset_m": 2
+        },
+        {
+          "relation": 7842093,
+          "position": 20,
+          "feed_name": "Metropolitano",
+          "osm_stop_node_name": "Vicente Aleixandre",
+          "offset_m": 2
+        }
+      ],
+      "order_failures": [],
+      "max_position_offset_m": 60,
+      "stop_members_without_name_tag": 0,
+      "method": "per relation, the ordered role stop* node members of the raw OSM relation vs the ordered stop_times of the City2Graph feed (consecutive duplicates collapsed); a slot passes when labels match or the raw stop node is within 250 m of the feed station"
+    }
+  },
+  "limitations": [
+    "An OSM relation does not prove an operating service on any given date.",
+    "Interchange links are inferred from names and distance (<= 300 m), not from OSM tags.",
+    "Interchanges and line-station counts were compared with CRTM open data by audit_crtm.py, which writes data/crtm_audit.json locally; that file is not distributed (mixed OSM/CRTM licensing). CRTM data is not merged into this graph, and stop sequences/adjacency were not compared with CRTM.",
+    "Edges are straight lines between stations, not the real alignment."
+  ]
+}

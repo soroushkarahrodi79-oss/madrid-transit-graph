@@ -1,0 +1,93 @@
+{
+  "release": "v0.1.0",
+  "files": {
+    "stations.geojson": {
+      "sha256": "14246d7e7ea36dc0b119277516fd386ed2badb2cf5e9660dfa4674dc92fad61b",
+      "bytes": 75760
+    },
+    "connections.geojson": {
+      "sha256": "0e6563d19d6742396cdeef5788cbeb0e06d38e01141d266df4b74f7c06d56fed",
+      "bytes": 95760
+    },
+    "metadata.json": {
+      "sha256": "265eea18d231dacd54886d5f62db86d61e692b1e22af695e09ad38c00badc7a5",
+      "bytes": 11268
+    }
+  },
+  "how_to_verify": "sha256sum data/*.geojson data/metadata.json  (data/ is stored byte-for-byte; .gitattributes disables newline conversion)",
+  "snapshot": {
+    "osm_data_timestamp": "2026-11-19T18:17:06Z",
+    "retrieved_at": "2026-11-19T18:19:22.730575+00:00",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "osm_relation_count": 28,
+    "raw_osm_responses_preserved": false,
+    "reproducibility": "The published data/ files ARE the snapshot. The raw Overpass responses were not preserved, so the snapshot cannot be re-derived exactly: build_graph.py downloads the current OSM state (later than osm_data_timestamp) and will generally give different data. Regeneration is not exact reproduction."
+  },
+  "official_source_reference": {
+    "provider": "CRTM",
+    "portal": "https://datos.crtm.es/",
+    "records_date": "2026-05-29",
+    "layer_last_data_edit": "2026-06-04T13:28:51+00:00",
+    "note": "Audit output (crtm_audit.json) is a local artefact and is not distributed."
+  },
+  "software": {
+    "python_tested": "3.14.5",
+    "python_supported": ">=3.12,<3.15 (City2Graph requirement)",
+    "platform_tested": "Windows-11-10.0.26300-SP0",
+    "direct": [
+      "city2graph==1.1.0",
+      "certifi"
+    ],
+    "browser_libraries": {
+      "leaflet": "1.9.4 (unpkg, SRI-pinned in index.html)"
+    },
+    "environment_freeze": {
+      "beautifulsoup4": "4.15.0",
+      "certifi": "2026.10.23",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "city2graph": "1.1.0",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.3",
+      "colorama": "0.4.6",
+      "duckdb": "2.0.0",
+      "flatbuffers": "25.12.19",
+      "geographiclib": "2.1",
+      "geopandas": "1.2.0",
+      "geopy": "2.5.0",
+      "idna": "3.20",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "libpysal": "4.15.1",
+      "MarkupSafe": "3.0.4",
+      "momepy": "1.0.0",
+      "narwhals": "2.29.0",
+      "networkx": "3.7",
+      "numpy": "2.5.5",
+      "orjson": "3.13.0",
+      "overturemaps": "2.1.1",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "platformdirs": "4.14.7",
+      "pyarrow": "26.0.1",
+      "pycparser": "3.12",
+      "pyfiglet": "1.0.4",
+      "pyogrio": "0.13.0",
+      "pyproj": "3.8.0",
+      "python-dateutil": "4.0.0",
+      "requests": "2.34.2",
+      "rustworkx": "0.18.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "shapely": "2.2.0",
+      "soupsieve": "4.1.2",
+      "threadpoolctl": "3.8.0",
+      "timezonefinder": "9.2.0",
+      "timezonefinder-data": "4.2026.6",
+      "tqdm": "4.70.1",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0"
+    }
+  }
+}

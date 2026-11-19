@@ -1,0 +1,3 @@
+* text=auto
+# Data files are stored byte-for-byte so their SHA-256 hashes (data/manifest.json) stay stable.
+data/** -text

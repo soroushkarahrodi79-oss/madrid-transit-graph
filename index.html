@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madrid Transit Graph</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f4f3ef; --panel: #ffffff; --ink: #1d2126; --muted: #5b646e; --rule: #dedbd3;
+    --accent: #1d4e89; --osm: #26602f; --osm-bg: #e5f1e7; --der: #7b4a00; --der-bg: #fbefd3;
+    --warn: #8f1d1d; --warn-bg: #fbe6e6;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  .app { display: grid; grid-template-columns: 392px 1fr; height: 100%; }
+  aside { background: var(--panel); border-right: 1px solid var(--rule); overflow-y: auto; padding: 18px 18px 28px; }
+  #map { height: 100%; min-height: 320px; background: #e9e7e1; }
+  h1 { font-size: 18px; margin: 0 0 2px; letter-spacing: -.01em; }
+  h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 22px 0 8px; font-weight: 600; }
+  p { margin: 6px 0; }
+  .sub { color: var(--muted); margin: 0 0 4px; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 1px 6px; border-radius: 99px; vertical-align: 1px; white-space: nowrap; }
+  .tag.osm { background: var(--osm-bg); color: var(--osm); }
+  .tag.der { background: var(--der-bg); color: var(--der); }
+  .kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .kpi { border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; }
+  .kpi b { display: block; font-size: 24px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .kpi span { font-size: 12px; color: var(--muted); }
+  .note { font-size: 12px; color: var(--muted); }
+  .check { font-size: 12px; margin-top: 8px; padding: 6px 8px; border-radius: 6px; background: var(--osm-bg); color: var(--osm); }
+  .check.bad { background: var(--warn-bg); color: var(--warn); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .chip { border: 1.5px solid var(--rule); background: #fff; border-radius: 99px; padding: 2px 10px 2px 6px; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }
+  .chip i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,.25); }
+  .chip[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .pill { display: inline-block; min-width: 26px; text-align: center; font-size: 11px; font-weight: 700; padding: 0 6px; border-radius: 4px; border: 1px solid rgba(0,0,0,.25); }
+  ol.top { list-style: none; margin: 0; padding: 0; }
+  ol.top li button, .nbr button { width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; border: 0; background: none; padding: 4px 6px; border-radius: 6px; }
+  ol.top li button:hover, .nbr button:hover { background: #f0eee8; }
+  .deg { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 700; }
+  #card { border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px 14px; }
+  #card.empty { border: 1.5px dashed var(--rule); color: var(--muted); }
+  #card h3 { margin: 0 0 6px; font-size: 17px; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin: 8px 0; }
+  dt { color: var(--muted); } dd { margin: 0; }
+  .nbr { margin: 4px 0 0; padding: 0; list-style: none; }
+  .clear { margin-top: 8px; border: 1px solid var(--rule); background: #fff; border-radius: 6px; padding: 3px 10px; font-size: 12px; }
+  .legend { display: grid; gap: 6px; }
+  .legend div { display: flex; align-items: center; gap: 8px; }
+  .sw { width: 22px; height: 0; border-top: 4px solid; display: inline-block; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex: none; }
+  ul.lim { margin: 4px 0; padding-left: 18px; } ul.lim li { margin: 3px 0; }
+  details { margin-top: 6px; } summary { cursor: pointer; color: var(--accent); }
+  #err { display: none; margin: 12px 0; padding: 10px 12px; border-radius: 8px; background: var(--warn-bg); color: var(--warn); }
+  code { background: #efede7; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+  .leaflet-container { font: inherit; }
+  .basemap { filter: grayscale(.85) contrast(.9) brightness(1.08); }
+  @media (max-width: 820px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: 55vh auto; height: auto; }
+    #map { grid-row: 1; height: 55vh; } aside { grid-row: 2; border-right: 0; border-top: 1px solid var(--rule); padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside aria-label="Panel de información">
+    <h1>Red de Metro de Madrid como grafo</h1>
+    <p class="sub">Prototipo exploratorio · OpenStreetMap + City2Graph 1.1.0</p>
+    <div id="err" role="alert"></div>
+
+    <h2>Indicadores <span class="tag der">derivados del grafo</span></h2>
+    <div class="kpis">
+      <div class="kpi"><b id="k-st">–</b><span>Estaciones (nodos)</span></div>
+      <div class="kpi"><b id="k-cn">–</b><span>Conexiones (aristas)</span></div>
+      <div class="kpi"><b id="k-cc">–</b><span>Componentes conexos</span></div>
+      <div class="kpi"><b id="k-ix">–</b><span>Correspondencias <span class="tag der">inferidas</span></span></div>
+    </div>
+    <div id="check" class="check">Comprobando indicadores…</div>
+
+    <h2>Estación seleccionada</h2>
+    <div id="card" class="empty" aria-live="polite">Haz clic en una estación del mapa para ver sus líneas, su grado y resaltar sus conexiones directas.</div>
+
+    <h2>Filtrar por línea <span class="tag osm">OSM</span></h2>
+    <div class="chips" id="chips"></div>
+
+    <h2>Mayor grado <span class="tag der">derivado</span></h2>
+    <ol class="top" id="top"></ol>
+    <p class="note" id="top-note"></p>
+    <p class="note"><b>Grado</b> = nº de estaciones adyacentes distintas en el grafo. <b>No</b> mide viajeros, importancia socioeconómica ni accesibilidad real.</p>
+
+    <h2>Leyenda</h2>
+    <div class="legend">
+      <div><span class="sw" style="border-color:#824100"></span> Conexión entre estaciones consecutivas (color de línea OSM; segmento recto esquemático, no el trazado real)</div>
+      <div><span class="sw" style="border-top-style:dashed;border-color:#555"></span> Tramo compartido por varias líneas (trazo discontinuo de la segunda)</div>
+      <div><span class="dot" style="background:#96bf0d;border:1.5px solid #fff;box-shadow:0 0 0 1px #888"></span> Estación de una sola línea</div>
+      <div><span class="dot" style="background:#fff;border:2.5px solid #1d2126"></span> Correspondencia (varias líneas)</div>
+    </div>
+
+    <h2>Procedencia</h2>
+    <p><span class="tag osm">OSM</span> nombres, líneas, orden de paradas, colores y geometría de estación.<br>
+       <span class="tag der">derivado</span> grado, componentes, correspondencias, conteos y rankings.</p>
+    <p class="note"><b>Nodo</b> = estación agregada (fusiona las estaciones-línea de OSM de una misma estación física); <b>arista</b> = par de estaciones consecutivas en al menos una línea, sin dirección (si varias líneas la comparten, es una sola); <b>correspondencia</b> = estación con más de una línea.</p>
+    <div id="prov" class="note"></div>
+    <h2>Limitaciones</h2>
+    <ul class="lim note">
+      <li>Una relación de OSM <b>no demuestra</b> un servicio operativo en una fecha dada. No hay horarios, frecuencias ni tiempos.</li>
+      <li>OSM define las áreas de parada por línea: las correspondencias se <b>infieren</b> por nombre normalizado y distancia (≤ 300 m).</li>
+      <li>Alcance: Metro de Madrid (L1–L12 y Ramal). Sin Metro Ligero ni Cercanías.</li>
+      <li>Resultados <b>exclusivamente topológicos</b>: conectividad no equivale a accesibilidad, servicio operativo, demanda ni resiliencia.</li>
+      <li>Las 38 correspondencias se contrastaron aparte con datos abiertos del <a href="https://www.crtm.es/" target="_blank" rel="noopener">CRTM</a> (<b>Powered by CRTM</b>, <a href="https://www.crtm.es/licencia-de-uso" target="_blank" rel="noopener">licencia</a>): 38 confirmadas, 0 falsas, 1 no verificada (Noviciado). Dos transbordos oficiales entre nombres distintos (Embajadores–Acacias, Callao–Santo Domingo) no están representados. Sin respaldo ni certificación del CRTM; los datos de CRTM no se incluyen ni se mezclan en este mapa.</li>
+    </ul>
+    <p class="note">Datos © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">colaboradores de OpenStreetMap</a>, licencia ODbL 1.0. Mapa base: teselas estándar de OpenStreetMap (atenuadas).</p>
+  </aside>
+  <div id="map" role="application" aria-label="Mapa de la red"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const state = { line: null, selected: null };
+  let meta, stations = new Map(), conns = [], degree = new Map(), nbrs = new Map(), map;
+
+  const map0 = L.map("map", { zoomControl: true, preferCanvas: false }).setView([40.4168, -3.7038], 11);
+  map = map0;
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19, className: "basemap",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · Red: OSM (ODbL), City2Graph 1.1.0'
+  }).addTo(map);
+  L.control.scale({ imperial: false }).addTo(map);
+
+  const colour = (ref) => (meta.lines[ref] || {}).colour_display || "#555";
+  const pill = (ref) => `<span class="pill" style="background:${colour(ref)};color:${textOn(colour(ref))}">${esc(ref)}</span>`;
+  function textOn(hex) {
+    const h = hex.replace("#", ""); if (h.length !== 6) return "#111";
+    const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+    return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#111" : "#fff";
+  }
+
+  Promise.all(["stations", "connections"].map((n) => fetch(`data/${n}.geojson`).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })))
+    .then(async ([st, cn]) => { meta = await fetch("data/metadata.json").then((r) => r.json()); init(st, cn); })
+    .catch((e) => {
+      const el = $("err"); el.style.display = "block";
+      el.innerHTML = `No se pudieron cargar los datos (${esc(e.message)}). Abre esta página desde un servidor estático local:<br><code>python -m http.server 8000</code> y visita <code>http://localhost:8000/</code>. Si faltan los datos, ejecuta <code>python build_graph.py</code>.`;
+    });
+
+  function init(stGeo, cnGeo) {
+    stGeo.features.forEach((f) => stations.set(f.properties.id, f));
+    conns = cnGeo.features.map((f) => ({ f, polys: [] }));
+
+    // Indicators recomputed in the browser from the GeoJSON, then compared to metadata.json.
+    conns.forEach(({ f }) => {
+      const { source: a, target: b } = f.properties;
+      [[a, b], [b, a]].forEach(([x, y]) => { if (!nbrs.has(x)) nbrs.set(x, new Set()); nbrs.get(x).add(y); });
+    });
+    stations.forEach((_, id) => degree.set(id, (nbrs.get(id) || new Set()).size));
+    const nComp = countComponents();
+    const nIx = [...stations.values()].filter((f) => f.properties.lines.length > 1).length;
+    $("k-st").textContent = stations.size; $("k-cn").textContent = conns.length;
+    $("k-cc").textContent = nComp; $("k-ix").textContent = nIx;
+    const ind = meta.indicators;
+    const ok = ind.n_stations === stations.size && ind.n_connections === conns.length && ind.n_components === nComp && ind.n_interchange_stations === nIx;
+    const chk = $("check");
+    chk.className = "check" + (ok ? "" : " bad");
+    chk.textContent = ok ? "✓ Indicadores recalculados en el navegador desde los GeoJSON: coinciden con metadata.json."
+                         : "⚠ Los indicadores recalculados NO coinciden con metadata.json. Regenera los datos.";
+
+    drawConnections(); drawStations(); buildChips(); buildTop(); buildProvenance();
+    map.invalidateSize();
+    map.fitBounds(L.latLngBounds([...stations.values()].map((f) => ll(f.geometry.coordinates))).pad(0.05));
+    map.on("click", () => select(null));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") select(null); });
+    restyle();
+  }
+
+  function countComponents() {
+    const seen = new Set(); let n = 0;
+    for (const id of stations.keys()) {
+      if (seen.has(id)) continue; n++;
+      const stack = [id];
+      while (stack.length) { const x = stack.pop(); if (seen.has(x)) continue; seen.add(x); (nbrs.get(x) || []).forEach((y) => stack.push(y)); }
+    }
+    return n;
+  }
+
+  const ll = (c) => [c[1], c[0]];
+  function drawConnections() {
+    const casings = L.layerGroup().addTo(map), layer = L.layerGroup().addTo(map);
+    conns.forEach((c) => {
+      const p = c.f.properties, coords = c.f.geometry.coordinates.map(ll);
+      // white casing under the coloured stroke keeps grey/yellow lines legible on the basemap
+      c.casing = L.polyline(coords, { color: "#ffffff", weight: 7, opacity: .8, lineCap: "butt", interactive: false }).addTo(casings);
+      p.lines.forEach((ref, i) => {
+        const pl = L.polyline(coords, { color: colour(ref), weight: 4, opacity: .9, dashArray: i ? "7 7" : null, lineCap: "butt", bubblingMouseEvents: false });
+        pl.bindTooltip(`${esc(p.source_name)} – ${esc(p.target_name)} · ${p.lines.join(", ")}`, { sticky: true });
+        pl.on("click", (e) => { L.DomEvent.stopPropagation(e); });
+        pl.addTo(layer); c.polys.push(pl);
+      });
+    });
+  }
+
+  function drawStations() {
+    const layer = L.layerGroup().addTo(map);
+    stations.forEach((f, id) => {
+      const p = f.properties, ix = p.lines.length > 1;
+      const m = L.circleMarker(ll(f.geometry.coordinates), { radius: ix ? 6 : 4, bubblingMouseEvents: false });
+      m.bindTooltip(esc(p.name), { direction: "top", offset: [0, -4] });
+      m.on("click", (e) => { L.DomEvent.stopPropagation(e); select(id); });
+      m.addTo(layer); f.marker = m;
+    });
+  }
+
+  function visible(lines) { return !state.line || lines.includes(state.line); }
+
+  function restyle() {
+    const sel = state.selected, near = sel ? nbrs.get(sel) : null;
+    conns.forEach((c) => {
+      const p = c.f.properties, vis = visible(p.lines), hi = sel && (p.source === sel || p.target === sel);
+      c.casing.setStyle({ opacity: !vis ? 0.03 : sel ? (hi ? 0.95 : 0.12) : 0.8, weight: hi && vis ? 12 : vis ? 7 : 3 });
+      c.polys.forEach((pl) => {
+        pl.setStyle({ opacity: !vis ? 0.06 : sel ? (hi ? 1 : 0.18) : 0.9, weight: hi && vis ? 8 : vis ? 4 : 2 });
+        if (hi && vis) pl.bringToFront();
+      });
+    });
+    stations.forEach((f, id) => {
+      const p = f.properties, ix = p.lines.length > 1, vis = visible(p.lines);
+      const isSel = id === sel, isNb = near && near.has(id);
+      const base = colour(state.line && p.lines.includes(state.line) ? state.line : p.lines[0]);
+      f.marker.setStyle({
+        radius: isSel ? 10 : isNb ? (ix ? 8 : 6) : ix ? 6 : 4,
+        fillColor: ix ? "#ffffff" : base, fillOpacity: !vis ? 0.15 : sel && !isSel && !isNb ? 0.45 : 1,
+        color: isSel ? "#000" : isNb ? "#1d4e89" : ix ? "#1d2126" : "#ffffff",
+        weight: isSel ? 4 : isNb ? 3 : ix ? 2.5 : 1.5, opacity: !vis ? 0.15 : sel && !isSel && !isNb ? 0.5 : 1
+      });
+      if (isSel || isNb) f.marker.bringToFront();
+    });
+  }
+
+  function select(id) {
+    state.selected = id; restyle();
+    const card = $("card");
+    if (!id) { card.className = "empty"; card.textContent = "Haz clic en una estación del mapa para ver sus líneas, su grado y resaltar sus conexiones directas."; return; }
+    const p = stations.get(id).properties, ns = [...(nbrs.get(id) || [])].sort((a, b) => stations.get(a).properties.name.localeCompare(stations.get(b).properties.name, "es"));
+    const linesBetween = (n) => conns.find((c) => { const q = c.f.properties; return (q.source === id && q.target === n) || (q.source === n && q.target === id); }).f.properties.lines;
+    card.className = "";
+    card.innerHTML = `<h3>${esc(p.name)}</h3>
+      <dl>
+        <dt>Líneas <span class="tag osm">OSM</span></dt><dd>${p.lines.map(pill).join(" ")}</dd>
+        <dt>Conexiones directas <span class="tag der">grado</span></dt><dd><b>${degree.get(id)}</b> estaciones adyacentes</dd>
+        <dt>Correspondencia <span class="tag der">inferida</span></dt><dd>${p.lines.length > 1 ? "Sí (" + p.lines.length + " líneas)" : "No"}</dd>
+      </dl>
+      <div class="note">Estaciones adyacentes (clic para ir):</div>
+      <ul class="nbr">${ns.map((n) => `<li><button data-id="${esc(n)}">${esc(stations.get(n).properties.name)} <span style="margin-left:auto">${linesBetween(n).map(pill).join(" ")}</span></button></li>`).join("")}</ul>
+      <details><summary>Paradas OSM agrupadas (${p.osm_stop_ids.length})</summary><p class="note">${p.osm_stop_ids.map(esc).join("<br>")}</p></details>
+      <button class="clear" id="clear">Limpiar selección (Esc)</button>`;
+    card.querySelectorAll("button[data-id]").forEach((b) => b.addEventListener("click", () => focusStation(b.dataset.id)));
+    $("clear").addEventListener("click", () => select(null));
+  }
+
+  function focusStation(id) {
+    const c = stations.get(id).geometry.coordinates;
+    if (state.line && !stations.get(id).properties.lines.includes(state.line)) setLine(null);
+    map.flyTo(ll(c), Math.max(map.getZoom(), 14), { duration: .6 }); select(id);
+  }
+
+  function setLine(ref) {
+    if (ref && state.selected && !stations.get(state.selected).properties.lines.includes(ref)) select(null);
+    state.line = ref;
+    document.querySelectorAll("#chips .chip").forEach((b) => b.setAttribute("aria-pressed", String((b.dataset.line || null) === (ref || null) )));
+    restyle();
+    if (ref) {
+      const pts = [...stations.values()].filter((f) => f.properties.lines.includes(ref)).map((f) => ll(f.geometry.coordinates));
+      map.fitBounds(L.latLngBounds(pts).pad(0.1));
+    }
+  }
+
+  function buildChips() {
+    const box = $("chips");
+    const mk = (ref, label, col, title) => {
+      const b = document.createElement("button"); b.className = "chip"; b.type = "button"; if (ref) b.dataset.line = ref;
+      b.setAttribute("aria-pressed", String(!ref)); b.title = title || "";
+      b.innerHTML = `${col ? `<i style="background:${col}"></i>` : ""}${esc(label)}`;
+      b.addEventListener("click", () => setLine(ref)); box.appendChild(b);
+    };
+    mk(null, "Todas", null, "Mostrar toda la red");
+    Object.entries(meta.lines).forEach(([ref, li]) => mk(ref, ref, li.colour_display, `${ref}: ${li.n_stations} estaciones, ${li.n_connections} conexiones`));
+  }
+
+  function buildTop() {
+    const ranked = [...stations.values()].sort((a, b) => degree.get(b.properties.id) - degree.get(a.properties.id) || a.properties.name.localeCompare(b.properties.name, "es")).slice(0, 10);
+    $("top").innerHTML = ranked.map((f) => `<li><button data-id="${esc(f.properties.id)}">${esc(f.properties.name)} ${f.properties.lines.map(pill).join(" ")}<span class="deg">${degree.get(f.properties.id)}</span></button></li>`).join("");
+    $("top").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => focusStation(b.dataset.id)));
+    const same = JSON.stringify(ranked.map((f) => f.properties.id)) === JSON.stringify(meta.indicators.top_degree.map((t) => t.id));
+    $("top-note").textContent = `Top 10 por grado (empates en orden alfabético; ${meta.indicators.top_degree_note.split("; ").pop()}).` + (same ? "" : " ⚠ difiere de metadata.json");
+  }
+
+  function buildProvenance() {
+    const o = meta.sources.openstreetmap, a = meta.quality.raw_osm_audit;
+    $("prov").innerHTML = `Datos OSM de <b>${esc((o.osm_data_timestamp || "").slice(0, 10))}</b> (extraídos ${esc((o.retrieved_at || "").slice(0, 10))} vía Overpass, ${o.relation_ids.length} relaciones <code>route=subway</code>, <code>network=Metro de Madrid</code>).
+      Grafo con City2Graph ${esc(meta.software.city2graph)} (<code>load_osm_transport</code>, <code>travel_summary_graph</code>).
+      Auditoría contra OSM crudo: ${a.stop_slots_checked} posiciones de parada, ${a.order_failures.length} fallos de orden, ${a.slots_label_differs_position_matches.length} diferencias de etiqueta.`;
+  }
+})();
+</script>
+</body>
+</html>

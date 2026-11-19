@@ -81,6 +81,26 @@ class Synthetic(unittest.TestCase):
         self.assertEqual(rt(b, st, "x1", "x2", "w_R"), (0, 1))  # pure transfer link, zero rides
         self.assertIsNone(rt(E.build_model_b(st, cn, []), st, "a", "c", "w_R"))
 
+    def test_transfer_link_is_not_equivalent_to_an_ordinary_edge_in_a(self):
+        # A transfer edge adds 0 ride edges; an ordinary edge x1-x2 added to Model A adds 1 hop.
+        st, cn = mk({"L1": ["a", "x1", "b"], "L2": ["c", "x2", "d"]})
+        t = [E.transfer(("x1", "L1"), ("x2", "L2"), "test", "confirmed", "TEST")]
+        b = E.build_model_b(st, cn, t)
+        a = E.build_model_a(st, cn)
+        a.add_edge("x1", "x2")
+        hops = {k: v[0] for k, v in E.all_pairs_optimal(a, st, None, "A").items()}
+        self.assertEqual(hops[("a", "c")], 3)                       # a-x1, x1-x2, x2-c
+        self.assertEqual(rt(b, st, "a", "c", "w_R"), (2, 1))        # 2 rides + 1 transfer
+        self.assertEqual(hops[("x1", "x2")], 1)
+        self.assertEqual(rt(b, st, "x1", "x2", "w_R"), (0, 1))      # 0 rides
+        # one state-level transfer edge = one physical station pair; a 2-state station gives 2 edges for 1 pair
+        st2, cn2 = mk({"L1": ["a", "m", "b"], "L2": ["c", "m", "d"], "L3": ["e", "z"]})
+        t2 = [E.transfer(("m", "L1"), ("z", "L3"), "t", "c", "s"), E.transfer(("m", "L2"), ("z", "L3"), "t", "c", "s")]
+        b2 = E.build_model_b(st2, cn2, t2)
+        cross = [(u, v) for u, v, d in b2.edges(data=True) if d["edge_type"] == E.TRANSFER and u[0] != v[0]]
+        self.assertEqual(len(cross), 2)
+        self.assertEqual(len({frozenset((u[0], v[0])) for u, v in cross}), 1)
+
     def test_rides_vs_transfers_tradeoff(self):
         # direct line A: o-a1-a2-a3-d (4 rides, 0 transfers); B: o-m ; C: m-d -> 2 rides, 1 transfer at m
         st, cn = mk({"A": ["o", "a1", "a2", "a3", "d"], "B": ["o", "m"], "C": ["m", "d"]})

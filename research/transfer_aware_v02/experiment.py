@@ -419,7 +419,13 @@ def analyse_scenario(a, a_pairs, b, stations, a_btw, a_art):
     paths["tradeoff_R_vs_T"] = {
         "pairs_where_R_path_needs_more_transfers_than_T_path": sum(1 for k in tk if R[k][1] > T[k][0]),
         "pairs_where_T_path_needs_more_rides_than_R_path": sum(1 for k in tk if T[k][1] > R[k][0]),
+        # Denominator = ALL pairs with a path (pairs with no trade-off contribute 0 extra rides); kept for continuity.
         "mean_extra_rides_when_minimising_transfers": round(sum(T[k][1] - R[k][0] for k in tk) / max(len(tk), 1), 4),
+        "mean_extra_rides_denominator_all_pairs_with_a_path": len(tk),
+        # Conditional on the pairs where the T route has more rides than the R route (the trade-off pairs).
+        "mean_extra_rides_among_tradeoff_pairs": round(
+            sum(T[k][1] - R[k][0] for k in tk) / max(sum(1 for k in tk if T[k][1] > R[k][0]), 1), 4),
+        "mean_extra_rides_denominator_tradeoff_pairs": sum(1 for k in tk if T[k][1] > R[k][0]),
         "max_extra_rides_when_minimising_transfers": max((T[k][1] - R[k][0] for k in tk), default=0),
         "pairs_reachable_with_zero_transfers": sum(1 for k in tk if T[k][0] == 0)}
     # Does the transfer tie-break (objective R) prune Model A's set of equally short physical routes?
@@ -452,7 +458,12 @@ def analyse_scenario(a, a_pairs, b, stations, a_btw, a_art):
         extra += len(nb_all) - len({v[0] for u in b if u[0] == s for v, d in b[u].items()
                                     if d["edge_type"] == RIDE})
     cen["degree"] = {"ride_degree_equals_A_for_all_stations": all(ride_degree(b, s) == a.degree(s) for s in ids),
-                     "extra_station_links_via_cross_station_transfers": extra}
+                     # counted per station, i.e. each linked station pair appears twice (once from each side)
+                     "extra_station_links_via_cross_station_transfers": extra,
+                     "state_level_cross_station_transfer_edges": sum(
+                         1 for u, v, d in edges if d["edge_type"] == TRANSFER and u[0] != v[0]),
+                     "physical_station_pairs_linked_by_cross_station_transfers": len(
+                         {frozenset((u[0], v[0])) for u, v, d in edges if d["edge_type"] == TRANSFER and u[0] != v[0]})}
     out["centrality"] = cen
     return out, {"betweenness_R": btw["R"], "betweenness_T": btw["T"], "articulation_lost_pairs": art}
 
@@ -511,6 +522,10 @@ def main(argv=None):
         b = build_model_b(stations, connections, tr, prov)
         checks += validate_model_b(a, b, stations, connections, tr, name)
         res, loc = analyse_scenario(a, a_pairs, b, stations, a_btw, a_art)
+        # B0/B1 need only the public snapshot (B1's transfer *labels* say "unvalidated" without the audit, its numbers
+        # are identical); B2/B3 need transfers read from the local, undistributed CRTM audit.
+        res["reproducible_from_public_snapshot"] = name in ("B0_rides_only_control", "B1_same_station_transfers")
+        res["requires_local_crtm_audit"] = not res["reproducible_from_public_snapshot"]
         summary["scenarios"][name] = res
         local[name] = loc
         if name == "B1_same_station_transfers":

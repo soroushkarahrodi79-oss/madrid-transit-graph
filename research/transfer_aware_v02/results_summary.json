@@ -221,6 +221,9 @@
           "pairs_where_R_path_needs_more_transfers_than_T_path": 0,
           "pairs_where_T_path_needs_more_rides_than_R_path": 0,
           "mean_extra_rides_when_minimising_transfers": 0.0,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 3759,
+          "mean_extra_rides_among_tradeoff_pairs": 0.0,
+          "mean_extra_rides_denominator_tradeoff_pairs": 0,
           "max_extra_rides_when_minimising_transfers": 0,
           "pairs_reachable_with_zero_transfers": 3759
         },
@@ -254,9 +257,13 @@
         },
         "degree": {
           "ride_degree_equals_A_for_all_stations": true,
-          "extra_station_links_via_cross_station_transfers": 0
+          "extra_station_links_via_cross_station_transfers": 0,
+          "state_level_cross_station_transfer_edges": 0,
+          "physical_station_pairs_linked_by_cross_station_transfers": 0
         }
-      }
+      },
+      "reproducible_from_public_snapshot": true,
+      "requires_local_crtm_audit": false
     },
     "B1_same_station_transfers": {
       "state_nodes": 291,
@@ -433,6 +440,9 @@
           "pairs_where_R_path_needs_more_transfers_than_T_path": 15449,
           "pairs_where_T_path_needs_more_rides_than_R_path": 15449,
           "mean_extra_rides_when_minimising_transfers": 2.3751,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 29161,
+          "mean_extra_rides_among_tradeoff_pairs": 4.4832,
+          "mean_extra_rides_denominator_tradeoff_pairs": 15449,
           "max_extra_rides_when_minimising_transfers": 25,
           "pairs_reachable_with_zero_transfers": 3759
         },
@@ -466,9 +476,13 @@
         },
         "degree": {
           "ride_degree_equals_A_for_all_stations": true,
-          "extra_station_links_via_cross_station_transfers": 0
+          "extra_station_links_via_cross_station_transfers": 0,
+          "state_level_cross_station_transfer_edges": 0,
+          "physical_station_pairs_linked_by_cross_station_transfers": 0
         }
-      }
+      },
+      "reproducible_from_public_snapshot": true,
+      "requires_local_crtm_audit": false
     },
     "B2_plus_confirmed_cross_name_transfers": {
       "state_nodes": 291,
@@ -648,6 +662,9 @@
           "pairs_where_R_path_needs_more_transfers_than_T_path": 15594,
           "pairs_where_T_path_needs_more_rides_than_R_path": 15594,
           "mean_extra_rides_when_minimising_transfers": 2.3824,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 29161,
+          "mean_extra_rides_among_tradeoff_pairs": 4.4552,
+          "mean_extra_rides_denominator_tradeoff_pairs": 15594,
           "max_extra_rides_when_minimising_transfers": 25,
           "pairs_reachable_with_zero_transfers": 3759
         },
@@ -681,9 +698,13 @@
         },
         "degree": {
           "ride_degree_equals_A_for_all_stations": true,
-          "extra_station_links_via_cross_station_transfers": 4
+          "extra_station_links_via_cross_station_transfers": 4,
+          "state_level_cross_station_transfer_edges": 3,
+          "physical_station_pairs_linked_by_cross_station_transfers": 2
         }
-      }
+      },
+      "reproducible_from_public_snapshot": false,
+      "requires_local_crtm_audit": true
     },
     "B3_plus_ambiguous_noviciado_sensitivity": {
       "state_nodes": 291,
@@ -864,6 +885,9 @@
           "pairs_where_R_path_needs_more_transfers_than_T_path": 15523,
           "pairs_where_T_path_needs_more_rides_than_R_path": 15523,
           "mean_extra_rides_when_minimising_transfers": 2.3654,
+          "mean_extra_rides_denominator_all_pairs_with_a_path": 29161,
+          "mean_extra_rides_among_tradeoff_pairs": 4.4435,
+          "mean_extra_rides_denominator_tradeoff_pairs": 15523,
           "max_extra_rides_when_minimising_transfers": 25,
           "pairs_reachable_with_zero_transfers": 3759
         },
@@ -897,9 +921,13 @@
         },
         "degree": {
           "ride_degree_equals_A_for_all_stations": true,
-          "extra_station_links_via_cross_station_transfers": 6
+          "extra_station_links_via_cross_station_transfers": 6,
+          "state_level_cross_station_transfer_edges": 5,
+          "physical_station_pairs_linked_by_cross_station_transfers": 3
         }
-      }
+      },
+      "reproducible_from_public_snapshot": false,
+      "requires_local_crtm_audit": true
     }
   },
   "validation": [

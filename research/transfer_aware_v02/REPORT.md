@@ -4,7 +4,7 @@
 centrality compared with the station-aggregated graph of v0.1.0?
 
 **Decision: MODIFY** (see [Decision](#decision)). All numbers below come from `results_summary.json`, produced by
-`experiment.py` (62 internal checks, all passed) and covered by `test_experiment.py` (17 tests, all passed).
+`experiment.py` (62 internal checks, all passed; 34 when run without the local CRTM audit) and covered by `test_experiment.py` (18 tests, all passed).
 
 ## 1. Data and evidence
 
@@ -26,8 +26,8 @@ import; scope not analysed), so "confirmed" means *consistent with*, not *indepe
 | Size | 242 nodes, 277 edges, 1 component | 291 nodes, 280 ride edges, 0–66 transfer edges depending on scenario |
 
 Scenarios: **B0** rides only (control, no transfers) · **B1** + 61 same-station transfers (38 stations, all
-CRTM-confirmed) · **B2** = B1 + 3 transfer edges for the two official cross-name interchanges (Embajadores L3–Acacias L5;
-Santo Domingo L2–Callao L3/L5) · **B3** = B2 + 2 edges linking Noviciado L2 to Plaza de España L3/L10. B3 is an
+CRTM-confirmed) · **B2** = B1 + 3 state-level transfer edges for the two official cross-name interchanges (Embajadores L3–Acacias L5;
+Santo Domingo L2–Callao L3 and Callao L5), i.e. **2 physical station pairs** · **B3** = B2 + 2 state-level edges (1 more physical pair) linking Noviciado L2 to Plaza de España L3/L10. B3 is an
 explicitly labelled *sensitivity* scenario: CRTM says Noviciado's `LINEAS` field cites L3 and L10 but gives it its own
 interchange code, and does not name the partner station; Plaza de España (285 m, nearest station serving L3 and L10) is
 **my inference**. Transfer edges carry no time, distance or penalty.
@@ -68,14 +68,18 @@ max 42) — an exact projection, not a finding. What B adds is the transfer dime
 - Fewest-transfers route (T): transfers mean 1.13, max 3; rides mean 16.42 (vs 14.04). 3,759 pairs (12.9 %) are
   reachable on one line (equals B0's reachable pairs — independent cross-check).
 - **15,449 pairs (53.0 %)** have a genuine trade-off: the fewest-rides route needs more transfers than the
-  fewest-transfers route, which costs on average **+2.38 rides** (max +25).
+  fewest-transfers route. Minimising transfers costs **+4.48 rides on average among those 15,449 pairs** (max +25);
+  averaged over *all* 29,161 pairs (no-trade-off pairs count as 0) it is +2.38. Both are reported in
+  `tradeoff_R_vs_T` with their denominators.
 - A has several equally short physical routes for 11,580 pairs (39.7 %); B's transfer tie-break narrows the route set for
   10,213 of them (88 %). A cannot express this.
 - 1,010 same-line pairs are *not* fastest on their own line (the shortest-hop route changes line).
 
 **Cross-name transfers (B2, B3 vs A).** 1,184 pairs (4.1 %) get fewer ride edges (B2); 1,346 (4.6 %) in B3; none get more.
-Caveat: a transfer link between *different* stations counts zero rides, so part of this gain is the unmodelled walk. The
-same gain could be had in A by adding three edges, so it is not an argument for the multilayer form.
+Caveat: a transfer link between *different* stations counts zero ride edges, so part of this gain is the unmodelled
+walk. This is **not** equivalent to adding ordinary edges to A, where each added edge costs one hop (synthetic test
+`test_transfer_link_is_not_equivalent_to_an_ordinary_edge_in_a`: a→c is 3 hops in A+edge, 2 rides + 1 transfer in B).
+Whether an A-with-extra-edges variant would give similar results was **not tested**, so no claim is made either way.
 
 **Centrality (station level, vs A; 242 stations)**
 
@@ -89,6 +93,17 @@ same gain could be had in A by adding three edges, so it is not an argument for 
 \*in share of station pairs (normalised betweenness). Degree: ride-degree identical to A for every station in every
 scenario (identity by construction). Articulation stations: 84 in A and in B1–B3, identical sets. B0 values (187
 "articulation" stations) describe isolated lines and are not meaningful.
+
+**Reproducibility of each scenario**
+
+| Scenario | From the public snapshot alone | Needs local `crtm_audit.json` |
+|---|---|---|
+| A, B0 | yes | no |
+| B1 | yes: every number is identical without the audit (verified); only the transfer labels differ (`unvalidated` instead of `osm_name_fusion+crtm_interchange_confirmed`), and "all 38 stations CRTM-confirmed" itself needs the audit | confirmation labels only |
+| B2, B3 | **no**: cross-name transfers and Noviciado come from the audit | yes (`audit_crtm.py` creates it locally; it contacts CRTM and is not distributed) |
+
+`results_summary.json` flags this per scenario (`reproducible_from_public_snapshot`, `requires_local_crtm_audit`).
+Committed B2/B3 numbers are processed aggregates; no CRTM records or codes are in the repository.
 
 ## 4. Validation (all passed)
 
@@ -117,8 +132,8 @@ rejected by the validator.
 
 **MODIFY.** Model B is valid and its comparisons are interpretable, but demonstrable value is confined to one
 dimension: transfer counts and the rides-vs-transfers trade-off (53 % of pairs), plus a moderate change in betweenness
-only under objective T (ρ = 0.81). Connectivity, hop distance, degree and articulation points are identical to A, and
-the cross-name transfers are expressible as plain edges in A. Not GO because nothing here is validated against an
+only under objective T (ρ = 0.81). Connectivity, hop distance, degree and articulation points are identical to A (B1), and
+the cross-name transfers change only ride counts of 4–5 % of pairs, with the walk-link caveat above. Not GO because nothing here is validated against an
 external reference; not NO-GO because the transfer dimension is real and A cannot represent it. Recommended
 modification before any map change: keep B as a research layer for transfer-count analysis, and validate adjacency and
 transfers against an independent source (e.g. a CRTM timetable or walking-time data) before attributing meaning to T-based

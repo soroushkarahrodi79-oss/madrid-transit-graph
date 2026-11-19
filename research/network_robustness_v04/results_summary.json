@@ -1,0 +1,313 @@
+{
+  "snapshot": {
+    "release": "v0.1.0",
+    "osm_data_timestamp": "2026-11-19T18:17:06Z",
+    "manifest_sha256": "975bb4b4e9861eb4971dd0584ee46bfd1cc2f7a5e06ef057f540b76a141a1dde",
+    "files": {
+      "stations.geojson": {
+        "sha256": "14246d7e7ea36dc0b119277516fd386ed2badb2cf5e9660dfa4674dc92fad61b",
+        "bytes": 75760
+      },
+      "connections.geojson": {
+        "sha256": "0e6563d19d6742396cdeef5788cbeb0e06d38e01141d266df4b74f7c06d56fed",
+        "bytes": 95760
+      },
+      "metadata.json": {
+        "sha256": "265eea18d231dacd54886d5f62db86d61e692b1e22af695e09ad38c00badc7a5",
+        "bytes": 11268
+      }
+    },
+    "uses_crtm_audit": false
+  },
+  "networkx": "3.7",
+  "pair_unit": "unordered physical station pair; cross-scenario totals count a pair once per scenario",
+  "objectives": {
+    "R": "fewest ride edges, ties fewest transfers",
+    "T": "fewest transfers, ties fewest ride edges"
+  },
+  "baseline": {
+    "stations": 242,
+    "reachable_pairs": 29161,
+    "model_A": {
+      "nodes": 242,
+      "edges": 277,
+      "components": 1
+    },
+    "model_B1": {
+      "state_nodes": 291,
+      "ride_edges": 280,
+      "transfer_edges": 61,
+      "components": 1
+    }
+  },
+  "station_failures": {
+    "scenarios": 242,
+    "remaining_station_pairs_per_scenario": 28920,
+    "scenarios_with_disconnected_pairs": 84,
+    "scenarios_with_all_remaining_pairs_reachable": 158,
+    "component_count_histogram": {
+      "1": 158,
+      "2": 83,
+      "3": 1
+    },
+    "smallest_largest_component_stations": 222,
+    "disconnected_pairs_min_among_fragmenting": 240,
+    "disconnected_pairs_median_among_fragmenting": 1180.0,
+    "disconnected_pairs_max": 4296,
+    "disconnected_fraction_max": 0.148548
+  },
+  "interchange_disruptions": {
+    "scenarios": 38,
+    "station_pairs_per_scenario": 29161,
+    "scenario_pairs_total": 1108118,
+    "reachable_scenario_pairs": 1106708,
+    "disconnected_scenario_pairs": 1410,
+    "scenarios_with_disconnected_pairs": 1,
+    "max_disconnected_pairs_in_one_scenario": 1410,
+    "min_largest_state_component_stations": 236,
+    "state_component_count_histogram": {
+      "1": 37,
+      "2": 1
+    },
+    "scenarios_with_increased_minimum_rides": 35,
+    "scenarios_with_increased_minimum_transfers": 18,
+    "fully_reachable_scenarios_with_optimal_path_effect": 37,
+    "scenarios_with_no_reachability_or_optimal_path_effect": 0,
+    "routes": {
+      "R": {
+        "pairs_with_worse_lexicographic_cost": 50208,
+        "pairs_with_same_cost_and_fewer_optimal_state_paths": 9879,
+        "ride_edges": {
+          "increased_pairs": 42319,
+          "decreased_pairs": 0,
+          "unchanged_pairs": 1064389,
+          "mean_increase_among_increased": 2.8016,
+          "max_increase": 30
+        },
+        "transfers": {
+          "increased_pairs": 21053,
+          "decreased_pairs": 20466,
+          "unchanged_pairs": 1065189,
+          "mean_increase_among_increased": 1.2784,
+          "max_increase": 4
+        }
+      },
+      "T": {
+        "pairs_with_worse_lexicographic_cost": 29122,
+        "pairs_with_same_cost_and_fewer_optimal_state_paths": 5242,
+        "ride_edges": {
+          "increased_pairs": 20939,
+          "decreased_pairs": 7138,
+          "unchanged_pairs": 1078631,
+          "mean_increase_among_increased": 6.3207,
+          "max_increase": 31
+        },
+        "transfers": {
+          "increased_pairs": 12260,
+          "decreased_pairs": 0,
+          "unchanged_pairs": 1094448,
+          "mean_increase_among_increased": 1.0,
+          "max_increase": 1
+        }
+      }
+    }
+  },
+  "sensitivity_cases": {
+    "highest_fragmentation": {
+      "station_pairs": 28920,
+      "reachable_pairs": 24624,
+      "disconnected_pairs": 4296,
+      "disconnected_fraction": 0.148548,
+      "graph_components": 3,
+      "largest_component_stations": 222,
+      "pairs_excluded_with_removed_endpoint": 241,
+      "routes": {
+        "R": {
+          "pairs_with_worse_lexicographic_cost": 11,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 0,
+          "ride_edges": {
+            "increased_pairs": 11,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 24613,
+            "mean_increase_among_increased": 1.7273,
+            "max_increase": 5
+          },
+          "transfers": {
+            "increased_pairs": 11,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 24613,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          }
+        },
+        "T": {
+          "pairs_with_worse_lexicographic_cost": 250,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 0,
+          "ride_edges": {
+            "increased_pairs": 21,
+            "decreased_pairs": 229,
+            "unchanged_pairs": 24374,
+            "mean_increase_among_increased": 4.619,
+            "max_increase": 15
+          },
+          "transfers": {
+            "increased_pairs": 234,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 24390,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          }
+        }
+      }
+    },
+    "lowest_positive_fragmentation": {
+      "station_pairs": 28920,
+      "reachable_pairs": 28680,
+      "disconnected_pairs": 240,
+      "disconnected_fraction": 0.008299,
+      "graph_components": 2,
+      "largest_component_stations": 240,
+      "pairs_excluded_with_removed_endpoint": 241,
+      "routes": {
+        "R": {
+          "pairs_with_worse_lexicographic_cost": 0,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 0,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28680,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "transfers": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28680,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          }
+        },
+        "T": {
+          "pairs_with_worse_lexicographic_cost": 0,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 0,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28680,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "transfers": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28680,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          }
+        }
+      }
+    },
+    "single_line_leaf_control": {
+      "station_pairs": 28920,
+      "reachable_pairs": 28920,
+      "disconnected_pairs": 0,
+      "disconnected_fraction": 0.0,
+      "graph_components": 1,
+      "largest_component_stations": 241,
+      "pairs_excluded_with_removed_endpoint": 241,
+      "routes": {
+        "R": {
+          "pairs_with_worse_lexicographic_cost": 0,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 0,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28920,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "transfers": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28920,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          }
+        },
+        "T": {
+          "pairs_with_worse_lexicographic_cost": 0,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 0,
+          "ride_edges": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28920,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          },
+          "transfers": {
+            "increased_pairs": 0,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 28920,
+            "mean_increase_among_increased": null,
+            "max_increase": 0
+          }
+        }
+      }
+    },
+    "interchange_with_most_minimum_transfer_increases": {
+      "station_pairs": 29161,
+      "reachable_pairs": 29161,
+      "disconnected_pairs": 0,
+      "disconnected_fraction": 0.0,
+      "graph_components": 1,
+      "largest_component_stations": 242,
+      "transfer_edges_removed": 1,
+      "routes": {
+        "R": {
+          "pairs_with_worse_lexicographic_cost": 3279,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 54,
+          "ride_edges": {
+            "increased_pairs": 3129,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 26032,
+            "mean_increase_among_increased": 8.381,
+            "max_increase": 30
+          },
+          "transfers": {
+            "increased_pairs": 2030,
+            "decreased_pairs": 613,
+            "unchanged_pairs": 26518,
+            "mean_increase_among_increased": 1.8887,
+            "max_increase": 3
+          }
+        },
+        "T": {
+          "pairs_with_worse_lexicographic_cost": 3824,
+          "pairs_with_same_cost_and_fewer_optimal_state_paths": 134,
+          "ride_edges": {
+            "increased_pairs": 2945,
+            "decreased_pairs": 851,
+            "unchanged_pairs": 25365,
+            "mean_increase_among_increased": 9.6309,
+            "max_increase": 31
+          },
+          "transfers": {
+            "increased_pairs": 2184,
+            "decreased_pairs": 0,
+            "unchanged_pairs": 26977,
+            "mean_increase_among_increased": 1.0,
+            "max_increase": 1
+          }
+        }
+      },
+      "pairs_excluded_with_removed_endpoint": 0
+    }
+  },
+  "validation": {
+    "A_B1_equal_component_partitions_after_station_removal": 242,
+    "fragmenting_stations_match_networkx_and_v02_count": true,
+    "A_hops_equal_B1_minimum_rides_in_baseline_and_station_path_cases": true,
+    "reconstructed_paths_match_edge_counts_and_component_reachability": true,
+    "no_gained_reachability_or_improved_lexicographic_optima_in_path_cases": true
+  }
+}

@@ -6,6 +6,8 @@ Es un experimento mínimo y reproducible, no una herramienta de planificación: 
 viaje, simulación ni aprendizaje automático. Conectividad topológica **no** es accesibilidad efectiva,
 funcionamiento operativo, demanda ni resiliencia observada.
 
+Demo estática: <https://soroushkarahrodi79-oss.github.io/madrid-transit-graph/> (teselas OSM; ver [NOTICE.md](NOTICE.md)).
+
 | Resultado del snapshot publicado | |
 |---|---|
 | Estaciones agregadas (nodos) | 242 |

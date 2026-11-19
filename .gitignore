@@ -8,3 +8,6 @@ __pycache__/
 *.key
 # Local artefact: mixes OSM-derived ids (ODbL) with CRTM identifiers (CRTM licence). Not distributed.
 data/crtm_audit.json
+
+# Research outputs mixing OSM topology with CRTM-derived evidence: local only (see NOTICE.md)
+research/transfer_aware_v02/local/

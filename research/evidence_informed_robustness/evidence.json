@@ -1,0 +1,253 @@
+{
+  "phase1_issue_comment": "https://github.com/soroushkarahrodi79-oss/madrid-transit-graph/issues/3#issuecomment-7023883778",
+  "source_consultation_date": "2026-11-19",
+  "normal_service_scope": "Regular service advertised near the frozen OSM snapshot. No actual operation or passage status at the snapshot instant is asserted.",
+  "snapshot": {
+    "release": "v0.1.0",
+    "release_commit": "637f392109138790aeea24c0734635d7bd1d2ce4",
+    "osm_state_utc": "2026-11-19T18:17:06Z",
+    "manifest_sha256": "975bb4b4e9861eb4971dd0584ee46bfd1cc2f7a5e06ef057f540b76a141a1dde",
+    "legacy_results_git_blob_sha256": "46205617473e7c26303d278b1c364709ccbfddeff445ae89c74464278121c45c"
+  },
+  "confirmed_walks": [
+    {
+      "endpoints": [
+        {
+          "station": "Noviciado",
+          "lines": [
+            "L2"
+          ]
+        },
+        {
+          "station": "Plaza de España",
+          "lines": [
+            "L3",
+            "L10"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoints": [
+        {
+          "station": "Embajadores",
+          "lines": [
+            "L3"
+          ]
+        },
+        {
+          "station": "Acacias",
+          "lines": [
+            "L5"
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded_walk": {
+    "stations": [
+      "Callao",
+      "Santo Domingo"
+    ],
+    "reason": "The CRTM passenger schematic and line tables contradict an advertised Metro interchange despite administrative grouping."
+  },
+  "sensitivity_walks": [
+    {
+      "endpoints": [
+        {
+          "station": "Sol",
+          "lines": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "station": "Gran Vía",
+          "lines": [
+            "L1",
+            "L5"
+          ]
+        }
+      ]
+    }
+  ],
+  "sensitivity_assumption": "One bidirectional passage usable from all listed Metro service states, including L1 to L1. Actual fare and gate access is unresolved, and no walk time is assumed.",
+  "mandatory_train_changes": [
+    {
+      "station": "Estadio Metropolitano",
+      "line": "L7",
+      "sections": {
+        "L7A": "Pitis",
+        "L7B": "Hospital de Henares"
+      },
+      "evidence": "October schematic, winter intervals and line 7 sheets"
+    },
+    {
+      "station": "Puerta de Arganda",
+      "line": "L9",
+      "sections": {
+        "L9A": "Paco de Lucía (metro)",
+        "L9B": "Arganda del Rey"
+      },
+      "evidence": "October schematic, winter intervals and line 9 sheets"
+    },
+    {
+      "station": "Tres Olivos",
+      "line": "L10",
+      "sections": {
+        "L10A": "Puerta del Sur",
+        "L10B": "Hospital Infanta Sofía"
+      },
+      "evidence": "October schematic, winter intervals and line 10 sheets"
+    }
+  ],
+  "snapshot_name_notes": [
+    "The public snapshot labels Hospital del Henares as Hospital de Henares and Paco de Lucía as Paco de Lucía (metro)."
+  ],
+  "local_phase1_report_sha256": "1ff889f20cb3bac37f11572b6ede6a2d6e43ebbc2a244d8f41f09e2e4e02211f",
+  "sources": [
+    {
+      "local_capture": "private/schematic-oct-2026.pdf",
+      "title": "CRTM, Red de Metro y Metro Ligero, schematic page 1",
+      "url": "https://www.crtm.es/media/hmllv0q3/0a-esqmetro-oct26-copia.pdf",
+      "date_or_validity": "October 2026 edition; no end date stated",
+      "sha256": "afd82dbccb65a61b3fa304324a915db8701f51c94e755b69c6775c7e9223e8d7",
+      "supports": "Short and long interchange symbols; documented walks; three change-of-train symbols"
+    },
+    {
+      "local_capture": "private/winter-26-27.pdf",
+      "title": "Metro de Madrid, Average time between trains, edition 26-27.A",
+      "url": "https://www.crtm.es/media/rmndt4im/00_intervalos-invierno_26-27a.pdf",
+      "date_or_validity": "Winter 2026–27; exact start and end days unstated",
+      "sha256": "bcd75000c0ac193d496a2e79b4e0561a2230c640f9964b57389673d3bdd2e1dd",
+      "supports": "Separate regular passenger sections on L7, L9 and L10"
+    },
+    {
+      "local_capture": "private/time-7-1.pdf",
+      "title": "Metro de Madrid, Horario de trenes L7, direction 1",
+      "url": "https://www.crtm.es/datos_lineas/horarios/4007H1.pdf",
+      "date_or_validity": "26-27.A; October 2026 file metadata; by day and time band",
+      "sha256": "1b3fdc4cf7e77f16e4becf01c836f27412aa174b4763a52f0c6f2b2cd32193ff",
+      "supports": "Sectional service at Estadio Metropolitano"
+    },
+    {
+      "local_capture": "private/time-7-2.pdf",
+      "title": "Metro de Madrid, Horario de trenes L7, direction 2",
+      "url": "https://www.crtm.es/datos_lineas/horarios/4007H2.pdf",
+      "date_or_validity": "26-27.A; October 2026 file metadata; by day and time band",
+      "sha256": "f6ae18dbc019abb15c4202ff72cfed6ba19c11bbda98c489ab73a5ad7825b526",
+      "supports": "Sectional service at Estadio Metropolitano"
+    },
+    {
+      "local_capture": "private/time-9-1.pdf",
+      "title": "Metro de Madrid, Horario de trenes L9, direction 1",
+      "url": "https://www.crtm.es/datos_lineas/horarios/4009H1.pdf",
+      "date_or_validity": "26.A; June 2026 file metadata; by day and time band",
+      "sha256": "5bd85f3238d5d4bd16adb882be362732e739c22fa4fc91c381650faa00951221",
+      "supports": "Sectional service at Puerta de Arganda"
+    },
+    {
+      "local_capture": "private/time-9-2.pdf",
+      "title": "Metro de Madrid, Horario de trenes L9, direction 2",
+      "url": "https://www.crtm.es/datos_lineas/horarios/4009H2.pdf",
+      "date_or_validity": "26.A; June 2026 file metadata; by day and time band",
+      "sha256": "19273cd487b27189887ca96264fa74732df76637e0f2fc175ea1a394b966686e",
+      "supports": "Sectional service at Puerta de Arganda"
+    },
+    {
+      "local_capture": "private/time-10-1.pdf",
+      "title": "Metro de Madrid, Horario de trenes L10, direction 1",
+      "url": "https://www.crtm.es/datos_lineas/horarios/4010H1.pdf",
+      "date_or_validity": "26.A; June 2026 file metadata; by day and time band",
+      "sha256": "9d659196d6c89978b7293c549516e8e88136075dd84c9869712f1751ede4502e",
+      "supports": "Sectional service at Tres Olivos; dated applicability of the late-evening works marker unresolved"
+    },
+    {
+      "local_capture": "private/time-10-2.pdf",
+      "title": "Metro de Madrid, Horario de trenes L10, direction 2",
+      "url": "https://www.crtm.es/datos_lineas/horarios/4010H2.pdf",
+      "date_or_validity": "26.A; June 2026 file metadata; by day and time band",
+      "sha256": "4b143ab84985ac6f074a0c28e2e3878eb36be818c7412668d8c8a589206044da",
+      "supports": "Sectional service at Tres Olivos; dated applicability of the late-evening works marker unresolved"
+    },
+    {
+      "local_capture": "private/sol-granvia-opening.html",
+      "title": "Comunidad de Madrid, inauguration of Gran Vía",
+      "url": "https://www.comunidad.madrid/agenda-gobierno/2021/07/15/diaz-ayuso-inaugura-estacion-metro-gran-via",
+      "date_or_validity": "15 July 2021 agenda",
+      "sha256": "bd5b5e9baddf66ea057a26a7685790a1afffc4e50741aaf1d2ef0295e505eaa4",
+      "supports": "Named Sol passenger connection"
+    },
+    {
+      "local_capture": "private/sol-granvia-corridor.html",
+      "title": "Comunidad de Madrid, reopening and gallery documentation",
+      "url": "https://www.comunidad.madrid/noticias/2020/12/16/reabriremos-nueva-estacion-metro-gran-via-proximo-verano",
+      "date_or_validity": "16 December 2020 design/works notice",
+      "sha256": "8d1ec5f71c3018abc9babd89f1be5656d416eac08a71da82dfdd9044b889bf33",
+      "supports": "Sol Cercanías gallery interface"
+    },
+    {
+      "local_capture": "private/sol-granvia-closure.html",
+      "title": "Comunidad de Madrid, event service and closure notice",
+      "url": "https://www.comunidad.madrid/noticias/2026/05/25/comunidad-madrid-reforzara-125-servicio-metro-garantizar-movilidad-peregrinos-visita-papa-leon-xiv",
+      "date_or_validity": "25 May 2026 notice; exceptional event",
+      "sha256": "2f9b03dc9c24704daada7917be3319e1905e3a472f57b9d8ef1a443d1cf33af9",
+      "supports": "Documented controlled closure of the Sol passage"
+    },
+    {
+      "local_capture": "private/line-2.html",
+      "title": "CRTM, Metro línea 2 passenger table",
+      "url": "https://www.crtm.es/tu-transporte-publico/metro/lineas/4__2___/",
+      "date_or_validity": "Live page; no service validity interval stated",
+      "sha256": "b9bd72e7ce8e4f88835defac83e6bbb632bbefb229eab182472473476dcd1a57",
+      "supports": "Noviciado correspondences and no advertised interchange at Santo Domingo"
+    },
+    {
+      "local_capture": "private/line-3.html",
+      "title": "CRTM, Metro línea 3 passenger table",
+      "url": "https://www.crtm.es/tu-transporte-publico/metro/lineas/4__3___/",
+      "date_or_validity": "Live page; no service validity interval stated",
+      "sha256": "6eb4b8dd130cf2746fd4159796bd57715f4a8631fdf45b0af86ff4eea3b784d0",
+      "supports": "Embajadores and Plaza de España correspondences; Callao offers L5"
+    },
+    {
+      "local_capture": "private/line-5.html",
+      "title": "CRTM, Metro línea 5 passenger table",
+      "url": "https://www.crtm.es/tu-transporte-publico/metro/lineas/4__5___/",
+      "date_or_validity": "Live page; no service validity interval stated",
+      "sha256": "2dcc739c063aab925973ebfe552b0c8cce4b1df8fdc248f9c3000e1c9ecd1692",
+      "supports": "Acacias connection and Callao correspondence to L3"
+    },
+    {
+      "local_capture": "private/records0.json",
+      "title": "CRTM ArcGIS, M4_Estaciones",
+      "url": "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M4_Red/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json",
+      "date_or_validity": "Data date 29 May 2026; layer edit 4 June 2026",
+      "sha256": "cdf7f9d17f575c8228b0e334a79e510c84e8c7eb5d47bbef6740447156a54e62",
+      "supports": "Phase 1 administrative cross-check only"
+    },
+    {
+      "local_capture": "private/records5.json",
+      "title": "CRTM ArcGIS, M4_ParadasPorItinerario",
+      "url": "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M4_Red/FeatureServer/5/query?where=1%3D1&outFields=*&returnGeometry=false&f=json",
+      "date_or_validity": "Last data edit 4 June 2026, 13:28:52 UTC; no FECHAACTUAL",
+      "sha256": "21169915082bfbeffb50e98d0bd9bbe22ee8884f051dfef77265d53235c2b336",
+      "supports": "Phase 1 published-aggregate topology and itinerary corroboration only"
+    }
+  ],
+  "attribution": {
+    "osm": {
+      "credit": "© OpenStreetMap contributors",
+      "licence": "ODbL 1.0",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    "crtm": {
+      "credit": "© CRTM · Powered by CRTM",
+      "licence": "CRTM static open data reuse terms",
+      "url": "https://www.crtm.es/licencia-de-uso/",
+      "use": "Processed findings and source metadata. No agency endorsement."
+    }
+  },
+  "reproducibility": "Public snapshot and explicit passenger-document rules suffice to rerun the structural comparison offline. Raw ArcGIS captures, the mixed station-level evidence matrix and route records stay local. Their exact independent regeneration from live endpoints is not established."
+}

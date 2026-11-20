@@ -1,0 +1,958 @@
+{
+  "unit": "scenario-pair observations with strictly worse lexicographic cost (not travellers)",
+  "scenarios": 38,
+  "B1": {
+    "walks_open": {
+      "R_worse_cost": 50208,
+      "T_worse_cost": 29122,
+      "by_scenario": {
+        "alonso-martinez": {
+          "R": 2388,
+          "T": 1638
+        },
+        "arguelles": {
+          "R": 470,
+          "T": 303
+        },
+        "avenida-de-america": {
+          "R": 2074,
+          "T": 2829
+        },
+        "bilbao": {
+          "R": 104,
+          "T": 252
+        },
+        "callao": {
+          "R": 16,
+          "T": 481
+        },
+        "canal": {
+          "R": 204,
+          "T": 386
+        },
+        "casa-de-campo": {
+          "R": 1037,
+          "T": 447
+        },
+        "chamartin": {
+          "R": 78,
+          "T": 26
+        },
+        "colombia": {
+          "R": 690,
+          "T": 180
+        },
+        "cuatro-caminos": {
+          "R": 1061,
+          "T": 561
+        },
+        "diego-de-leon": {
+          "R": 688,
+          "T": 733
+        },
+        "el-casar": {
+          "R": 2291,
+          "T": 1620
+        },
+        "goya": {
+          "R": 220,
+          "T": 170
+        },
+        "gran-via": {
+          "R": 121,
+          "T": 631
+        },
+        "gregorio-maranon": {
+          "R": 2593,
+          "T": 1697
+        },
+        "guzman-el-bueno": {
+          "R": 1855,
+          "T": 533
+        },
+        "legazpi": {
+          "R": 2954,
+          "T": 1007
+        },
+        "manuel-becerra": {
+          "R": 1988,
+          "T": 353
+        },
+        "mar-de-cristal": {
+          "R": 968,
+          "T": 107
+        },
+        "moncloa": {
+          "R": 0,
+          "T": 0
+        },
+        "nuevos-ministerios": {
+          "R": 3286,
+          "T": 1409
+        },
+        "nunez-de-balboa": {
+          "R": 636,
+          "T": 622
+        },
+        "opera": {
+          "R": 1473,
+          "T": 235
+        },
+        "oporto": {
+          "R": 887,
+          "T": 345
+        },
+        "pacifico": {
+          "R": 2642,
+          "T": 904
+        },
+        "pinar-de-chamartin": {
+          "R": 102,
+          "T": 159
+        },
+        "plaza-de-castilla": {
+          "R": 1511,
+          "T": 2047
+        },
+        "plaza-de-espana": {
+          "R": 171,
+          "T": 534
+        },
+        "plaza-eliptica": {
+          "R": 0,
+          "T": 0
+        },
+        "principe-de-vergara": {
+          "R": 432,
+          "T": 414
+        },
+        "principe-pio": {
+          "R": 2697,
+          "T": 606
+        },
+        "pueblo-nuevo": {
+          "R": 1914,
+          "T": 697
+        },
+        "puerta-del-sur": {
+          "R": 3279,
+          "T": 3824
+        },
+        "sainz-de-baranda": {
+          "R": 1530,
+          "T": 476
+        },
+        "san-bernardo": {
+          "R": 467,
+          "T": 46
+        },
+        "sol": {
+          "R": 3350,
+          "T": 1729
+        },
+        "tribunal": {
+          "R": 1768,
+          "T": 960
+        },
+        "ventas": {
+          "R": 2263,
+          "T": 161
+        }
+      }
+    },
+    "walks_closed_at_disrupted_station": {
+      "R_worse_cost": 50208,
+      "T_worse_cost": 29122,
+      "by_scenario": {
+        "alonso-martinez": {
+          "R": 2388,
+          "T": 1638
+        },
+        "arguelles": {
+          "R": 470,
+          "T": 303
+        },
+        "avenida-de-america": {
+          "R": 2074,
+          "T": 2829
+        },
+        "bilbao": {
+          "R": 104,
+          "T": 252
+        },
+        "callao": {
+          "R": 16,
+          "T": 481
+        },
+        "canal": {
+          "R": 204,
+          "T": 386
+        },
+        "casa-de-campo": {
+          "R": 1037,
+          "T": 447
+        },
+        "chamartin": {
+          "R": 78,
+          "T": 26
+        },
+        "colombia": {
+          "R": 690,
+          "T": 180
+        },
+        "cuatro-caminos": {
+          "R": 1061,
+          "T": 561
+        },
+        "diego-de-leon": {
+          "R": 688,
+          "T": 733
+        },
+        "el-casar": {
+          "R": 2291,
+          "T": 1620
+        },
+        "goya": {
+          "R": 220,
+          "T": 170
+        },
+        "gran-via": {
+          "R": 121,
+          "T": 631
+        },
+        "gregorio-maranon": {
+          "R": 2593,
+          "T": 1697
+        },
+        "guzman-el-bueno": {
+          "R": 1855,
+          "T": 533
+        },
+        "legazpi": {
+          "R": 2954,
+          "T": 1007
+        },
+        "manuel-becerra": {
+          "R": 1988,
+          "T": 353
+        },
+        "mar-de-cristal": {
+          "R": 968,
+          "T": 107
+        },
+        "moncloa": {
+          "R": 0,
+          "T": 0
+        },
+        "nuevos-ministerios": {
+          "R": 3286,
+          "T": 1409
+        },
+        "nunez-de-balboa": {
+          "R": 636,
+          "T": 622
+        },
+        "opera": {
+          "R": 1473,
+          "T": 235
+        },
+        "oporto": {
+          "R": 887,
+          "T": 345
+        },
+        "pacifico": {
+          "R": 2642,
+          "T": 904
+        },
+        "pinar-de-chamartin": {
+          "R": 102,
+          "T": 159
+        },
+        "plaza-de-castilla": {
+          "R": 1511,
+          "T": 2047
+        },
+        "plaza-de-espana": {
+          "R": 171,
+          "T": 534
+        },
+        "plaza-eliptica": {
+          "R": 0,
+          "T": 0
+        },
+        "principe-de-vergara": {
+          "R": 432,
+          "T": 414
+        },
+        "principe-pio": {
+          "R": 2697,
+          "T": 606
+        },
+        "pueblo-nuevo": {
+          "R": 1914,
+          "T": 697
+        },
+        "puerta-del-sur": {
+          "R": 3279,
+          "T": 3824
+        },
+        "sainz-de-baranda": {
+          "R": 1530,
+          "T": 476
+        },
+        "san-bernardo": {
+          "R": 467,
+          "T": 46
+        },
+        "sol": {
+          "R": 3350,
+          "T": 1729
+        },
+        "tribunal": {
+          "R": 1768,
+          "T": 960
+        },
+        "ventas": {
+          "R": 2263,
+          "T": 161
+        }
+      }
+    }
+  },
+  "E": {
+    "walks_open": {
+      "R_worse_cost": 47810,
+      "T_worse_cost": 28027,
+      "by_scenario": {
+        "alonso-martinez": {
+          "R": 2026,
+          "T": 1574
+        },
+        "arguelles": {
+          "R": 114,
+          "T": 300
+        },
+        "avenida-de-america": {
+          "R": 2057,
+          "T": 2829
+        },
+        "bilbao": {
+          "R": 96,
+          "T": 251
+        },
+        "callao": {
+          "R": 7,
+          "T": 259
+        },
+        "canal": {
+          "R": 363,
+          "T": 473
+        },
+        "casa-de-campo": {
+          "R": 1026,
+          "T": 394
+        },
+        "chamartin": {
+          "R": 78,
+          "T": 26
+        },
+        "colombia": {
+          "R": 688,
+          "T": 180
+        },
+        "cuatro-caminos": {
+          "R": 840,
+          "T": 528
+        },
+        "diego-de-leon": {
+          "R": 682,
+          "T": 733
+        },
+        "el-casar": {
+          "R": 2307,
+          "T": 1475
+        },
+        "goya": {
+          "R": 226,
+          "T": 170
+        },
+        "gran-via": {
+          "R": 116,
+          "T": 630
+        },
+        "gregorio-maranon": {
+          "R": 2598,
+          "T": 1665
+        },
+        "guzman-el-bueno": {
+          "R": 1631,
+          "T": 532
+        },
+        "legazpi": {
+          "R": 2958,
+          "T": 1004
+        },
+        "manuel-becerra": {
+          "R": 1973,
+          "T": 276
+        },
+        "mar-de-cristal": {
+          "R": 964,
+          "T": 107
+        },
+        "moncloa": {
+          "R": 0,
+          "T": 0
+        },
+        "nuevos-ministerios": {
+          "R": 3282,
+          "T": 1317
+        },
+        "nunez-de-balboa": {
+          "R": 621,
+          "T": 622
+        },
+        "opera": {
+          "R": 1106,
+          "T": 167
+        },
+        "oporto": {
+          "R": 724,
+          "T": 342
+        },
+        "pacifico": {
+          "R": 2635,
+          "T": 904
+        },
+        "pinar-de-chamartin": {
+          "R": 102,
+          "T": 159
+        },
+        "plaza-de-castilla": {
+          "R": 1513,
+          "T": 2022
+        },
+        "plaza-de-espana": {
+          "R": 169,
+          "T": 529
+        },
+        "plaza-eliptica": {
+          "R": 0,
+          "T": 0
+        },
+        "principe-de-vergara": {
+          "R": 401,
+          "T": 400
+        },
+        "principe-pio": {
+          "R": 2318,
+          "T": 564
+        },
+        "pueblo-nuevo": {
+          "R": 1920,
+          "T": 697
+        },
+        "puerta-del-sur": {
+          "R": 3247,
+          "T": 3934
+        },
+        "sainz-de-baranda": {
+          "R": 1499,
+          "T": 476
+        },
+        "san-bernardo": {
+          "R": 26,
+          "T": 42
+        },
+        "sol": {
+          "R": 3178,
+          "T": 1377
+        },
+        "tribunal": {
+          "R": 2058,
+          "T": 943
+        },
+        "ventas": {
+          "R": 2261,
+          "T": 126
+        }
+      }
+    },
+    "walks_closed_at_disrupted_station": {
+      "R_worse_cost": 48761,
+      "T_worse_cost": 28797,
+      "by_scenario": {
+        "alonso-martinez": {
+          "R": 2026,
+          "T": 1574
+        },
+        "arguelles": {
+          "R": 114,
+          "T": 300
+        },
+        "avenida-de-america": {
+          "R": 2057,
+          "T": 2829
+        },
+        "bilbao": {
+          "R": 96,
+          "T": 251
+        },
+        "callao": {
+          "R": 7,
+          "T": 259
+        },
+        "canal": {
+          "R": 363,
+          "T": 473
+        },
+        "casa-de-campo": {
+          "R": 1026,
+          "T": 394
+        },
+        "chamartin": {
+          "R": 78,
+          "T": 26
+        },
+        "colombia": {
+          "R": 688,
+          "T": 180
+        },
+        "cuatro-caminos": {
+          "R": 840,
+          "T": 528
+        },
+        "diego-de-leon": {
+          "R": 682,
+          "T": 733
+        },
+        "el-casar": {
+          "R": 2307,
+          "T": 1475
+        },
+        "goya": {
+          "R": 226,
+          "T": 170
+        },
+        "gran-via": {
+          "R": 116,
+          "T": 630
+        },
+        "gregorio-maranon": {
+          "R": 2598,
+          "T": 1665
+        },
+        "guzman-el-bueno": {
+          "R": 1631,
+          "T": 532
+        },
+        "legazpi": {
+          "R": 2958,
+          "T": 1004
+        },
+        "manuel-becerra": {
+          "R": 1973,
+          "T": 276
+        },
+        "mar-de-cristal": {
+          "R": 964,
+          "T": 107
+        },
+        "moncloa": {
+          "R": 0,
+          "T": 0
+        },
+        "nuevos-ministerios": {
+          "R": 3282,
+          "T": 1317
+        },
+        "nunez-de-balboa": {
+          "R": 621,
+          "T": 622
+        },
+        "opera": {
+          "R": 1106,
+          "T": 167
+        },
+        "oporto": {
+          "R": 724,
+          "T": 342
+        },
+        "pacifico": {
+          "R": 2635,
+          "T": 904
+        },
+        "pinar-de-chamartin": {
+          "R": 102,
+          "T": 159
+        },
+        "plaza-de-castilla": {
+          "R": 1513,
+          "T": 2022
+        },
+        "plaza-de-espana": {
+          "R": 1120,
+          "T": 1299
+        },
+        "plaza-eliptica": {
+          "R": 0,
+          "T": 0
+        },
+        "principe-de-vergara": {
+          "R": 401,
+          "T": 400
+        },
+        "principe-pio": {
+          "R": 2318,
+          "T": 564
+        },
+        "pueblo-nuevo": {
+          "R": 1920,
+          "T": 697
+        },
+        "puerta-del-sur": {
+          "R": 3247,
+          "T": 3934
+        },
+        "sainz-de-baranda": {
+          "R": 1499,
+          "T": 476
+        },
+        "san-bernardo": {
+          "R": 26,
+          "T": 42
+        },
+        "sol": {
+          "R": 3178,
+          "T": 1377
+        },
+        "tribunal": {
+          "R": 2058,
+          "T": 943
+        },
+        "ventas": {
+          "R": 2261,
+          "T": 126
+        }
+      }
+    }
+  },
+  "E_with_Sol_Gran_Via": {
+    "walks_open": {
+      "R_worse_cost": 42819,
+      "T_worse_cost": 26001,
+      "by_scenario": {
+        "alonso-martinez": {
+          "R": 1857,
+          "T": 1552
+        },
+        "arguelles": {
+          "R": 112,
+          "T": 299
+        },
+        "avenida-de-america": {
+          "R": 2012,
+          "T": 2811
+        },
+        "bilbao": {
+          "R": 99,
+          "T": 269
+        },
+        "callao": {
+          "R": 4,
+          "T": 8
+        },
+        "canal": {
+          "R": 204,
+          "T": 472
+        },
+        "casa-de-campo": {
+          "R": 946,
+          "T": 394
+        },
+        "chamartin": {
+          "R": 78,
+          "T": 26
+        },
+        "colombia": {
+          "R": 688,
+          "T": 180
+        },
+        "cuatro-caminos": {
+          "R": 1032,
+          "T": 506
+        },
+        "diego-de-leon": {
+          "R": 681,
+          "T": 730
+        },
+        "el-casar": {
+          "R": 2435,
+          "T": 1515
+        },
+        "goya": {
+          "R": 193,
+          "T": 167
+        },
+        "gran-via": {
+          "R": 0,
+          "T": 0
+        },
+        "gregorio-maranon": {
+          "R": 2661,
+          "T": 1628
+        },
+        "guzman-el-bueno": {
+          "R": 1839,
+          "T": 532
+        },
+        "legazpi": {
+          "R": 2967,
+          "T": 1003
+        },
+        "manuel-becerra": {
+          "R": 1908,
+          "T": 276
+        },
+        "mar-de-cristal": {
+          "R": 963,
+          "T": 107
+        },
+        "moncloa": {
+          "R": 0,
+          "T": 0
+        },
+        "nuevos-ministerios": {
+          "R": 3257,
+          "T": 1315
+        },
+        "nunez-de-balboa": {
+          "R": 567,
+          "T": 634
+        },
+        "opera": {
+          "R": 1260,
+          "T": 154
+        },
+        "oporto": {
+          "R": 688,
+          "T": 334
+        },
+        "pacifico": {
+          "R": 2524,
+          "T": 862
+        },
+        "pinar-de-chamartin": {
+          "R": 102,
+          "T": 160
+        },
+        "plaza-de-castilla": {
+          "R": 1516,
+          "T": 2015
+        },
+        "plaza-de-espana": {
+          "R": 169,
+          "T": 478
+        },
+        "plaza-eliptica": {
+          "R": 0,
+          "T": 0
+        },
+        "principe-de-vergara": {
+          "R": 373,
+          "T": 390
+        },
+        "principe-pio": {
+          "R": 2176,
+          "T": 563
+        },
+        "pueblo-nuevo": {
+          "R": 1912,
+          "T": 749
+        },
+        "puerta-del-sur": {
+          "R": 3141,
+          "T": 3938
+        },
+        "sainz-de-baranda": {
+          "R": 1462,
+          "T": 476
+        },
+        "san-bernardo": {
+          "R": 26,
+          "T": 42
+        },
+        "sol": {
+          "R": 239,
+          "T": 308
+        },
+        "tribunal": {
+          "R": 454,
+          "T": 983
+        },
+        "ventas": {
+          "R": 2274,
+          "T": 125
+        }
+      }
+    },
+    "walks_closed_at_disrupted_station": {
+      "R_worse_cost": 52171,
+      "T_worse_cost": 33771,
+      "by_scenario": {
+        "alonso-martinez": {
+          "R": 1857,
+          "T": 1552
+        },
+        "arguelles": {
+          "R": 112,
+          "T": 299
+        },
+        "avenida-de-america": {
+          "R": 2012,
+          "T": 2811
+        },
+        "bilbao": {
+          "R": 99,
+          "T": 269
+        },
+        "callao": {
+          "R": 4,
+          "T": 8
+        },
+        "canal": {
+          "R": 204,
+          "T": 472
+        },
+        "casa-de-campo": {
+          "R": 946,
+          "T": 394
+        },
+        "chamartin": {
+          "R": 78,
+          "T": 26
+        },
+        "colombia": {
+          "R": 688,
+          "T": 180
+        },
+        "cuatro-caminos": {
+          "R": 1032,
+          "T": 506
+        },
+        "diego-de-leon": {
+          "R": 681,
+          "T": 730
+        },
+        "el-casar": {
+          "R": 2435,
+          "T": 1515
+        },
+        "goya": {
+          "R": 193,
+          "T": 167
+        },
+        "gran-via": {
+          "R": 3917,
+          "T": 3239
+        },
+        "gregorio-maranon": {
+          "R": 2661,
+          "T": 1628
+        },
+        "guzman-el-bueno": {
+          "R": 1839,
+          "T": 532
+        },
+        "legazpi": {
+          "R": 2967,
+          "T": 1003
+        },
+        "manuel-becerra": {
+          "R": 1908,
+          "T": 276
+        },
+        "mar-de-cristal": {
+          "R": 963,
+          "T": 107
+        },
+        "moncloa": {
+          "R": 0,
+          "T": 0
+        },
+        "nuevos-ministerios": {
+          "R": 3257,
+          "T": 1315
+        },
+        "nunez-de-balboa": {
+          "R": 567,
+          "T": 634
+        },
+        "opera": {
+          "R": 1260,
+          "T": 154
+        },
+        "oporto": {
+          "R": 688,
+          "T": 334
+        },
+        "pacifico": {
+          "R": 2524,
+          "T": 862
+        },
+        "pinar-de-chamartin": {
+          "R": 102,
+          "T": 160
+        },
+        "plaza-de-castilla": {
+          "R": 1516,
+          "T": 2015
+        },
+        "plaza-de-espana": {
+          "R": 906,
+          "T": 1238
+        },
+        "plaza-eliptica": {
+          "R": 0,
+          "T": 0
+        },
+        "principe-de-vergara": {
+          "R": 373,
+          "T": 390
+        },
+        "principe-pio": {
+          "R": 2176,
+          "T": 563
+        },
+        "pueblo-nuevo": {
+          "R": 1912,
+          "T": 749
+        },
+        "puerta-del-sur": {
+          "R": 3141,
+          "T": 3938
+        },
+        "sainz-de-baranda": {
+          "R": 1462,
+          "T": 476
+        },
+        "san-bernardo": {
+          "R": 26,
+          "T": 42
+        },
+        "sol": {
+          "R": 4937,
+          "T": 4079
+        },
+        "tribunal": {
+          "R": 454,
+          "T": 983
+        },
+        "ventas": {
+          "R": 2274,
+          "T": 125
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ import unittest
 
 import networkx as nx
 
+from research.evidence_informed_robustness import corridor_closure as closure
 from research.evidence_informed_robustness import experiment as exp
 from research.network_robustness_v04 import experiment as v04
 from research.transfer_aware_v02 import experiment as v02
@@ -144,6 +145,20 @@ class EvidenceTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(RuntimeError, "optimum improved"):
             exp.compare_paths(b1, after, disrupted_scores, before["R"], "R", {})
+
+
+class ClosureTests(unittest.TestCase):
+    def test_closing_the_disrupted_stations_walk_removes_the_bypass(self):
+        stations, b1 = control(("a", "x", "L1"), ("b", "x", "L2"), ("c", "y", "L3"))
+        e = exp.build_evidence_model(b1, stations, {}, {}, [walk("x", ["L1"], "y", ["L3"])])
+        intact = closure.station_costs(e, "R")
+        self.assertIn(("a", "c"), intact)
+        self.assertNotIn(("a", "c"), closure.station_costs(e, "R", "x", close_walks=True))
+        self.assertIn(("a", "c"), closure.station_costs(e, "R", "x", close_walks=False))
+        self.assertNotIn(("a", "b"), closure.station_costs(e, "R", "x", close_walks=False))
+        main = exp.optimal_pairs(exp.routing_graph(e), "R", exp.model_states(e, stations))
+        self.assertEqual({pair: divmod(cost, closure.BASE) for pair, cost in intact.items()},
+                         {pair: divmod(cost, v02.BIG) for pair, (cost, _) in main.items()})
 
 
 class SnapshotTests(unittest.TestCase):

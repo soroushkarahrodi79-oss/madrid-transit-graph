@@ -59,13 +59,17 @@ python -m venv .venv
 
 El mapa carga Leaflet (unpkg, con SRI) y teselas de OSM por Internet; el navegador no lee GeoJSON desde `file://`.
 
-**Regenerar no es reproducir el snapshot.** `build_graph.py` descarga el estado *actual* de OSM (posterior al del
-snapshot) y normalmente dará cifras distintas. Los archivos publicados en `data/` **son** el snapshot: no se
-conservaron las respuestas crudas de Overpass, así que no puede rederivarse exactamente. Su identidad queda en
-`data/manifest.json` (SHA-256, fecha OSM, versiones); `validate.py` avisa si los datos difieren.
+**Regenerar no es reproducir el snapshot.** Los archivos publicados en `data/` **son** el snapshot v0.1.0 (estado OSM
+2026-11-19T18:17:06Z) y están **congelados**: no se conservaron las respuestas crudas de Overpass, así que no puede
+rederivarse exactamente. Su identidad queda en `data/manifest.json` (SHA-256, fecha OSM, versiones); `validate.py` avisa si
+los datos difieren y la CI rechaza cualquier PR que los modifique.
+
+`build_graph.py` descarga el estado *actual* de OSM y **ya no escribe en `data/`**: exige `--out` con una carpeta nueva y
+guarda ahí la instantánea **junto con las respuestas crudas de Overpass** (extractos ODbL, con su atribución). El
+procedimiento y la lectura de licencias están en [SNAPSHOT_PROTOCOL.md](SNAPSHOT_PROTOCOL.md).
 
 ```powershell
-.venv\Scripts\python build_graph.py   # regenera data/ (Overpass suele dar 502/504: reintenta solo)
+.venv\Scripts\python build_graph.py --out data\snapshots\AAAA-MM-DD   # Overpass suele dar 502/504: reintenta solo
 .venv\Scripts\python audit_crtm.py    # crea data/crtm_audit.json en local (no se distribuye)
 .venv\Scripts\python validate.py
 ```
@@ -120,8 +124,9 @@ la estación. **Modelo estructural/programado. No es tiempo real ni demanda.** D
 
 ## Validación
 
-`validate.py` (librería estándar, independiente de City2Graph; 28 comprobaciones sobre el snapshot publicado, más 4
-de auditoría si existe `crtm_audit.json` en local): ids únicos, referencias de aristas, sin bucles ni duplicados, coordenadas,
+`validate.py` (librería estándar, independiente de City2Graph; las comprobaciones sobre el snapshot publicado y los
+artefactos v0.5 se ejecutan siempre; las de auditoría y de archivos derivados del CRTM, solo si existen en local y, si no, se
+omiten con un aviso): ids únicos, referencias de aristas, sin bucles ni duplicados, coordenadas,
 grado y componentes recalculados, indicadores = datos exportados, conteos por línea, metadatos de procedencia, ausencia
 de atributos de horario o tiempo, hashes del snapshot, y una **regresión del defecto L10** (la auditoría comparó una
 vez listas de líneas ordenadas como texto, `L10 < L4`; ahora compara conjuntos). `build_graph.py` además audita cada
@@ -131,11 +136,23 @@ validación científica de toda la red.
 
 ## Limitaciones
 
-- Una relación OSM **no prueba un servicio operativo** en una fecha dada; no hay tiempos ni vigencia.
-- Aristas rectas; sin accesibilidad, tiempos ni anchura de transbordos. Orden de paradas y adyacencia no contrastados con CRTM.
+- Una relación OSM **no prueba un servicio operativo** en una fecha dada. El grafo v0.1.0 no tiene tiempos ni vigencia.
+- Aristas rectas; sin accesibilidad ni anchura de transbordos. Orden de paradas y adyacencia no contrastados con CRTM.
 - 2 transbordos oficiales ausentes; Noviciado sin verificar; la fusión es una inferencia (validada 38/38).
 - Solo Metro de Madrid (sin Metro Ligero, Cercanías ni autobús).
-- Snapshot no re-derivable exactamente (ver arriba); probado solo en Windows con Python 3.14.5.
+- **Estudios v0.2–v0.5: NEEDS_VALIDATION.** Son modelos estructurales/programados: no son tiempo real, ni demanda, ni
+  resiliencia observada, y no tienen validación externa. En v0.5, el veredicto preregistrado depende de que la medida
+  ignora los pares desconectados (ver el informe); no se concluye que la simulación aporte valor sobre la intermediación.
+- **Tiempos del v0.5 = planificados**, no medidos (longitud del tramo ÷ una velocidad por línea). El GTFS del CRTM está
+  caducado (calendario hasta 2026-05-27), no incluye la Línea 3 (imputada) ni transbordos; esperas y transbordos son
+  supuestos. Esos datos derivados no se distribuyen (ver [NOTICE.md](NOTICE.md)).
+- Se cierra una **estación**, no un tramo; sin demanda, aforo, caminata entre estaciones distintas ni autobuses de sustitución.
+- Snapshot v0.1.0 no re-derivable exactamente (sin respuestas crudas). Las instantáneas nuevas las conservan, pero todavía
+  no existe una reconstrucción sin conexión desde ese archivo.
+- Probado en local solo en Windows 11 con Python 3.14.5. La CI (Linux y Windows, Python 3.12–3.14) está definida en
+  `.github/workflows/ci.yml`; su resultado se consulta en la pestaña Actions, no se da por supuesto.
+- La página tiene comprobaciones de accesibilidad parciales (contraste, etiquetas, teclado); no se ha pasado Lighthouse ni
+  probado con lector de pantalla.
 
 ## Licencias, atribución y cita
 
@@ -143,6 +160,10 @@ Resumen: código **MIT** ([LICENSE](LICENSE)); `data/` (OSM) **ODbL 1.0**, © co
 [OpenStreetMap](https://www.openstreetmap.org/copyright); datos CRTM bajo su [licencia propia](https://www.crtm.es/licencia-de-uso)
 (no incluidos); City2Graph BSD-3-Clause; teselas sujetas a su [política](https://operations.osmfoundation.org/policies/tiles/).
 Detalle por artefacto en [NOTICE.md](NOTICE.md).
+
+Para citar este repositorio, usa [CITATION.cff](CITATION.cff) (botón «Cite this repository» de GitHub): contiene solo
+metadatos verificados en el propio repositorio (autor del `LICENSE`, versión y fecha de la release v0.1.0); no hay DOI ni
+ORCID.
 
 Si usas City2Graph: Sato et al. (2026), *City2Graph: A Python library for Heterogeneous Graph Neural Networks and
 spatial analysis in urban systems*, Computers, Environment and Urban Systems, 130, 102492.
@@ -157,7 +178,11 @@ validate.py      validación offline
 index.html       mapa Leaflet y explorador de perturbaciones (lee data/)
 gtfs_ingest.py   tiempos planificados y frecuencias desde el GTFS del CRTM (salida local)
 build_explorer.py datos precalculados del explorador (público: topología; local: tiempos)
+snapshot_tools.py archivo de respuestas crudas de Overpass y su verificación (ver SNAPSHOT_PROTOCOL.md)
+tests/           pruebas sin red de snapshot_tools.py y de las protecciones de build_graph.py
 research/        estudios v0.2–v0.5 (informe, preregistro, código y pruebas)
+.github/workflows/ci.yml   CI: Linux y Windows, Python 3.12–3.14; protege el snapshot congelado
+CITATION.cff · SNAPSHOT_PROTOCOL.md
 data/            stations.geojson · connections.geojson · metadata.json (ODbL) · manifest.json · explorer/
 LICENSE · NOTICE.md · requirements.txt
 ```

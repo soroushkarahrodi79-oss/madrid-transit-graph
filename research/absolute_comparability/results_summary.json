@@ -1,0 +1,585 @@
+{
+  "unit": "scenario-pair observations (unordered physical station pairs repeated across 38 scenarios); not travellers",
+  "objectives": {
+    "R": [
+      "ride_edges",
+      "commercial_line_state_changes"
+    ],
+    "T": [
+      "commercial_line_state_changes",
+      "ride_edges"
+    ]
+  },
+  "comparison_orientation": "left vs right; 'right_better' means the right model has the lower cost",
+  "scenarios": 38,
+  "variants": {
+    "walks_open": {
+      "R": {
+        "common_surviving_observations": 1106708,
+        "mean_cost_components_on_common_survivors": {
+          "B1": {
+            "intact": {
+              "ride_edges": 14.0371,
+              "commercial_line_state_changes": 1.9334
+            },
+            "after_disruption": {
+              "ride_edges": 14.1442,
+              "commercial_line_state_changes": 1.9302
+            }
+          },
+          "E": {
+            "intact": {
+              "ride_edges": 13.9617,
+              "commercial_line_state_changes": 1.9345
+            },
+            "after_disruption": {
+              "ride_edges": 14.0623,
+              "commercial_line_state_changes": 1.934
+            }
+          },
+          "E_with_Sol_Gran_Via": {
+            "intact": {
+              "ride_edges": 13.8336,
+              "commercial_line_state_changes": 1.9747
+            },
+            "after_disruption": {
+              "ride_edges": 13.9287,
+              "commercial_line_state_changes": 1.9747
+            }
+          }
+        },
+        "comparisons": {
+          "B1_vs_E": {
+            "intact_pairs": {
+              "equal": 27391,
+              "right_better": 1770
+            },
+            "after_disruption_observations": {
+              "equal": 1036839,
+              "right_better": 69869
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 1036015,
+              "intact_equal|after_right_better": 3457,
+              "intact_right_better|after_equal": 824,
+              "intact_right_better|after_right_better": 66412
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 46597,
+              "left_only": 3611,
+              "neither": 1055287,
+              "right_only": 1213
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 724,
+              "left_only|intact_right_better|after_right_better": 2887,
+              "right_only|intact_right_better|after_equal": 412,
+              "right_only|intact_right_better|after_right_better": 801
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 3457,
+              "narrowed": 1130,
+              "unchanged": 1098228,
+              "vanished": 824,
+              "widened": 3069
+            }
+          },
+          "B1_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 24066,
+              "right_better": 5095
+            },
+            "after_disruption_observations": {
+              "equal": 907327,
+              "right_better": 199381
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 905392,
+              "intact_equal|after_right_better": 8066,
+              "intact_right_better|after_equal": 1935,
+              "intact_right_better|after_right_better": 191315
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 41771,
+              "left_only": 8437,
+              "neither": 1055452,
+              "right_only": 1048
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 1303,
+              "left_only|intact_right_better|after_right_better": 7134,
+              "right_only|intact_right_better|after_equal": 725,
+              "right_only|intact_right_better|after_right_better": 323
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 8066,
+              "narrowed": 1120,
+              "unchanged": 1088007,
+              "vanished": 1935,
+              "widened": 7580
+            }
+          },
+          "E_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 25247,
+              "right_better": 3914
+            },
+            "after_disruption_observations": {
+              "equal": 954390,
+              "right_better": 152318
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 952494,
+              "intact_equal|after_right_better": 5818,
+              "intact_right_better|after_equal": 1896,
+              "intact_right_better|after_right_better": 146500
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 41662,
+              "left_only": 6148,
+              "neither": 1057741,
+              "right_only": 1157
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 911,
+              "left_only|intact_right_better|after_right_better": 5237,
+              "right_only|intact_right_better|after_equal": 852,
+              "right_only|intact_right_better|after_right_better": 305
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 5818,
+              "narrowed": 874,
+              "unchanged": 1092595,
+              "vanished": 1896,
+              "widened": 5525
+            }
+          }
+        }
+      },
+      "T": {
+        "common_surviving_observations": 1106708,
+        "mean_cost_components_on_common_survivors": {
+          "B1": {
+            "intact": {
+              "commercial_line_state_changes": 1.1313,
+              "ride_edges": 16.4142
+            },
+            "after_disruption": {
+              "commercial_line_state_changes": 1.1424,
+              "ride_edges": 16.4921
+            }
+          },
+          "E": {
+            "intact": {
+              "commercial_line_state_changes": 1.123,
+              "ride_edges": 16.3297
+            },
+            "after_disruption": {
+              "commercial_line_state_changes": 1.1331,
+              "ride_edges": 16.4096
+            }
+          },
+          "E_with_Sol_Gran_Via": {
+            "intact": {
+              "commercial_line_state_changes": 1.123,
+              "ride_edges": 16.2168
+            },
+            "after_disruption": {
+              "commercial_line_state_changes": 1.1323,
+              "ride_edges": 16.2925
+            }
+          }
+        },
+        "comparisons": {
+          "B1_vs_E": {
+            "intact_pairs": {
+              "equal": 28112,
+              "right_better": 1049
+            },
+            "after_disruption_observations": {
+              "equal": 1065247,
+              "right_better": 41461
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 1064875,
+              "intact_equal|after_right_better": 1971,
+              "intact_right_better|after_equal": 372,
+              "intact_right_better|after_right_better": 39490
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 27715,
+              "left_only": 1407,
+              "neither": 1077274,
+              "right_only": 312
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 140,
+              "left_only|intact_right_better|after_right_better": 1267,
+              "right_only|intact_right_better|after_equal": 270,
+              "right_only|intact_right_better|after_right_better": 42
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 1971,
+              "narrowed": 76,
+              "unchanged": 1102994,
+              "vanished": 372,
+              "widened": 1295
+            }
+          },
+          "B1_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 25086,
+              "right_better": 4075
+            },
+            "after_disruption_observations": {
+              "equal": 947744,
+              "right_better": 158964
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 946078,
+              "intact_equal|after_right_better": 5786,
+              "intact_right_better|after_equal": 1666,
+              "intact_right_better|after_right_better": 153178
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 25488,
+              "left_only": 3634,
+              "neither": 1077073,
+              "right_only": 513
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 1229,
+              "left_only|intact_right_better|after_right_better": 2405,
+              "right_only|intact_right_better|after_equal": 471,
+              "right_only|intact_right_better|after_right_better": 42
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 5786,
+              "narrowed": 76,
+              "unchanged": 1096747,
+              "vanished": 1666,
+              "widened": 2433
+            }
+          },
+          "E_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 26135,
+              "right_better": 3026
+            },
+            "after_disruption_observations": {
+              "equal": 988831,
+              "right_better": 117877
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 987511,
+              "intact_equal|after_right_better": 4215,
+              "intact_right_better|after_equal": 1320,
+              "intact_right_better|after_right_better": 113662
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 25798,
+              "left_only": 2229,
+              "neither": 1078478,
+              "right_only": 203
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 1111,
+              "left_only|intact_right_better|after_right_better": 1118,
+              "right_only|intact_right_better|after_equal": 203
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 4215,
+              "unchanged": 1100055,
+              "vanished": 1320,
+              "widened": 1118
+            }
+          }
+        }
+      }
+    },
+    "walks_closed_at_disrupted_station": {
+      "R": {
+        "common_surviving_observations": 1106708,
+        "mean_cost_components_on_common_survivors": {
+          "B1": {
+            "intact": {
+              "ride_edges": 14.0371,
+              "commercial_line_state_changes": 1.9334
+            },
+            "after_disruption": {
+              "ride_edges": 14.1442,
+              "commercial_line_state_changes": 1.9302
+            }
+          },
+          "E": {
+            "intact": {
+              "ride_edges": 13.9617,
+              "commercial_line_state_changes": 1.9345
+            },
+            "after_disruption": {
+              "ride_edges": 14.0629,
+              "commercial_line_state_changes": 1.9346
+            }
+          },
+          "E_with_Sol_Gran_Via": {
+            "intact": {
+              "ride_edges": 13.8336,
+              "commercial_line_state_changes": 1.9747
+            },
+            "after_disruption": {
+              "ride_edges": 13.9392,
+              "commercial_line_state_changes": 1.9706
+            }
+          }
+        },
+        "comparisons": {
+          "B1_vs_E": {
+            "intact_pairs": {
+              "equal": 27391,
+              "right_better": 1770
+            },
+            "after_disruption_observations": {
+              "equal": 1037899,
+              "right_better": 68809
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 1036126,
+              "intact_equal|after_right_better": 3346,
+              "intact_right_better|after_equal": 1773,
+              "intact_right_better|after_right_better": 65463
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 46599,
+              "left_only": 3609,
+              "neither": 1054338,
+              "right_only": 2162
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 722,
+              "left_only|intact_right_better|after_right_better": 2887,
+              "right_only|intact_right_better|after_equal": 1361,
+              "right_only|intact_right_better|after_right_better": 801
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 3346,
+              "narrowed": 1130,
+              "unchanged": 1097390,
+              "vanished": 1773,
+              "widened": 3069
+            }
+          },
+          "B1_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 24066,
+              "right_better": 5095
+            },
+            "after_disruption_observations": {
+              "equal": 915501,
+              "right_better": 191207
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 906280,
+              "intact_equal|after_right_better": 7178,
+              "intact_right_better|after_equal": 9221,
+              "intact_right_better|after_right_better": 184029
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 44570,
+              "left_only": 5638,
+              "neither": 1048899,
+              "right_only": 7601
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 597,
+              "left_only|intact_right_better|after_right_better": 5041,
+              "right_only|intact_right_better|after_equal": 6229,
+              "right_only|intact_right_better|after_right_better": 1372
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 7178,
+              "narrowed": 2250,
+              "unchanged": 1082550,
+              "vanished": 9221,
+              "widened": 5509
+            }
+          },
+          "E_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 25247,
+              "right_better": 3914
+            },
+            "after_disruption_observations": {
+              "equal": 963049,
+              "right_better": 143659
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 953325,
+              "intact_equal|after_right_better": 4987,
+              "intact_right_better|after_equal": 9724,
+              "intact_right_better|after_right_better": 138672
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 45454,
+              "left_only": 3307,
+              "neither": 1051230,
+              "right_only": 6717
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 155,
+              "left_only|intact_right_better|after_right_better": 3152,
+              "right_only|intact_right_better|after_equal": 6412,
+              "right_only|intact_right_better|after_right_better": 305
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 4987,
+              "narrowed": 874,
+              "unchanged": 1087683,
+              "vanished": 9724,
+              "widened": 3440
+            }
+          }
+        }
+      },
+      "T": {
+        "common_surviving_observations": 1106708,
+        "mean_cost_components_on_common_survivors": {
+          "B1": {
+            "intact": {
+              "commercial_line_state_changes": 1.1313,
+              "ride_edges": 16.4142
+            },
+            "after_disruption": {
+              "commercial_line_state_changes": 1.1424,
+              "ride_edges": 16.4921
+            }
+          },
+          "E": {
+            "intact": {
+              "commercial_line_state_changes": 1.123,
+              "ride_edges": 16.3297
+            },
+            "after_disruption": {
+              "commercial_line_state_changes": 1.1333,
+              "ride_edges": 16.4106
+            }
+          },
+          "E_with_Sol_Gran_Via": {
+            "intact": {
+              "commercial_line_state_changes": 1.123,
+              "ride_edges": 16.2168
+            },
+            "after_disruption": {
+              "commercial_line_state_changes": 1.1333,
+              "ride_edges": 16.3001
+            }
+          }
+        },
+        "comparisons": {
+          "B1_vs_E": {
+            "intact_pairs": {
+              "equal": 28112,
+              "right_better": 1049
+            },
+            "after_disruption_observations": {
+              "equal": 1066102,
+              "right_better": 40606
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 1064965,
+              "intact_equal|after_right_better": 1881,
+              "intact_right_better|after_equal": 1137,
+              "intact_right_better|after_right_better": 38725
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 27720,
+              "left_only": 1402,
+              "neither": 1076509,
+              "right_only": 1077
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 135,
+              "left_only|intact_right_better|after_right_better": 1267,
+              "right_only|intact_right_better|after_equal": 1035,
+              "right_only|intact_right_better|after_right_better": 42
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 1881,
+              "narrowed": 76,
+              "unchanged": 1102319,
+              "vanished": 1137,
+              "widened": 1295
+            }
+          },
+          "B1_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 25086,
+              "right_better": 4075
+            },
+            "after_disruption_observations": {
+              "equal": 955388,
+              "right_better": 151320
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 947066,
+              "intact_equal|after_right_better": 4798,
+              "intact_right_better|after_equal": 8322,
+              "intact_right_better|after_right_better": 146522
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 27211,
+              "left_only": 1911,
+              "neither": 1071026,
+              "right_only": 6560
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 266,
+              "left_only|intact_right_better|after_right_better": 1645,
+              "right_only|intact_right_better|after_equal": 6486,
+              "right_only|intact_right_better|after_right_better": 74
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 4798,
+              "narrowed": 108,
+              "unchanged": 1091759,
+              "vanished": 8322,
+              "widened": 1721
+            }
+          },
+          "E_vs_E_with_Sol_Gran_Via": {
+            "intact_pairs": {
+              "equal": 26135,
+              "right_better": 3026
+            },
+            "after_disruption_observations": {
+              "equal": 995767,
+              "right_better": 110941
+            },
+            "intact_to_after_transition": {
+              "intact_equal|after_equal": 988395,
+              "intact_equal|after_right_better": 3331,
+              "intact_right_better|after_equal": 7372,
+              "intact_right_better|after_right_better": 107610
+            },
+            "relative_deterioration_against_own_baseline": {
+              "both": 28257,
+              "left_only": 540,
+              "neither": 1072397,
+              "right_only": 5514
+            },
+            "discordant_deteriorations_by_absolute_position": {
+              "left_only|intact_equal|after_right_better": 163,
+              "left_only|intact_right_better|after_right_better": 377,
+              "right_only|intact_right_better|after_equal": 5514
+            },
+            "advantage_of_right_from_intact_to_after": {
+              "appeared": 3331,
+              "unchanged": 1095628,
+              "vanished": 7372,
+              "widened": 377
+            }
+          }
+        }
+      }
+    }
+  }
+}

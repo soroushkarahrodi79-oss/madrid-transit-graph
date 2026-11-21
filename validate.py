@@ -169,6 +169,72 @@ def main() -> int:
         check("CRTM attribution and licence recorded",
               "CRTM" in au["source_official"]["attribution"] and au["source_official"]["licence_url"])
 
+    # ---- planned-time artefacts (v0.5): manifest is distributed, per-edge outputs are local (CRTM + OSM ids)
+    gm_path = DATA / "gtfs_derived" / "gtfs_manifest.json"
+    if not gm_path.exists():
+        notes.append("SKIPPED gtfs_derived checks: manifest not present (v0.5 artefacts are optional)")
+    else:
+        gm = json.loads(gm_path.read_text(encoding="utf-8"))
+        check("gtfs manifest: attribution, status and no-endorsement wording",
+              "Powered by CRTM" in gm["attribution"] and "No CRTM endorsement" in gm["attribution"]
+              and gm["status"].startswith("NEEDS_VALIDATION"))
+        check("gtfs manifest: v0.1.0 snapshot hashes unchanged",
+              all(gm["inputs"]["v010_data_sha256"].get(n) == v["sha256"] for n, v in mf["files"].items()))
+        sw = gm["parameters"]["sweeps"]
+        check("gtfs manifest: every assumed parameter is named, justified and has a sweep grid",
+              {"wait_factor", "transfer_seconds", "walk_link_seconds", "imputed_speed_multiplier"} <= set(sw)
+              and all(len(s["grid"]) >= 3 and s["status"] and s["meaning"] for s in sw.values()))
+        check("gtfs manifest: feed vintage recorded",
+              bool(gm["inputs"]["gtfs_calendar_end"] and gm["inputs"]["gtfs_sha256"]),
+              f"calendar {gm['inputs']['gtfs_calendar_start']}..{gm['inputs']['gtfs_calendar_end']}")
+        check("gtfs manifest: no ride edge lacks a time and no GTFS adjacency contradicts the graph",
+              gm["rides"]["without_any_time"] == 0 and gm["match"]["gtfs_leg_pairs_not_in_graph"] == 0
+              and gm["match"]["non_positive_leg_times"] == 0)
+        check("gtfs manifest: imputed legs only where a line has no GTFS trips",
+              gm["rides"]["imputed"] == 0 or bool(gm["routes"]["graph_lines_without_gtfs_times"]))
+        gd = DATA / "gtfs_derived"
+        local = [n for n in gm["outputs_sha256"] if (gd / n).exists()]
+        if len(local) < len(gm["outputs_sha256"]):
+            notes.append("SKIPPED local gtfs_derived output checks: run gtfs_ingest.py fetch && build to create them")
+        else:
+            check("gtfs outputs match the SHA-256 hashes in the manifest",
+                  all(hashlib.sha256((gd / n).read_bytes()).hexdigest() == h for n, h in gm["outputs_sha256"].items()))
+            rides = json.loads((gd / "ride_times.json").read_text(encoding="utf-8"))
+            check("planned ride times: no zero or negative values",
+                  all(r["seconds"] > 0 and all(r[k] is None or r[k] > 0 for k in ("seconds_ab", "seconds_ba"))
+                      for r in rides), f"{len(rides)} ride edges")
+            edge_lines = {(frozenset((f["properties"]["source"], f["properties"]["target"])), ln)
+                          for f in conns for ln in f["properties"]["lines"]}
+            check("planned ride times: exactly one per (connection, line), all referencing the graph",
+                  {(frozenset((r["a"], r["b"])), r["line"]) for r in rides} == edge_lines and len(rides) == len(edge_lines))
+            tol = gm["parameters"]["symmetry_tolerance_s"]
+            check("planned ride times: directional symmetry within tolerance",
+                  all(abs(r["seconds_ab"] - r["seconds_ba"]) <= tol for r in rides
+                      if r["seconds_ab"] is not None and r["seconds_ba"] is not None), f"tolerance {tol:.0f} s")
+            timed = defaultdict(set)
+            for r in rides:
+                timed[r["a"]].add(r["b"])
+                timed[r["b"]].add(r["a"])
+            check("planned ride times: every station has a timed ride", set(timed) == set(sp))
+            seen_t, stack = set(), [next(iter(sp))]
+            while stack:
+                n = stack.pop()
+                if n not in seen_t:
+                    seen_t.add(n)
+                    stack.extend(timed[n] - seen_t)
+            check("planned ride times: every station reachable on the timed graph", seen_t == set(sp),
+                  f"{len(seen_t)}/{len(sp)}")
+            hws = json.loads((gd / "headways.json").read_text(encoding="utf-8"))
+            check("headways: positive, nodes exist in the graph",
+                  all(h["node"] in sp and (h["headway_s"] is None or h["headway_s"] > 0) for h in hws),
+                  f"{len(hws)} node-line-band rows")
+        raw_zip = DATA / "gtfs_raw" / "metro.zip"
+        if raw_zip.exists():
+            check("raw GTFS zip matches the SHA-256 recorded in the manifest",
+                  hashlib.sha256(raw_zip.read_bytes()).hexdigest() == gm["inputs"]["gtfs_sha256"])
+        else:
+            notes.append("SKIPPED raw GTFS hash check: data/gtfs_raw/metro.zip not present (gtfs_ingest.py fetch)")
+
     width = max(len(n) for n, *_ in results)
     for name, ok, detail in results:
         print(f"[{'PASS' if ok else 'FAIL'}] {name.ljust(width)}  {detail}")

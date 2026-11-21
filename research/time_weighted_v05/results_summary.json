@@ -1,0 +1,3114 @@
+{
+ "pre_registration": {
+  "commit": "e1882b6",
+  "sha256": "1467e4848085159343bc22f86dc16044a10dcd127623c439b9a709ada1a1b89b"
+ },
+ "status": "NEEDS_VALIDATION; planned/scheduled model; not real-time, not demand, not observed",
+ "quick_run": false,
+ "cells": 179,
+ "seed": 20261121,
+ "inputs": {
+  "v010_manifest_sha256": "975bb4b4e9861eb4971dd0584ee46bfd1cc2f7a5e06ef057f540b76a141a1dde",
+  "gtfs_sha256": "16e8e53ce16ab6d73efc2896be7aaeeb351a1f48f661ac7faa0a9e5b38204fb7",
+  "gtfs_calendar_end": "20260527"
+ },
+ "gates": {
+  "G4_validate_py": {
+   "ok": true,
+   "last_line": "46/46 checks passed"
+  },
+  "G4_v010_hashes": {
+   "ok": true
+  },
+  "G4_phase1_hashes": {
+   "ok": true
+  },
+  "G1_hop_replication_of_v04": {
+   "ok": true,
+   "got": {
+    "fragmenting_closures": 84,
+    "min_fragmenting": 240,
+    "median_fragmenting": 1180.0,
+    "max": 4296,
+    "interchange_scenarios_disconnecting": 1,
+    "interchange_max_disconnected": 1410
+   },
+   "expected_v04": {
+    "fragmenting_closures": 84,
+    "min_fragmenting": 240,
+    "median_fragmenting": 1180.0,
+    "max": 4296,
+    "interchange_scenarios_disconnecting": 1,
+    "interchange_max_disconnected": 1410
+   }
+  },
+  "G2_independent_solver": {
+   "ok": true,
+   "max_abs_diff_s": 0.0,
+   "scenarios": 4
+  },
+  "G3_monotonicity": {
+   "ok": true,
+   "min_delta_s": -9.094947017729282e-13
+  },
+  "G3_through_not_worse_than_full": {
+   "ok": true,
+   "violations": 0,
+   "pairs_compared": 13778644
+  },
+  "G5_unit_tests": {
+   "ok": true,
+   "summary": "OK"
+  }
+ },
+ "primary": {
+  "verdict": "ADDED_VALUE",
+  "freeze_trigger": false,
+  "rho": {
+   "degree": 0.4653431789989679,
+   "line_count": 0.4012305519575841,
+   "betweenness_hop": 0.5071596656097547,
+   "betweenness_time": 0.5184754290487933
+  },
+  "rho_max": 0.5184754290487933,
+  "best_baseline": "betweenness_time",
+  "overlap10": 3,
+  "class": "ADDED_VALUE",
+  "class_0.80": "ADDED_VALUE",
+  "class_0.95": "ADDED_VALUE",
+  "ci95_rho_betweenness_hop": [
+   0.3905992712656044,
+   0.614381015624196
+  ]
+ },
+ "sensitivity": {
+  "weekday_peak_cells": 162,
+  "other_band_cells": 12,
+  "peak_class_shares": {
+   "ABSTAIN": 0.0,
+   "INCONCLUSIVE": 0.0,
+   "ADDED_VALUE": 1.0
+  },
+  "other_class_shares": {
+   "ABSTAIN": 0.0,
+   "INCONCLUSIVE": 0.0,
+   "ADDED_VALUE": 1.0
+  },
+  "rho_max_range_peak": [
+   0.4912626398446271,
+   0.5190915128462299
+  ],
+  "rho_max_range_other": [
+   0.49188208317827514,
+   0.5184342990693438
+  ],
+  "class_at_0.80_threshold_central": "ADDED_VALUE",
+  "class_at_0.95_threshold_central": "ADDED_VALUE",
+  "robust": true,
+  "l3_removed_classes": {
+   "transfer_180": "ADDED_VALUE"
+  },
+  "l3_removed_rho_max": {
+   "transfer_180": 0.4349002912811716
+  }
+ },
+ "secondary": {
+  "H2_rho_interchange_disabled_vs_closed": 0.7381955474199626,
+  "H2_supported_rankings_differ": true,
+  "H3_min_rho_between_bands": 0.9989573841848987,
+  "H3_supported_stable": true,
+  "H3_pairs": {
+   "weekday_peak|weekday_offpeak": 0.9997380184369523,
+   "weekday_peak|evening": 0.9995114397878302,
+   "weekday_peak|saturday": 0.9991043062776889,
+   "weekday_peak|sunday": 0.9989573841848987,
+   "weekday_offpeak|evening": 0.9998822853111982,
+   "weekday_offpeak|saturday": 0.9996831439203682,
+   "weekday_offpeak|sunday": 0.9995955217084029,
+   "evening|saturday": 0.9998203302118288,
+   "evening|sunday": 0.9997601452581558,
+   "saturday|sunday": 0.999940700119175
+  },
+  "H4_rho_time_vs_hop": 0.9555442973889929,
+  "H4_supported_times_change_ranking": false,
+  "permutation_p_descriptive": {
+   "H2": 9.999000099990002e-05,
+   "H3_min_pair": 9.999000099990002e-05,
+   "H4": 9.999000099990002e-05,
+   "baseline_degree": 9.999000099990002e-05,
+   "baseline_line_count": 9.999000099990002e-05,
+   "baseline_betweenness_hop": 9.999000099990002e-05,
+   "baseline_betweenness_time": 9.999000099990002e-05
+  },
+  "holm_adjusted_p_descriptive": {
+   "H2": 0.0006999300069993001,
+   "H3_min_pair": 0.0006999300069993001,
+   "H4": 0.0006999300069993001,
+   "baseline_degree": 0.0006999300069993001,
+   "baseline_line_count": 0.0006999300069993001,
+   "baseline_betweenness_hop": 0.0006999300069993001,
+   "baseline_betweenness_time": 0.0006999300069993001
+  }
+ },
+ "exploratory": {
+  "nonfragmenting_closures": 158,
+  "rho_vs_simple_nonfragmenting": {
+   "degree": 0.4997413397421464,
+   "line_count": 0.31166094404667205,
+   "betweenness_hop": 0.8911797734002441,
+   "betweenness_time": 0.9073723309230551
+  },
+  "through_vs_full": {
+   "rho": 0.33200817164680346,
+   "mean_dT_full_s": 25.731352418190504,
+   "mean_dT_through_s": 1.9688133842191244
+  },
+  "set_level": {
+   "k3": {
+    "by_dT": {
+     "dT": 310.3536423976689,
+     "n_disc": 17550
+    },
+    "by_degree": {
+     "dT": 864.4991308516657,
+     "n_disc": 0
+    },
+    "by_line_count": {
+     "dT": 391.83690016036655,
+     "n_disc": 0
+    },
+    "by_betweenness_hop": {
+     "dT": 186.11672608989448,
+     "n_disc": 0
+    },
+    "by_betweenness_time": {
+     "dT": 355.26254856798585,
+     "n_disc": 476
+    },
+    "random_200": {
+     "dT_mean": 69.20522261170116,
+     "dT_p05_p95": [
+      0.0,
+      202.85166973539015
+     ],
+     "n_disc_mean": 2699.16
+    }
+   },
+   "k5": {
+    "by_dT": {
+     "dT": 310.8927961843713,
+     "n_disc": 16750
+    },
+    "by_degree": {
+     "dT": 1180.271937510254,
+     "n_disc": 0
+    },
+    "by_line_count": {
+     "dT": 609.141859839838,
+     "n_disc": 0
+    },
+    "by_betweenness_hop": {
+     "dT": 569.2793161224099,
+     "n_disc": 472
+    },
+    "by_betweenness_time": {
+     "dT": 508.6024435897691,
+     "n_disc": 472
+    },
+    "random_200": {
+     "dT_mean": 134.1285644348089,
+     "dT_p05_p95": [
+      15.901843100909435,
+      322.2494917919838
+     ],
+     "n_disc_mean": 4725.96
+    }
+   }
+  },
+  "simulation_tier": {
+   "rho_dT_vs_passage_share": 0.5982711616268893,
+   "tied_pairs_in_passage_calc": 0,
+   "rho_dT_inter_vs_transfer_use_share": 0.8481698322045851,
+   "rho_dT_inter_vs_simple": {
+    "degree": 0.27545964438861725,
+    "line_count": 0.21094539803865314,
+    "betweenness_hop": 0.6985829194676908,
+    "betweenness_time": 0.6944246878041925
+   }
+  },
+  "disruption_distribution_central": {
+   "closure_dT_s": {
+    "min": 0.0,
+    "p25": 0.0,
+    "median": 8.407669639432537,
+    "p75": 27.285094787915163,
+    "p95": 138.36914364449098,
+    "max": 250.72035995829867
+   },
+   "mean_T0_s": 2416.0725507616717,
+   "closures_with_disconnection": 84,
+   "interchange_dT_s": {
+    "min": 0.0,
+    "median": 5.057190151188214,
+    "max": 124.63212358260405
+   },
+   "interchange_scenarios_with_disconnection": 1
+  }
+ },
+ "grid": [
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5028576737311095,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5028576737311095,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5028576737311095,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5015157746041337,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5015157746041337,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5015157746041337,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4986302614639151,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4986302614639151,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4986302614639151,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5004831172956148,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5004831172956148,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5004831172956148,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5015645132878133,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5015645132878133,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5015645132878133,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49694399603641765,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49694399603641765,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49694399603641765,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5064473985260607,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5064473985260607,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5064473985260607,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5092774668024538,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5092774668024538,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5092774668024538,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5058462534925284,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5058462534925284,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5058462534925284,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5114643911870949,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5114643911870949,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5114643911870949,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.514378450148482,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.514378450148482,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.514378450148482,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5112498657534817,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5112498657534817,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5112498657534817,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5123211937825545,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5123211937825545,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5123211937825545,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.517019427776285,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.517019427776285,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.517019427776285,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5140237575695162,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5140237575695162,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5140237575695162,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49949339989631164,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49949339989631164,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49949339989631164,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5039141174822536,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5039141174822536,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5039141174822536,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4989182346318785,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4989182346318785,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.0,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4989182346318785,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.50159189518696,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5023075569809442,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5019482107685987,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5029793845808721,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5031867662667275,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5021715051950558,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4989727859614899,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4986675582839022,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49888359886704586,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5082064631775778,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5081644672949304,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5077384472070412,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5115439451436911,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5114071338436279,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5107382304936352,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5075949266695168,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5072559291212172,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5069238587258842,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5128186501656687,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.511990855035543,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5120930305850774,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5163115591826033,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5160201857492408,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5158141029048419,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.513054822048323,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5127530579472185,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5122188012746749,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5131463912292175,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.512558881819395,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5124922079438514,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5171705263323674,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5169250452971274,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5165665650551895,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5150723553498247,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.51446276588877,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5139644438222403,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.512241964436941,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5118280668718781,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.511836725816754,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.517028952613631,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5169657423294246,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5167544641192005,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5135232707676846,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5130076308187385,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5126928783058218,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4955206759872981,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4947266507421878,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4945833452044935,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5002102545960481,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4996755648632061,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.499478140961849,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49601402575066106,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.495590603525582,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.25,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4954009727131233,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5100382629660518,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5097395293678368,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5095395077412062,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5135627777139279,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5129051309898898,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5118496058330729,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5093894922349083,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5090197554453197,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5082833124955656,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5138213559822855,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5127736236523147,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5126632221051484,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5173333144615565,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.516546216539041,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5158552328842911,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5145419952008248,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5137847707921711,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 60.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5128019809650447,
+   "best": "betweenness_time",
+   "overlap10": 1
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5136382192981624,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5132896967669119,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5126225250642321,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5186940673606031,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5172488897668973,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5171415188731767,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5162655574483093,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5148571806608018,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 120.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5137895332098354,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5140668370695143,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5136429817178443,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5128918182498692,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5190915128462299,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5184754290487933,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5172415296653117,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5152381740739609,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5145316044713749,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.514503029965388,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5104508616893833,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5100780941124804,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5094416616641098,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5148408377069237,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5141706355154746,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5137428837292011,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5112338467122466,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5106069393687757,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 300.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5101211727669979,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4915929785916386,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4915947103806137,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 0.9,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4912626398446271,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49689344646381894,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49674148201343227,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4961305935818208,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 0.75,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4936267556595709,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4926586860324985,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.1,
+    "l3h": 1.25,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.491824397047092,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_offpeak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5179199578526504,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "weekday_offpeak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5150005952060481,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "weekday_offpeak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4942161012752399,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "evening",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.516783471578391,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "evening",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5148737416904832,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "evening",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49327530711372913,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "saturday",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.517138488243112,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "saturday",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5180619645185389,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "saturday",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49222757500565,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "sunday",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5171276645643096,
+   "best": "betweenness_time",
+   "overlap10": 3
+  },
+  {
+   "cell": {
+    "band": "sunday",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.5184342990693438,
+   "best": "betweenness_time",
+   "overlap10": 2
+  },
+  {
+   "cell": {
+    "band": "sunday",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.49188208317827514,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "removed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4349002912811716,
+   "best": "degree",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 0.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "removed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.4269424171120882,
+   "best": "betweenness_time",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 600.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "removed",
+    "closure": "full",
+    "mode": "time"
+   },
+   "class": "ADDED_VALUE",
+   "rho_max": 0.44640672406613474,
+   "best": "degree",
+   "overlap10": 4
+  },
+  {
+   "cell": {
+    "band": "weekday_peak",
+    "wait": 0.5,
+    "transfer": 180.0,
+    "speed": 1.0,
+    "l3h": 1.0,
+    "l3": "imputed",
+    "closure": "through",
+    "mode": "time"
+   },
+   "class": "INCONCLUSIVE",
+   "rho_max": 0.8583399797853721,
+   "best": "line_count",
+   "overlap10": 4
+  }
+ ],
+ "runtime_s": 198,
+ "versions": {
+  "numpy": "2.5.5",
+  "networkx": "3.7",
+  "python": "3.14.5"
+ }
+}

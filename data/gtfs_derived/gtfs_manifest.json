@@ -1,0 +1,308 @@
+{
+ "artefact": "planned in-vehicle times and headways derived from the CRTM Metro GTFS (processed data)",
+ "attribution": "Source: CRTM (https://www.crtm.es/), processed data. Powered by CRTM. No CRTM endorsement. Topology (c) OpenStreetMap contributors (ODbL).",
+ "frequencies": {
+  "exact_times_rows": 0,
+  "mode": "frequency-based (exact_times blank)"
+ },
+ "imputation_validation_vs_gtfs": {
+  "L1": {
+   "line_total_ratio": 0.994,
+   "max_ratio": 1.298,
+   "median_ratio": 0.996,
+   "min_ratio": 0.865,
+   "n_legs": 64
+  },
+  "L10": {
+   "line_total_ratio": 0.991,
+   "max_ratio": 1.193,
+   "median_ratio": 1.0,
+   "min_ratio": 0.889,
+   "n_legs": 60
+  },
+  "L11": {
+   "line_total_ratio": 0.986,
+   "max_ratio": 1.044,
+   "median_ratio": 0.994,
+   "min_ratio": 0.906,
+   "n_legs": 12
+  },
+  "L12": {
+   "line_total_ratio": 1.0,
+   "max_ratio": 1.083,
+   "median_ratio": 0.999,
+   "min_ratio": 0.9,
+   "n_legs": 56
+  },
+  "L2": {
+   "line_total_ratio": 0.993,
+   "max_ratio": 1.052,
+   "median_ratio": 1.0,
+   "min_ratio": 0.899,
+   "n_legs": 38
+  },
+  "L4": {
+   "line_total_ratio": 0.991,
+   "max_ratio": 1.134,
+   "median_ratio": 1.001,
+   "min_ratio": 0.837,
+   "n_legs": 44
+  },
+  "L5": {
+   "line_total_ratio": 1.0,
+   "max_ratio": 1.03,
+   "median_ratio": 0.999,
+   "min_ratio": 0.927,
+   "n_legs": 62
+  },
+  "L6": {
+   "line_total_ratio": 1.0,
+   "max_ratio": 1.143,
+   "median_ratio": 1.001,
+   "min_ratio": 0.819,
+   "n_legs": 56
+  },
+  "L7": {
+   "line_total_ratio": 1.005,
+   "max_ratio": 1.125,
+   "median_ratio": 1.0,
+   "min_ratio": 0.932,
+   "n_legs": 60
+  },
+  "L8": {
+   "line_total_ratio": 1.02,
+   "max_ratio": 1.178,
+   "median_ratio": 1.002,
+   "min_ratio": 0.983,
+   "n_legs": 14
+  },
+  "L9": {
+   "line_total_ratio": 0.999,
+   "max_ratio": 1.027,
+   "median_ratio": 0.999,
+   "min_ratio": 0.959,
+   "n_legs": 56
+  },
+  "R": {
+   "line_total_ratio": 1.011,
+   "max_ratio": 1.018,
+   "median_ratio": 1.011,
+   "min_ratio": 1.004,
+   "n_legs": 2
+  }
+ },
+ "inputs": {
+  "arcgis_layer": "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M4_Red/FeatureServer/5/query",
+  "arcgis_rows": 592,
+  "arcgis_sha256": "2557794d1d849129ae8e8ff1801cc6dec3ecac384fe8808074ba3197f048911c",
+  "fetch": {
+   "arcgis_layer": "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M4_Red/FeatureServer/5/query",
+   "bytes": 1503773,
+   "gtfs_url": "https://www.arcgis.com/sharing/rest/content/items/5c7f2951962540d69ffe8f640d94c246/data",
+   "http_etag": "\"19721110cd8\"",
+   "item_modified_utc": "2025-05-30T12:00:55+00:00",
+   "retrieved_at_utc": "2026-11-21T10:06:18+00:00"
+  },
+  "gtfs_bytes": 1503773,
+  "gtfs_calendar_end": "20260527",
+  "gtfs_calendar_start": "20250527",
+  "gtfs_feed_version": "20250527",
+  "gtfs_files": [
+   "agency.txt",
+   "calendar.txt",
+   "calendar_dates.txt",
+   "fare_attributes.txt",
+   "fare_rules.txt",
+   "feed_info.txt",
+   "frequencies.txt",
+   "routes.txt",
+   "shapes.txt",
+   "stop_times.txt",
+   "stops.txt",
+   "trips.txt"
+  ],
+  "gtfs_sha256": "16e8e53ce16ab6d73efc2896be7aaeeb351a1f48f661ac7faa0a9e5b38204fb7",
+  "gtfs_url": "https://www.arcgis.com/sharing/rest/content/items/5c7f2951962540d69ffe8f640d94c246/data",
+  "v010_data_sha256": {
+   "connections.geojson": "0e6563d19d6742396cdeef5788cbeb0e06d38e01141d266df4b74f7c06d56fed",
+   "metadata.json": "265eea18d231dacd54886d5f62db86d61e692b1e22af695e09ad38c00badc7a5",
+   "stations.geojson": "14246d7e7ea36dc0b119277516fd386ed2badb2cf5e9660dfa4674dc92fad61b"
+  }
+ },
+ "licence_note": "CRTM open static-data licence https://www.crtm.es/licencia-de-uso. Per-edge and per-station outputs join OSM-derived ids (ODbL) with CRTM-derived values, so they are local, git-ignored artefacts (same treatment as crtm_audit.json). This manifest holds hashes and aggregates only.",
+ "match": {
+  "gtfs_boarding_stops_used": 272,
+  "gtfs_leg_pairs_not_in_graph": 0,
+  "legs_collapsing_to_one_node": 0,
+  "legs_on_unmatched_stops": 0,
+  "nodes": 242,
+  "nodes_with_gtfs_stop": 230,
+  "nodes_without_gtfs_stop": 12,
+  "non_positive_leg_times": 0,
+  "tiers": {
+   "name+line": 272
+  }
+ },
+ "outputs_sha256": {
+  "headways.json": "da051953a08a7e3173dd7d31717d36480a2e9f69b9f578611c8f34882e7de773",
+  "match_report.json": "cfef5c311cc4891020dca84b15eba407f143b8ef4d4afe9dfc3a09f9f91b7b68",
+  "ride_times.json": "9eabe826afcc6e19908efdf5647dc29fb7adf571ceaebecfcaae9a81676f6436"
+ },
+ "parameters": {
+  "bands": {
+   "evening": {
+    "days": "mon_thu",
+    "intervals_s": [
+     [
+      72000,
+      86400
+     ]
+    ],
+    "status": "assumption"
+   },
+   "saturday": {
+    "days": "sat",
+    "intervals_s": [
+     [
+      21600,
+      86400
+     ]
+    ],
+    "status": "assumption"
+   },
+   "sunday": {
+    "days": "sun",
+    "intervals_s": [
+     [
+      21600,
+      86400
+     ]
+    ],
+    "status": "assumption"
+   },
+   "weekday_offpeak": {
+    "days": "mon_thu",
+    "intervals_s": [
+     [
+      21600,
+      25200
+     ],
+     [
+      36000,
+      61200
+     ]
+    ],
+    "status": "assumption"
+   },
+   "weekday_peak": {
+    "days": "mon_thu",
+    "intervals_s": [
+     [
+      25200,
+      36000
+     ],
+     [
+      61200,
+      72000
+     ]
+    ],
+    "status": "assumption"
+   }
+  },
+  "calendar_dates_exceptions_applied": false,
+  "direction_collapse": "mean of defined per-direction headways (assumption)",
+  "dwell": "none: GTFS arrival == departure; dwell is not modelled",
+  "friday_used": false,
+  "headway_definition": "band length / expected trains in the band (band average; periods with no service stay in the denominator, see served_fraction)",
+  "sweeps": {
+   "imputed_speed_multiplier": {
+    "grid": [
+     0.9,
+     1.0,
+     1.1
+    ],
+    "meaning": "applied to the CRTM line speed when imputing legs absent from the feed",
+    "status": "assumption"
+   },
+   "transfer_seconds": {
+    "grid": [
+     0,
+     60,
+     120,
+     180,
+     300,
+     600
+    ],
+    "meaning": "illustrative range, not an estimate; 0 reproduces the zero-cost transfers of v0.2",
+    "status": "assumption (no transfers.txt in the feed)"
+   },
+   "wait_factor": {
+    "grid": [
+     0.0,
+     0.25,
+     0.5
+    ],
+    "meaning": "expected wait = factor x headway; 0.5 = random passenger arrival, 0 = timetable-aware",
+    "status": "assumption"
+   },
+   "walk_link_seconds": {
+    "grid": [
+     0,
+     60,
+     120,
+     180,
+     300,
+     600
+    ],
+    "meaning": "cross-name walk links (Noviciado-Plaza de Espana, Embajadores-Acacias)",
+    "status": "assumption (no pathways.txt in the feed)"
+   }
+  },
+  "symmetry_tolerance_s": 60.0
+ },
+ "rides": {
+  "asymmetric_over_tolerance": 0,
+  "gtfs": 262,
+  "imputed": 18,
+  "total_ride_edges": 280,
+  "without_any_time": 0
+ },
+ "routes": {
+  "graph_lines_without_gtfs_times": [
+   "L3"
+  ],
+  "in_feed": [
+   "L1",
+   "L10",
+   "L11",
+   "L12",
+   "L2",
+   "L3",
+   "L4",
+   "L5",
+   "L6",
+   "L7",
+   "L8",
+   "L9",
+   "R"
+  ],
+  "with_trips": [
+   "L1",
+   "L10",
+   "L11",
+   "L12",
+   "L2",
+   "L4",
+   "L5",
+   "L6",
+   "L7",
+   "L8",
+   "L9",
+   "R"
+  ],
+  "without_trips": [
+   "L3"
+  ]
+ },
+ "status": "NEEDS_VALIDATION; structural/scheduled; not real-time, not demand, not observed"
+}

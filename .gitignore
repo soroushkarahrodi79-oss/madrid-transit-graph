@@ -11,3 +11,12 @@ data/crtm_audit.json
 
 # Research outputs mixing OSM topology with CRTM-derived evidence: local only (see NOTICE.md)
 research/transfer_aware_v02/local/
+
+# CRTM GTFS raw downloads and per-edge/per-station derived times (join OSM ids with CRTM values): local only, see NOTICE.md.
+# Only the manifest (hashes and aggregates) is distributed.
+data/gtfs_raw/
+data/gtfs_derived/*
+!data/gtfs_derived/gtfs_manifest.json
+
+# Phase 2 per-station results mix OSM-derived names/ids with CRTM-derived timings: local only (see NOTICE.md)
+research/time_weighted_v05/local/

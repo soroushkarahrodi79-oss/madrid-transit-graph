@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below. The code is MIT; the OpenStreetMap-derived data in data/ are ODbL 1.0; CRTM data keep their own licence. See NOTICE.md."
+type: software
+title: "Madrid Transit Graph Explorer"
+abstract: "Topological graph of the Metro de Madrid network built from OpenStreetMap with City2Graph 1.1.0 (v0.1.0 snapshot of 2026-11-19), with research studies on station and interchange disruptions. Structural and scheduled models only: not real-time, not demand, not observed resilience. Status of the v0.2-v0.5 studies: NEEDS_VALIDATION."
+authors:
+  - family-names: "Karahrodi"
+    given-names: "Soroush"
+version: "0.1.0"
+date-released: "2026-11-19"
+license: MIT
+url: "https://github.com/soroushkarahrodi79-oss/madrid-transit-graph"
+repository-code: "https://github.com/soroushkarahrodi79-oss/madrid-transit-graph"
+keywords:
+  - public transport
+  - Metro de Madrid
+  - network analysis
+  - OpenStreetMap
+  - City2Graph

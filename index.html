@@ -242,7 +242,7 @@
     .then(async ([st, cn]) => { meta = await fetch("data/metadata.json").then((r) => r.json()); init(st, cn); })
     .catch((e) => {
       const el = $("err"); el.style.display = "block";
-      el.innerHTML = `No se pudieron cargar los datos (${esc(e.message)}). Abre esta página desde un servidor estático local:<br><code>python -m http.server 8000</code> y visita <code>http://localhost:8000/</code>. Si faltan los datos, ejecuta <code>python build_graph.py</code>.`;
+      el.innerHTML = `No se pudieron cargar los datos (${esc(e.message)}). Abre esta página desde un servidor estático local:<br><code>python -m http.server 8000</code> y visita <code>http://localhost:8000/</code>. Si faltan los datos, restáuralos desde el repositorio (<code>git checkout -- data</code>); <code>build_graph.py --out</code> crea instantáneas nuevas en otra carpeta y no escribe en <code>data/</code>.`;
     });
 
   function init(stGeo, cnGeo) {

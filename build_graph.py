@@ -36,6 +36,8 @@ from datetime import datetime, timezone
 from importlib.metadata import version
 from pathlib import Path
 
+import snapshot_tools
+
 try:  # Windows' certificate store can contain expired roots; prefer certifi's bundle.
     import certifi
 
@@ -77,7 +79,38 @@ def retry(fn, what: str, attempts: int = 8, wait: float = 30.0):
             time.sleep(wait)
 
 
-def overpass(query: str, timeout: float = 180) -> dict:
+RAW_DIR: Path | None = None  # set by main(): every Overpass response used is archived here (SNAPSHOT_PROTOCOL.md)
+_raw_seq = 0
+
+
+def archive_raw(label: str, query: str, endpoint: str, payload: dict) -> None:
+    global _raw_seq
+    if RAW_DIR is None:
+        return
+    _raw_seq += 1
+    snapshot_tools.archive_payload(RAW_DIR, f"{_raw_seq:02d}_{label}", query, endpoint, payload,
+                                   datetime.now(timezone.utc).isoformat(timespec="seconds"))
+
+
+def install_city2graph_recorder() -> None:
+    """City2Graph downloads the relations itself and does not return the response, so its private request function
+    (city2graph 1.1.0, gtfs/sources.py::_request_osm) is wrapped to archive each response. Fails loudly if it is absent."""
+    import city2graph.gtfs.sources as src
+
+    original = getattr(src, "_request_osm", None)
+    if original is None:
+        raise SystemExit("raw capture unavailable: city2graph.gtfs.sources._request_osm not found "
+                         "(this protocol was written for city2graph 1.1.0)")
+
+    def recording(query, endpoint, timeout):
+        payload = original(query, endpoint, timeout)
+        archive_raw("city2graph", query, endpoint, payload)
+        return payload
+
+    src._request_osm = recording
+
+
+def overpass(query: str, timeout: float = 180, label: str = "overpass") -> dict:
     req = urllib.request.Request(
         OVERPASS,
         data=urllib.parse.urlencode({"data": query}).encode(),
@@ -87,6 +120,7 @@ def overpass(query: str, timeout: float = 180) -> dict:
         payload = json.load(resp)
     if payload.get("remark"):
         raise RuntimeError(f"incomplete Overpass response: {payload['remark']}")
+    archive_raw(label, query, OVERPASS, payload)
     return payload
 
 
@@ -122,7 +156,7 @@ def discover_relations() -> list[dict]:
         f'[out:json][timeout:90];relation["type"="route"]["route"="subway"]'
         f'["network"="{NETWORK}"]({s},{w},{n},{e});out tags;'
     )
-    payload = retry(lambda: overpass(q), "discovery")
+    payload = retry(lambda: overpass(q, label="discovery"), "discovery")
     rels = [
         {"id": r["id"], "ref": r["tags"].get("ref"), "name": r["tags"].get("name"),
          "colour": r["tags"].get("colour")}
@@ -281,7 +315,7 @@ def audit_against_raw_osm(relation_ids: list[int], con) -> dict:
     id_list = ",".join(map(str, relation_ids))
     q = (f"[out:json][timeout:120];relation(id:{id_list})->.r;.r out body;"
          "node(r.r)->.n;.n out qt;")
-    payload = retry(lambda: overpass(q), "audit")
+    payload = retry(lambda: overpass(q, label="audit"), "audit")
     nodes = {e["id"]: e for e in payload["elements"] if e["type"] == "node"}
     feed = defaultdict(list)
     for rid, name, lon, lat in con.execute(
@@ -339,8 +373,19 @@ def write_geojson(path: Path, features: list[dict]):
 
 
 def main(argv=None):
-    argparse.ArgumentParser(description=__doc__.split("\n")[0]).parse_args(argv)
-    DATA.mkdir(exist_ok=True)
+    global RAW_DIR
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--out", type=Path, required=True,
+                    help="new snapshot directory, e.g. data/snapshots/2026-12-01. It must be absent or empty: the frozen "
+                         "v0.1.0 files in data/ are never written. Raw Overpass responses go to <out>/raw/.")
+    args = ap.parse_args(argv)
+    out = args.out.resolve()
+    if out == DATA.resolve() or (out.exists() and any(out.iterdir())):
+        raise SystemExit(f"refusing to write into {out}: choose a new or empty directory (the frozen v0.1.0 snapshot "
+                         "in data/ is never overwritten; see SNAPSHOT_PROTOCOL.md)")
+    out.mkdir(parents=True, exist_ok=True)
+    RAW_DIR = out / "raw"
+    install_city2graph_recorder()
 
     print("1/6 discovering relations in OSM ...")
     rels = discover_relations()
@@ -390,8 +435,8 @@ def main(argv=None):
             [round(stations[e["target"]]["lon"], 6), round(stations[e["target"]]["lat"], 6)]]},
         "properties": e,
     } for e in edges]
-    write_geojson(DATA / "stations.geojson", st_feats)
-    write_geojson(DATA / "connections.geojson", ed_feats)
+    write_geojson(out / "stations.geojson", st_feats)
+    write_geojson(out / "connections.geojson", ed_feats)
 
     ranked = sorted(stations, key=lambda k: (-degree[k], stations[k]["name"]))
     top = [{"id": k, "name": stations[k]["name"], "degree": degree[k], "lines": stations[k]["lines"]}
@@ -466,7 +511,27 @@ def main(argv=None):
             "Edges are straight lines between stations, not the real alignment.",
         ],
     }
-    (DATA / "metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (out / "metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    problems = snapshot_tools.verify_raw_archive(RAW_DIR)
+    if problems:
+        raise SystemExit(f"raw archive inconsistent: {problems}")
+    files = {n: {"sha256": snapshot_tools.sha256((out / n).read_bytes()), "bytes": (out / n).stat().st_size}
+             for n in ("stations.geojson", "connections.geojson", "metadata.json")}
+    manifest = {
+        "release": None, "files": files,
+        "how_to_verify": "sha256sum *.geojson metadata.json raw/RAW_MANIFEST.json (stored byte-for-byte; .gitattributes "
+                         "disables newline conversion under data/)",
+        "snapshot": {
+            "osm_data_timestamp": prov["osm_data_timestamp"], "retrieved_at": prov["retrieved_at"],
+            "endpoint": prov["endpoint"], "osm_relation_count": len(ids),
+            "raw_osm_responses_preserved": True, "raw_dir": "raw",
+            "raw_manifest_sha256": snapshot_tools.sha256((RAW_DIR / snapshot_tools.RAW_MANIFEST).read_bytes()),
+            "raw_serialisation": "canonical JSON of the parsed response (not the server's raw bytes)",
+            "reproducibility": "The raw responses are archived, so the graph can be rebuilt from them offline once a "
+                               "loader for the archive exists; build_graph.py itself always downloads the current state."},
+        "software": meta["software"],
+    }
+    (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     ind = meta["indicators"]
     print(f"done: {ind['n_stations']} stations, {ind['n_connections']} connections, "
           f"{ind['n_components']} component(s); audit: "

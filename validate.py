@@ -261,6 +261,16 @@ def main() -> int:
         check("explorer: status wording is structural, not real-time, not demand",
               "NEEDS_VALIDATION" in ex["meta"]["status"] and "not demand" in ex["meta"]["status"])
 
+    # ---- next-snapshot protocol: raw Overpass archives of any later snapshot (data/snapshots/<date>/raw)
+    snaps = sorted((DATA / "snapshots").glob("*/raw")) if (DATA / "snapshots").exists() else []
+    if not snaps:
+        notes.append("no data/snapshots/* present: the frozen v0.1.0 snapshot has no raw Overpass responses (see SNAPSHOT_PROTOCOL.md)")
+    for raw in snaps:
+        import snapshot_tools
+        problems = snapshot_tools.verify_raw_archive(raw)
+        check(f"snapshot {raw.parent.name}: raw Overpass archive is consistent and carries the ODbL notice",
+              not problems, "; ".join(problems) or "ok")
+
     width = max(len(n) for n, *_ in results)
     for name, ok, detail in results:
         print(f"[{'PASS' if ok else 'FAIL'}] {name.ljust(width)}  {detail}")

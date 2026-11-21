@@ -56,24 +56,37 @@ $ python -m unittest discover -s research/evidence_informed_robustness   -> Ran 
 $ python -m unittest discover -s research/time_weighted_v05              -> Ran 45 tests ... OK (skipped=1)
 ```
 
-LIVE_RUN_PLACEHOLDER
+**Live test of the protocol** (one real snapshot written to a scratch folder outside the repository and not committed;
+2026-11-21, Windows 11, Python 3.14.5): `python build_graph.py --out <scratch>`. The public Overpass server answered HTTP 502
+three times on discovery and twice on the audit before succeeding; the retry logic coped.
 
-**CI itself has not run yet at the time of writing.** The clean-checkout run above is a local Windows / Python 3.14
-approximation of one of the six jobs. Whether the other five (Linux; Python 3.12, 3.13) pass is **unknown** until the pull
-request's checks report. If one fails, the failure and its fix belong in this report.
+```
+done: 242 stations, 277 connections, 1 component(s); audit: 0 order failure(s), 2 label-only difference(s)
+raw/: 01_discovery 1.8 KB, 02_city2graph 333 KB, 03_city2graph 18 KB, 04_audit 21 KB (gzip) + RAW_MANIFEST.json
+verify_raw_archive(raw) -> []            # all hashes match; ODbL notice and attribution present
+stations.geojson, connections.geojson    -> byte-identical to the frozen v0.1.0 files (OSM base 2026-11-21T13:03:34Z vs 2026-11-19T18:17:06Z)
+frozen data/ files: SHA-256 unchanged     # build wrote only to the scratch folder
+```
+
+This shows the protocol works end to end once, and that the topology did not change in those two days. It is one run on one
+machine. It does not show that the archive can rebuild the graph (no loader exists).
+
+**CI.** At the last check, before this commit: the `frozen-snapshot` job and the three Ubuntu jobs (Python 3.12, 3.13, 3.14)
+had passed, and the three Windows jobs were still running. The pull request's checks are the authority; if a job fails, the
+failure and its fix belong in this report. The clean-checkout run above is a local Windows / Python 3.14 approximation of one job.
 
 ## 5. What failed or needed attention
 
 - A shell `cd` into a site-packages folder (to read City2Graph's source) changed the working directory of later commands; it
   was noticed and reset before anything was written there.
-- The public Overpass server answered HTTP 502 several times during the live test, as the README already warned; the script's
-  retry logic coped.
+- The public Overpass server answered HTTP 502 five times in total during the live test, as the README already warned; the
+  script's retry logic coped (about 3 minutes of waiting).
 - Nothing else failed in this phase.
 
 ## 6. Unknown, assumed, not done
 
-- **Unknown:** the result of the CI on Linux and on Python 3.12 and 3.13; whether `numpy`, `scipy`, `duckdb` and `geopandas`
-  publish wheels for Python 3.14 on Linux for these exact versions (the matrix will say).
+- **Unknown:** the final result of the three Windows CI jobs (running at the last check). The Ubuntu jobs on 3.12, 3.13 and
+  3.14 had passed, so wheels for Python 3.14 on Linux do exist for these requirements.
 - **Assumed:** GitHub Actions `actions/checkout@v4` and `actions/setup-python@v5` exist and accept the inputs used (pinned by
   tag, not by commit SHA, because the SHAs could not be verified offline).
 - **Not built:** a loader that rebuilds the graph from the archived responses instead of downloading again; a verbatim

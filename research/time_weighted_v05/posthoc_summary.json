@@ -1,0 +1,79 @@
+{
+ "status": "POST-HOC, not pre-registered; does not change the pre-registered verdict",
+ "fragmenting_closures": 84,
+ "rho_dT_vs_disconnected_pairs_among_fragmenting": 0.2938978334972196,
+ "rho_baseline_vs_disconnected_pairs_all": {
+  "degree": 0.016205999487874344,
+  "line_count": -0.06754340010321046,
+  "betweenness_hop": 0.18645182379556163,
+  "betweenness_time": 0.18222109205991205
+ },
+ "mean_dT_s_fragmenting_vs_not": {
+  "fragmenting": 4.683861695224576,
+  "non_fragmenting": 36.92115761267872
+ },
+ "nonfragmenting": {
+  "rho_vs_simple": {
+   "degree": 0.4997413397421464,
+   "line_count": 0.31166094404667205,
+   "betweenness_hop": 0.8911797734002441,
+   "betweenness_time": 0.9073723309230551
+  },
+  "class_by_preregistered_rule": "INCONCLUSIVE"
+ },
+ "penalised_mean_increase_disconnected_pairs_charged_P_seconds": {
+  "600": {
+   "rho": {
+    "degree": 0.4701863286759551,
+    "line_count": 0.3320540060376256,
+    "betweenness_hop": 0.918674222964431,
+    "betweenness_time": 0.9309949332025795
+   },
+   "rho_max": 0.9309949332025795,
+   "best": "betweenness_time",
+   "overlap10": 3,
+   "class_by_preregistered_rule": "INCONCLUSIVE"
+  },
+  "1800": {
+   "rho": {
+    "degree": 0.38880921136331065,
+    "line_count": 0.24125376434837661,
+    "betweenness_hop": 0.8235177273845772,
+    "betweenness_time": 0.8288981653959635
+   },
+   "rho_max": 0.8288981653959635,
+   "best": "betweenness_time",
+   "overlap10": 4,
+   "class_by_preregistered_rule": "INCONCLUSIVE"
+  },
+  "3600": {
+   "rho": {
+    "degree": 0.32903707673823207,
+    "line_count": 0.17349765029300057,
+    "betweenness_hop": 0.7228765488935129,
+    "betweenness_time": 0.7248624010117679
+   },
+   "rho_max": 0.7248624010117679,
+   "best": "betweenness_time",
+   "overlap10": 2,
+   "class_by_preregistered_rule": "INCONCLUSIVE"
+  },
+  "7200": {
+   "rho": {
+    "degree": 0.28463419441069504,
+    "line_count": 0.12286851188456054,
+    "betweenness_hop": 0.6378830225134586,
+    "betweenness_time": 0.639455065521216
+   },
+   "rho_max": 0.639455065521216,
+   "best": "betweenness_time",
+   "overlap10": 2,
+   "class_by_preregistered_rule": "ADDED_VALUE"
+  }
+ },
+ "hop_mode": {
+  "rho_dT_vs_hop_betweenness_all": 0.5046528022827319,
+  "rho_dT_vs_hop_betweenness_nonfragmenting": 0.8655130212915851,
+  "rho_time_vs_hop_nonfragmenting": 0.8888373475130934
+ }
+}

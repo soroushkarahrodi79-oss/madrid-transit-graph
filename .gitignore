@@ -17,3 +17,6 @@ research/transfer_aware_v02/local/
 data/gtfs_raw/
 data/gtfs_derived/*
 !data/gtfs_derived/gtfs_manifest.json
+
+# Phase 2 per-station results mix OSM-derived names/ids with CRTM-derived timings: local only (see NOTICE.md)
+research/time_weighted_v05/local/

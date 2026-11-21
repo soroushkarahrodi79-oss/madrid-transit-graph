@@ -235,6 +235,32 @@ def main() -> int:
         else:
             notes.append("SKIPPED raw GTFS hash check: data/gtfs_raw/metro.zip not present (gtfs_ingest.py fetch)")
 
+    # ---- Phase 3 public explorer layer (topology only; no CRTM data)
+    ex_path = DATA / "explorer" / "disruption_topology.json"
+    if not ex_path.exists():
+        notes.append("SKIPPED explorer checks: data/explorer/disruption_topology.json not present (python build_explorer.py)")
+    else:
+        import statistics
+        ex = json.loads(ex_path.read_text(encoding="utf-8"))
+        n = len(ex["ids"])
+        check("explorer: built from the frozen v0.1.0 snapshot (manifest hash) and covers every station",
+              ex["meta"]["inputs"]["v010_manifest_sha256"] == hashlib.sha256((DATA / "manifest.json").read_bytes()).hexdigest()
+              and set(ex["ids"]) == set(sp), f"{n} stations")
+        frag = sorted(c["disc"] for c in ex["close"] if c["disc"] > 0)
+        inter_frag = [c["disc"] for c in ex["inter"] if c["disc"] > 0]
+        check("explorer: replicates the v0.4 fragmentation counts (84 closures; 240 / 1,180 / 4,296; 1 interchange, 1,410)",
+              len(frag) == 84 and frag[0] == 240 and statistics.median(frag) == 1180 and frag[-1] == 4296
+              and inter_frag == [1410], f"{len(frag)} closures, {len(inter_frag)} interchange scenario(s)")
+        check("explorer: array shapes and cut sets are consistent",
+              len(ex["close"]) == n and len(ex["inter"]) == len(ex["inter_ids"]) == 38 and len(ex["T0_hop"]) == n
+              and all(len(r) == n for r in ex["T0_hop"]) and all(len(c["dest"]) == n for c in ex["close"] + ex["inter"])
+              and all((c["n_cut"] > 0) == (c["disc"] > 0) and c["n_cut"] == len(c["cut"]) for c in ex["close"] + ex["inter"]))
+        text = ex_path.read_text(encoding="utf-8")
+        check("explorer: public file carries no times or CRTM-derived keys",
+              not any(f'"{k}"' in text for k in FORBIDDEN_KEYS | {"seconds", "ride_times", "stop_times"}))
+        check("explorer: status wording is structural, not real-time, not demand",
+              "NEEDS_VALIDATION" in ex["meta"]["status"] and "not demand" in ex["meta"]["status"])
+
     width = max(len(n) for n, *_ in results)
     for name, ok, detail in results:
         print(f"[{'PASS' if ok else 'FAIL'}] {name.ljust(width)}  {detail}")

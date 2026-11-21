@@ -2,9 +2,10 @@
 
 Demostrador geoespacial de la red de **Metro de Madrid** (L1–L12 y Ramal) como grafo **topológico**, construido
 con [City2Graph](https://github.com/c2g-dev/city2graph) 1.1.0 a partir de **OpenStreetMap** y visualizado con Leaflet.
-Es un experimento mínimo y reproducible, no una herramienta de planificación: sin horarios, frecuencias, tiempos de
-viaje, simulación ni aprendizaje automático. Conectividad topológica **no** es accesibilidad efectiva,
-funcionamiento operativo, demanda ni resiliencia observada.
+Es un experimento reproducible, no una herramienta de planificación. El grafo v0.1.0 es topológico (sin horarios,
+frecuencias ni tiempos de viaje). Sobre él, la página incluye un **explorador de perturbaciones estructural/programado**
+(v0.5, estado **NEEDS_VALIDATION**, ver más abajo). Conectividad topológica **no** es accesibilidad efectiva,
+funcionamiento operativo, demanda ni resiliencia observada, y la simulación **no** es tiempo real ni demanda.
 
 Demo estática: <https://soroushkarahrodi79-oss.github.io/madrid-transit-graph/> (teselas OSM; ver [NOTICE.md](NOTICE.md)).
 
@@ -88,6 +89,35 @@ con ids derivados de OSM y los regímenes «compartir igual» de ODbL y CRTM no 
 jurídico. Las cifras de arriba son resultados procesados. Proyecto sin respaldo ni certificación del CRTM.
 **Powered by CRTM** · <https://www.crtm.es/>.
 
+## Explorador de perturbaciones (v0.5, NEEDS_VALIDATION)
+
+`index.html` permite elegir una estación y ver qué pasa si **se cierra** o si **se desactiva su correspondencia**:
+pares de estaciones que quedan desconectados, estaciones aisladas, aumento medio de saltos y alcance (isocronas) desde
+la estación. **Modelo estructural/programado. No es tiempo real ni demanda.** Detalle en
+[`research/time_weighted_v05/REPORT.md`](research/time_weighted_v05/REPORT.md) (inglés) y
+[`PHASE3.md`](research/time_weighted_v05/PHASE3.md).
+
+- **Capa pública (solo topología, ODbL):** `data/explorer/disruption_topology.json`, generada por `build_explorer.py`
+  desde el snapshot v0.1.0 y sin datos del CRTM. Reproduce exactamente los recuentos de fragmentación de v0.4
+  (84 cierres que fragmentan la red; 1 correspondencia con 1.410 pares desconectados).
+- **Capa de tiempos (solo en local):** tiempos planificados derivados de datos del CRTM (longitud del tramo ÷ una
+  velocidad por línea; Línea 3 imputada; esperas y transbordos **supuestos**). Une ids de OSM con valores del CRTM y,
+  por la incertidumbre de licencias, **no se distribuye** (ver [NOTICE.md](NOTICE.md)). Para verla en tu equipo:
+
+```powershell
+.venv\Scripts\python gtfs_ingest.py fetch
+.venv\Scripts\python gtfs_ingest.py build
+.venv\Scripts\python build_explorer.py --time --workers 3
+.venv\Scripts\python -m http.server 8000   # la página detecta la capa solo en localhost
+```
+
+- **Resultado y su límite:** el veredicto preregistrado (el aumento medio de tiempo no se explica con grado, líneas ni
+  intermediación) **depende de que la medida ignora los pares desconectados**. Entre los cierres que no fragmentan la
+  red, el orden sigue a la intermediación (ρ ≈ 0,9). No se concluye que la simulación aporte valor sobre métricas
+  estructurales. Sin validación externa.
+- **Se cierra una estación, no un tramo.** Sin demanda, aforo, tiempo real, caminata entre estaciones distintas ni
+  autobuses de sustitución.
+
 ## Validación
 
 `validate.py` (librería estándar, independiente de City2Graph; 28 comprobaciones sobre el snapshot publicado, más 4
@@ -124,7 +154,10 @@ DOI: [10.1016/j.compenvurbsys.2026.102492](https://doi.org/10.1016/j.compenvurbs
 build_graph.py   obtención (OSM) + grafo (City2Graph) + exportación
 audit_crtm.py    auditoría contra CRTM (salida local, no distribuida)
 validate.py      validación offline
-index.html       mapa Leaflet (lee data/)
-data/            stations.geojson · connections.geojson · metadata.json (ODbL) · manifest.json
+index.html       mapa Leaflet y explorador de perturbaciones (lee data/)
+gtfs_ingest.py   tiempos planificados y frecuencias desde el GTFS del CRTM (salida local)
+build_explorer.py datos precalculados del explorador (público: topología; local: tiempos)
+research/        estudios v0.2–v0.5 (informe, preregistro, código y pruebas)
+data/            stations.geojson · connections.geojson · metadata.json (ODbL) · manifest.json · explorer/
 LICENSE · NOTICE.md · requirements.txt
 ```

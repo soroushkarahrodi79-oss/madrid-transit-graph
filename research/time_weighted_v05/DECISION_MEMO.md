@@ -1,7 +1,7 @@
 # Decision memo: GO / FREEZE / PIVOT (v0.5 line)
 
 Date: 2026-11-21. Author: Claude (research engineering), for the repository owner. Status of every study here: **NEEDS_VALIDATION**.
-This is a recommendation; the decision is the owner's.
+This memo recommended FREEZE. **Decision (owner, 2026-11-21): FREEZE.** The README carries the status block.
 
 ## Recommendation: FREEZE the research claim, keep the repository as a documented demonstrator
 

@@ -1,5 +1,21 @@
 # Madrid Transit Graph Explorer — v0.1.0
 
+> **Estado: CONGELADO (FREEZE) desde 2026-11-21.** Decisión del propietario tras la Fase 5
+> ([memo](research/time_weighted_v05/DECISION_MEMO.md), en inglés).
+>
+> **Motivo.** Los estudios v0.2–v0.5 son modelos estructurales/programados y siguen en **NEEDS_VALIDATION**: no hay validación
+> externa posible (no existen tiempos de viaje medidos ni demanda para una perturbación documentada). El veredicto preregistrado
+> de v0.5 depende de que la medida ignora los pares desconectados; los tiempos planificados apenas cambian el orden respecto a
+> los saltos; y cerrar una estación no equivale a cerrar un tramo de línea. **No se afirma ningún resultado de vulnerabilidad
+> ni de resiliencia.**
+>
+> **Qué queda.** Un demostrador documentado y reproducible: topología v0.1.0 congelada y verificada por hash, estudios
+> preregistrados con sus resultados negativos y cualificados, explorador estático, protocolo de instantáneas nuevas y CI. No se
+> añadirán análisis nuevos.
+>
+> **Condiciones para reabrir.** (a) Una fuente de validación externa (un cierre documentado con tiempos de viaje o viajeros
+> medidos) y un modelo de tramos preregistrado; o (b) una pregunta nueva y concreta, con su propio preregistro y datos públicos.
+
 Demostrador geoespacial de la red de **Metro de Madrid** (L1–L12 y Ramal) como grafo **topológico**, construido
 con [City2Graph](https://github.com/c2g-dev/city2graph) 1.1.0 a partir de **OpenStreetMap** y visualizado con Leaflet.
 Es un experimento reproducible, no una herramienta de planificación. El grafo v0.1.0 es topológico (sin horarios,

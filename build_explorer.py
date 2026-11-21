@@ -96,7 +96,7 @@ def public_payload():
     def rec(sc):
         e = sc["effect"]
         assert e["n_disc"] % 2 == 0  # hop distances are symmetric: ordered count is twice the unordered one
-        return {"disc": e["n_disc"] // 2, "dT": clean(e["dT"]), "n_cut": len(sc["cut"]), "cut": sc["cut"],
+        return {"disc": e["n_disc"] // 2, "dT": clean(e["dT"], 4), "n_cut": len(sc["cut"]), "cut": sc["cut"],
                 "main": sc["main_size"], "dest": [clean(v) for v in sc["dest"]]}
 
     g1 = E.hop_replication({"disc_close": [c["effect"]["n_disc"] for c in close],
